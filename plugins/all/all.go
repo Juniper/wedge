@@ -6,9 +6,9 @@
 package all
 
 import (
-	gRPC "git.juniper.net/sksubra/wedge/plugins/gRPC"
-	kafka "git.juniper.net/sksubra/wedge/plugins/kafka"
-	wu "git.juniper.net/sksubra/wedge/util"
+	gRPC "github.com/Juniper/wedge/plugins/gRPC"
+	kafka "github.com/Juniper/wedge/plugins/kafka"
+	wu "github.com/Juniper/wedge/util"
 )
 
 /*
