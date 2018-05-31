@@ -15,8 +15,8 @@ import (
 	"sync"
 	"time"
 
-	wc "git.juniper.net/sksubra/wedge/codecs"
-	wu "git.juniper.net/sksubra/wedge/util"
+	wc "github.com/Juniper/wedge/codecs"
+	wu "github.com/Juniper/wedge/util"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/credentials"
