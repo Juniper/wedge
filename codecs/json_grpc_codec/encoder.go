@@ -11,7 +11,7 @@ import (
 	"math"
 	"strconv"
 
-	wu "git.juniper.net/sksubra/wedge/util"
+	wu "github.com/Juniper/wedge/util"
 	"github.com/srikanth2212/jsonez"
 )
 
