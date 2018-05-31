@@ -13,8 +13,8 @@ import (
 	"strconv"
 	"strings"
 
-	wk "git.juniper.net/sksubra/wedge/plugins/kafka"
-	wu "git.juniper.net/sksubra/wedge/util"
+	wk "github.com/Juniper/wedge/plugins/kafka"
+	wu "github.com/Juniper/wedge/util"
 	kafka "github.com/confluentinc/confluent-kafka-go/kafka"
 	avro "github.com/elodina/go-avro"
 	"github.com/srikanth2212/jsonez"
