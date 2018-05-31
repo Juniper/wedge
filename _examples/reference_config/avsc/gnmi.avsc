@@ -1,0 +1,574 @@
+[
+
+  {
+    "type": "record",
+    "name": "Google__Protobuf__Any",
+    "fields": [
+      {
+        "name": "type_url",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  }
+
+  ,
+  {
+    "type": "record",
+    "name": "Gnmi__PathElem__KeyEntry",
+    "fields": [
+      {
+        "name": "key",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__PathElem",
+    "fields": [
+      {
+        "name": "name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "key",
+        "type": ["null", {"type": "array", "items": "Gnmi__PathElem__KeyEntry"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__Path",
+    "fields": [
+      {
+        "name": "element",
+        "type": ["null", {"type": "array", "items": "string"}],
+        "default": null
+      },
+      {
+        "name": "origin",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "elem",
+        "type": ["null", {"type": "array", "items": "Gnmi__PathElem"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__Decimal64",
+    "fields": [
+      {
+        "name": "digits",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "precision",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__Value",
+    "fields": [
+      {
+        "name": "value",
+        "type": ["null", "bytes"],
+        "default": null
+      },
+      { "name": "type", "type": ["null", { "type": "enum", "name": "Gnmi__Value__Encoding", "symbols": ["GNMI__JSON", "GNMI__BYTES", "GNMI__PROTO", "GNMI__ASCII", "GNMI__JSON__IETF"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__TypedValue",
+    "doc": "Only one of the following fields should be specified: string_val, int_val, uint_val, bool_val, bytes_val, float_val, decimal_val, any_val, json_val, json_ietf_val, ascii_val",
+    "fields": [
+      {
+        "name": "string_val",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "int_val",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "uint_val",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "bool_val",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "bytes_val",
+        "type": ["null", "bytes"],
+        "default": null
+      },
+      {
+        "name": "float_val",
+        "type": ["null", "float"],
+        "default": null
+      },
+      {
+        "name": "decimal_val",
+        "type": ["null", "Gnmi__Decimal64"],
+        "default": null
+      },
+      {
+        "name": "any_val",
+        "type": ["null", "Google__Protobuf__Any"],
+        "default": null
+      },
+      {
+        "name": "json_val",
+        "type": ["null", "bytes"],
+        "default": null
+      },
+      {
+        "name": "json_ietf_val",
+        "type": ["null", "bytes"],
+        "default": null
+      },
+      {
+        "name": "ascii_val",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__ScalarArray",
+    "fields": [
+      {
+        "name": "element",
+        "type": ["null", {"type": "array", "items": "Gnmi__TypedValue"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__Update",
+    "fields": [
+      {
+        "name": "path",
+        "type": ["null", "Gnmi__Path"],
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": ["null", "Gnmi__Value"],
+        "default": null
+      },
+      {
+        "name": "val",
+        "type": ["null", "Gnmi__TypedValue"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__Notification",
+    "fields": [
+      {
+        "name": "timestamp",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "prefix",
+        "type": ["null", "Gnmi__Path"],
+        "default": null
+      },
+      {
+        "name": "alias",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "update",
+        "type": ["null", {"type": "array", "items": "Gnmi__Update"}],
+        "default": null
+      },
+      {
+        "name": "delete",
+        "type": ["null", {"type": "array", "items": "Gnmi__Path"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__Error",
+    "fields": [
+      {
+        "name": "code",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "data",
+        "type": ["null", "Google__Protobuf__Any"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__Subscription",
+    "fields": [
+      {
+        "name": "path",
+        "type": ["null", "Gnmi__Path"],
+        "default": null
+      },
+      { "name": "mode", "type": ["null", { "type": "enum", "name": "Gnmi__Subscription__SubscriptionMode", "symbols": ["GNMI__TARGET__DEFINED", "GNMI__ON__CHANGE", "GNMI__SAMPLE"] } ], "default": null }
+      ,
+      {
+        "name": "sample_interval",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "suppress_redundant",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "heartbeat_interval",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__QOSMarking",
+    "fields": [
+      {
+        "name": "marking",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__ModelData",
+    "fields": [
+      {
+        "name": "name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "organization",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "version",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__SubscriptionList",
+    "fields": [
+      {
+        "name": "prefix",
+        "type": ["null", "Gnmi__Path"],
+        "default": null
+      },
+      {
+        "name": "subscription",
+        "type": ["null", {"type": "array", "items": "Gnmi__Subscription"}],
+        "default": null
+      },
+      {
+        "name": "use_aliases",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "qos",
+        "type": ["null", "Gnmi__QOSMarking"],
+        "default": null
+      },
+      { "name": "mode", "type": ["null", { "type": "enum", "name": "Gnmi__SubscriptionList__Mode", "symbols": ["GNMI__SUBSCRIPTION_LIST__STREAM", "GNMI__SUBSCRIPTION_LIST__ONCE", "GNMI__SUBSCRIPTION_LIST__POLL"] } ], "default": null }
+      ,
+      {
+        "name": "allow_aggregation",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "use_models",
+        "type": ["null", {"type": "array", "items": "Gnmi__ModelData"}],
+        "default": null
+      },
+      { "name": "encoding", "type": ["null", { "type": "enum", "name": "Gnmi__SubscriptionList__Encoding", "symbols": ["GNMI__JSON", "GNMI__BYTES", "GNMI__PROTO", "GNMI__ASCII", "GNMI__JSON__IETF"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__Alias",
+    "fields": [
+      {
+        "name": "path",
+        "type": ["null", "Gnmi__Path"],
+        "default": null
+      },
+      {
+        "name": "alias",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__AliasList",
+    "fields": [
+      {
+        "name": "alias",
+        "type": ["null", {"type": "array", "items": "Gnmi__Alias"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__Poll",
+    "fields": [
+      {
+        "name": "WedgePlaceholder",
+        "type": "null"
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__SubscribeRequest",
+    "doc": "Only one of the following fields should be specified: subscribe, poll, aliases",
+    "fields": [
+      {
+        "name": "subscribe",
+        "type": ["null", "Gnmi__SubscriptionList"],
+        "default": null
+      },
+      {
+        "name": "poll",
+        "type": ["null", "Gnmi__Poll"],
+        "default": null
+      },
+      {
+        "name": "aliases",
+        "type": ["null", "Gnmi__AliasList"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__SubscribeResponse",
+    "doc": "Only one of the following fields should be specified: update, sync_response, error",
+    "fields": [
+      {
+        "name": "update",
+        "type": ["null", "Gnmi__Notification"],
+        "default": null
+      },
+      {
+        "name": "sync_response",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "error",
+        "type": ["null", "Gnmi__Error"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__SetRequest",
+    "fields": [
+      {
+        "name": "prefix",
+        "type": ["null", "Gnmi__Path"],
+        "default": null
+      },
+      {
+        "name": "delete",
+        "type": ["null", {"type": "array", "items": "Gnmi__Path"}],
+        "default": null
+      },
+      {
+        "name": "replace",
+        "type": ["null", {"type": "array", "items": "Gnmi__Update"}],
+        "default": null
+      },
+      {
+        "name": "update",
+        "type": ["null", {"type": "array", "items": "Gnmi__Update"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__UpdateResult",
+    "fields": [
+      {
+        "name": "timestamp",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "path",
+        "type": ["null", "Gnmi__Path"],
+        "default": null
+      },
+      {
+        "name": "message",
+        "type": ["null", "Gnmi__Error"],
+        "default": null
+      },
+      { "name": "op", "type": ["null", { "type": "enum", "name": "Gnmi__UpdateResult__Operation", "symbols": ["GNMI__UPDATE_RESULT__INVALID", "GNMI__UPDATE_RESULT__DELETE", "GNMI__UPDATE_RESULT__REPLACE", "GNMI__UPDATE_RESULT__UPDATE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__SetResponse",
+    "fields": [
+      {
+        "name": "prefix",
+        "type": ["null", "Gnmi__Path"],
+        "default": null
+      },
+      {
+        "name": "response",
+        "type": ["null", {"type": "array", "items": "Gnmi__UpdateResult"}],
+        "default": null
+      },
+      {
+        "name": "message",
+        "type": ["null", "Gnmi__Error"],
+        "default": null
+      },
+      {
+        "name": "timestamp",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__GetRequest",
+    "fields": [
+      {
+        "name": "prefix",
+        "type": ["null", "Gnmi__Path"],
+        "default": null
+      },
+      {
+        "name": "path",
+        "type": ["null", {"type": "array", "items": "Gnmi__Path"}],
+        "default": null
+      },
+      { "name": "type", "type": ["null", { "type": "enum", "name": "Gnmi__GetRequest__DataType", "symbols": ["GNMI__GET_REQUEST__ALL", "GNMI__GET_REQUEST__CONFIG", "GNMI__GET_REQUEST__STATE", "GNMI__GET_REQUEST__OPERATIONAL"] } ], "default": null }
+      ,
+      { "name": "encoding", "type": ["null", { "type": "enum", "name": "Gnmi__GetRequest__Encoding", "symbols": ["GNMI__JSON", "GNMI__BYTES", "GNMI__PROTO", "GNMI__ASCII", "GNMI__JSON__IETF"] } ], "default": null }
+      ,
+      {
+        "name": "use_models",
+        "type": ["null", {"type": "array", "items": "Gnmi__ModelData"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__GetResponse",
+    "fields": [
+      {
+        "name": "notification",
+        "type": ["null", {"type": "array", "items": "Gnmi__Notification"}],
+        "default": null
+      },
+      {
+        "name": "error",
+        "type": ["null", "Gnmi__Error"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__CapabilityRequest",
+    "fields": [
+      {
+        "name": "WedgePlaceholder",
+        "type": "null"
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Gnmi__CapabilityResponse",
+    "fields": [
+      {
+        "name": "supported_models",
+        "type": ["null", {"type": "array", "items": "Gnmi__ModelData"}],
+        "default": null
+      },
+      { "name": "supported_encodings", "type": ["null", { "type": "enum", "name": "Gnmi__CapabilityResponse__Encoding", "symbols": ["GNMI__JSON", "GNMI__BYTES", "GNMI__PROTO", "GNMI__ASCII", "GNMI__JSON__IETF"] } ], "default": null }
+      ,
+      {
+        "name": "gNMI_version",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  }
+]

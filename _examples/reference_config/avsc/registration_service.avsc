@@ -1,0 +1,60 @@
+[
+  {
+    "type": "record",
+    "name": "Registration__RegisterRequest",
+    "doc": "Only one of the following fields should be specified: json_input, file_input",
+    "fields": [
+      {
+        "name": "json_input",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "file_input",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "target",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "register_id",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "skip_authentication",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "logical_system",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "routing_instance",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Registration__RegisterReply",
+    "fields": [
+      {
+        "name": "result",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "error",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  }
+]

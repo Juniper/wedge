@@ -1,0 +1,36 @@
+[
+  {
+    "type": "record",
+    "name": "JnxBase__IpAddress",
+    "doc": "Only one of the following fields should be specified: addr_string, addr_bytes",
+    "fields": [
+      {
+        "name": "addr_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr_bytes",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "JnxBase__MacAddress",
+    "doc": "Only one of the following fields should be specified: addr_string, addr_bytes",
+    "fields": [
+      {
+        "name": "addr_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr_bytes",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  }
+]

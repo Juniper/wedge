@@ -1,0 +1,63 @@
+[
+    {
+    	"type": "record",
+    	"name": "RpcMetadata",
+    	"fields": [
+    		{
+    			"name": "Key",
+ 				"type": "string"
+ 			},
+    		{
+    			"name": "Value",
+ 				"type": "string"
+ 			}
+    	]
+    },
+ 	{
+ 		"type": "record",
+ 		"name": "RpcKey",
+ 		"fields": [
+ 		 	{
+ 				"name": "Rpc",
+ 				"type": ["null", "string"],
+                "default": null
+ 			},
+            {
+                "name": "BrokerId",
+                "type": ["null", "string"],
+                "default": null
+            },
+ 			{
+ 				"name": "ClientId",
+ 				"type": ["null", "string"],
+                "default": null
+ 			},
+ 			{
+ 				"name": "TransactionId",
+ 				"type": ["null", "string"],
+                "default": null
+ 			},
+ 			{
+ 				"name": "RpcId",
+ 				"type": ["null", "string"],
+                "default": null
+ 			},
+ 			{
+ 				"name": "IpAddress",
+ 				"type": ["null", {"type": "array", "items": "string"}],
+ 				"default": null
+ 			},
+ 			{
+ 				"name": "Port",
+ 				"type": ["null", "string"],
+                "default": null
+ 			},
+ 			{
+ 				"name": "Metadata",
+ 				"type": ["null", {"type": "array", "items": "RpcMetadata"}],
+ 				"default": null
+
+ 			}
+ 		]
+	}
+]

@@ -1,0 +1,532 @@
+/**
+ * API for the Licensing infra services.
+ *
+ * This IDL defines the APIs for the clients to interact with Junos license infra.
+ */
+
+/**
+ *  proto3 is recommended for use with LibJAPI and gRPC
+ */
+syntax = "proto3";
+
+/**
+ * This is part of the common license infra package.
+ */
+package licensing;
+
+
+/**
+ *
+ * Different types of return codes to be sent back to client based on the
+ * operation was successful or not and if not, possibly more specific reasons
+ * as to why it failed. To ensure clarity, the.proto error code number is
+ * kept same as liblicense wrapper error code, hence the range.
+ *
+ */
+enum ReturnCode {
+    // Operation was executed successfully
+    SUCCESS                          = 0;
+
+    // General failure, operation not executed successfully
+    OPERATION_FAILED                 = 31;
+
+    // Allocating memory to register client failed
+    REGISTER_MEMALLOC_FAILED         = 32;
+
+    // Requesting license for feature list failed
+    REGISTER_REQUESTBULK_FAILED      = 33;
+
+    // Client to unregister not found
+    CLIENT_NOT_FOUND                 = 34;
+
+    // Get client id from.proto function failed
+    JAPI_GET_CLIENTID_FAILED         = 35;
+
+    // Parameter received from client is invalid
+    CLIENT_INPUT_PARAM_INVALID       = 36;
+
+
+    // LM operation failed due to invalid argument
+    LM_INVALID_ARGUMENT              = 51;
+
+    // LM operation failed due to license not valid
+    LM_INVALID_LICENSE               = 52;
+
+    // LM operation failed due to license unavailability
+    LM_NO_MORE_LICENSE               = 53;
+
+    // LM operation failed due to insufficient license
+    LM_INSUFFICIENT_LICENSE          = 54;
+
+    // Requested capacity or feature license not available
+    LM_LK_NOT_AVAILABLE              = 55;
+}
+
+
+/**
+ *
+ * Different types of validity states to be sent back to client.
+ * These validity states indicate license applicability and validity for a feature.
+ * as to why it failed.
+ *
+ */
+enum ValidityState {
+    // No license is needed for this feature and product combination
+    LICENSE_NO_NEED       =  0;
+
+    // A license is required for the feature, but not installed/available
+    LICENSE_REQUIRED      =  1;
+
+    // A license is required, installed and is valid
+    LICENSE_VALID         =  2;
+
+    // A license is required, but the installed license is invalid
+    LICENSE_INVALID       =  3;
+}
+
+/**
+ *
+ * License events type
+ *
+ */
+enum LicenseEvent{
+    // Reserved value
+    INVALID         = 0;
+
+    // License client connected with server event
+    SERVER_CONNECTED = 1;
+
+    // License client disconnected with server event
+    SERVER_DISCONNECTED = 2;
+
+    // License installation event
+    LK_INSTALL      = 5;
+
+    // License deletion event
+    LK_DELETE       = 6;
+
+    // Non-production license expired
+    LK_EXPIRY_NON_PRODUCTION = 7;
+
+    // Production license expired
+    LK_EXPIRY_PRODUCTION = 8;
+
+    // License capacity change event
+    CAPACITY_CHANGE = 9;
+}
+
+
+/**
+ *
+ * Different types of licenses during remaining time query.
+ * These indicates if the license found for the particular feature is
+ * permanent or a type of time based.
+ *
+ */
+enum LicenseType {
+    // License key type is invalid
+    LK_TYPE_INVALID       =  0;
+
+    // License key type is countdown
+    LK_TYPE_COUNTDOWN     =  1;
+
+    // License key type is date-based
+    LK_TYPE_DATEBASED     =  2;
+
+    // License key type is permanent
+    LK_TYPE_PERMANENT     =  3;
+}
+
+
+/**
+ *
+ * License availability and usage details for capacity license.
+ * In case of non-capacity feature license, the value will be 0 or 1 and
+ * indicates if the license for feature is available/requested/used or not.
+ *
+ */
+message LicenseCapacity {
+    // Total license key installed capacity value
+    uint64 lk_total       = 1;
+
+    // Total license key remaining capacity value
+    uint64 lk_remaining   = 2;
+
+    // Total license capacity value requested by current daemon
+    uint64 requested      = 3;
+
+    // Capacity usage reported for the feature, for usage reporting
+    uint64 reported_usage = 4;
+}
+
+/**
+ *
+ * Request message to register for license notification
+ *
+ */
+message LicenseNotifySend {
+
+    // Array of licensed feature ids which client is interested
+    repeated uint32 feature_ids  = 1 [packed=true];
+
+    // Array of previous license feature requests
+    repeated uint64 request_list = 2;
+}
+
+/**
+ *
+ * Optional list of values with event notification
+ *
+ */
+message LicenseEventDetail {
+    oneof event_detail {
+        // License capacity information for capacity feature related event
+        LicenseCapacity capacity  = 5;
+    }
+}
+
+/**
+ *
+ * Reply message for license notification event
+ *
+ */
+message LicenseNotifyReply {
+    // Return code indicating the success or failure of the operation and in
+    // case of failure, the code will indicate the type of the failure.
+    ReturnCode ret_code            = 1;
+
+    // Id of licensed feature
+    uint32 feature_id              = 2;
+
+    // Type of license event
+    LicenseEvent event_type        = 3;
+
+    // More detailed information about the event
+    LicenseEventDetail event_info  = 4;
+}
+
+/**
+ *
+ * Request message to unregister from license notification service.
+ * All the previously registered license features by the current
+ * client will be unregistered from the notification service.
+ *
+ */
+message LicenseUnregisterSend {
+
+}
+
+/**
+ *
+ * Reply message to unregister from license notification service.
+ *
+ */
+message LicenseUnregisterReply {
+    // Return code indicating the success or failure of the operation and in
+    // case of failure, the code will indicate the type of the failure.
+    ReturnCode ret_code  = 1;
+}
+
+
+/**
+ *
+ * Request message to get the license information operation
+ *
+ */
+message LicenseQuerySend {
+
+    // Id of licensed feature
+    uint32 feature_id  = 1;
+}
+
+/**
+ *
+ * Reply message to get the license validity state
+ *
+ */
+message LicenseCheckValidityReply {
+    // Return code indicating the success or failure of the operation and in
+    // case of failure, the code will indicate the type of the failure.
+    ReturnCode ret_code     = 1;
+
+    // Id of licensed feature
+    uint32 feature_id       = 2;
+
+    // License validity status information
+    ValidityState validity  = 3;
+}
+
+
+/**
+ *
+ * Reply message to get the license information operation
+ *
+ */
+message LicenseGetInfoReply {
+    // Return code indicating the success or failure of the operation and in
+    // case of failure, the code will indicate the type of the failure.
+    ReturnCode ret_code       = 1;
+
+    // Id of licensed feature
+    uint32 feature_id         = 2;
+
+    // Capacity value information
+    LicenseCapacity capacity  = 3;
+}
+
+
+/**
+ *
+ * Reply message to get the license remaining time and type
+ *
+ */
+message LicenseRemainingTimeReply {
+    // Return code indicating the success or failure of the operation and in
+    // case of failure, the code will indicate the type of the failure.
+    ReturnCode ret_code     = 1;
+
+    // Id of licensed feature
+    uint32 feature_id       = 2;
+
+    // Remaining time
+    int32 remain_time       = 3;
+
+    // Type of the license key queried
+    LicenseType lk_type     = 4;
+
+    // License is production or non-production
+    bool is_production_lic  = 5;
+}
+
+
+/**
+ *
+ * Reply message to get the customer id and software-sn from license
+ *
+ */
+message LicenseCidAndSsnReply {
+    // Return code indicating the success or failure of the operation and in
+    // case of failure, the code will indicate the type of the failure.
+    ReturnCode ret_code     = 1;
+
+    // Id of licensed feature
+    uint32 feature_id       = 2;
+
+    // Customer id string
+    string customer_id      = 3;
+
+    // Software serial number string
+    string software_sn      = 4;
+}
+
+/**
+ *
+ * Request message to send details for the license operation to perform
+ *
+ */
+message LicenseOperSend {
+
+    // Id of licensed feature
+    uint32 feature_id     = 1;
+
+    // Capacity value to request/release/set_usage
+    uint64 capacity_input = 2;
+}
+
+/**
+ *
+ * Reply message to get the response for a license operation performed
+ *
+ */
+message LicenseOperReply {
+    // Return code indicating the success or failure of the operation and in
+    // case of failure, the code will indicate the type of the failure.
+    ReturnCode ret_code    = 1;
+
+    // Id of licensed feature
+    uint32 feature_id      = 2;
+
+    // Capacity value to request/release/set_usage
+    uint64 capacity_input  = 3;
+
+    // Capacity value actually provided/released/used by license infra manager
+    uint64 capacity_output = 4;
+}
+
+
+/*
+ *
+ * Request message to send details for the license operation to perform
+ *
+ */
+message TestLicenseKeySend {
+
+    // License key string
+    string license_key     = 1;
+}
+
+/*
+ *
+ * Reply message to get the response for a license operation performed
+ *
+ */
+message TestLicenseKeyReply {
+    // Return code indicating the success or failure of the operation and in
+    // case of failure, the code will indicate the type of the failure.
+    ReturnCode ret_code    = 1;
+
+    // Id of licensed feature
+    uint32 feature_id      = 2;
+}
+
+
+/**
+ * Licensing Service Definitions
+ */
+service Infra {
+    /**
+     *
+     * Service to register license notification-
+     *
+     * This service call will indicate to license infra daemon to register
+     * and start the notification service for the licensed feature list
+     * passed as input. Feature ids which are invalid will be ignored by server.
+     * The response will be streamed from the server for various types of
+     * events occurring. So client must not finish/close the connection to
+     * keep getting notified.
+     *
+     */
+    rpc LicenseRegister (LicenseNotifySend) returns (stream LicenseNotifyReply) {}
+
+    /**
+     *
+     * Service to unregister license notification-
+     *
+     * This service call will indicate to license infra daemon to unregister
+     * and stop the notification service. Can be called if client wants to
+     * gracefully unregister. With this call, all the feature ids
+     * which were previously registered by this client for getting notified on
+     * events will be purged.
+     *
+     */
+    rpc LicenseUnregister (LicenseUnregisterSend) returns (LicenseUnregisterReply) {}
+
+
+    /**
+     *
+     * Service to get license validity status for a feature-
+     *
+     * The returned state indicates the current info of licensed feature.
+     * Detailed capacity or feature usage info can be got using LicenseGetInfo service.
+     *
+     */
+    rpc LicenseCheckValidity (LicenseQuerySend) returns (LicenseCheckValidityReply) {}
+
+
+    /**
+     *
+     * Service to get license information for a feature-
+     *
+     * The licensed feature can be of type capacity or non-capacity.
+     * In case of non-capacity, the capacity_value will be unused.
+     *    (that is value of 1 will be considered irrespective of input)
+     *
+     */
+    rpc LicenseGetInfo (LicenseQuerySend) returns (LicenseGetInfoReply) {}
+
+    /**
+     *
+     * Service to query and also request license information for a feature-
+     *
+     * The licensed feature can be of type capacity or non-capacity.
+     * In case of non-capacity, the capacity_value will be unused.
+     *    (that is value of 1 will be considered irrespective of input)
+     *
+     */
+    rpc LicenseQueryRequest (LicenseQuerySend) returns (LicenseGetInfoReply) {}
+
+    /**
+     *
+     * Service to request license for a licensed feature-
+     *
+     * The licensed feature can be of type capacity or non-capacity.
+     * In case of non-capacity, the capacity input will be fixed value.
+     *  (that is value of 1 will be considered irrespective of user input,
+     *   because for non-capacity its just whether license is available or not)
+     *
+     */
+    rpc LicenseRequest (LicenseOperSend) returns (LicenseOperReply) {}
+
+
+    /**
+     *
+     * Service to release license for a licensed feature-
+     *
+     * The licensed feature can be of type capacity or non-capacity.
+     * In case of non-capacity, the capacity input will be fixed value.
+     *  (that is value of 1 will be considered irrespective of user input,
+     *   because for non-capacity its just whether license is available or not)
+     *
+     */
+    rpc LicenseRelease (LicenseOperSend) returns (LicenseOperReply) {}
+
+
+    /**
+     *
+     * Service to set usage information for a licensed feature-
+     *
+     * The licensed feature can be of type capacity or non-capacity.
+     * In case of non-capacity, the capacity input will be fixed value.
+     *  (that is value of 1 will be considered irrespective of user input,
+     *   because for non-capacity its just whether license is available or not)
+     *
+     */
+    rpc LicenseSetUsage (LicenseOperSend) returns (LicenseOperReply) {}
+
+
+    /**
+     *
+     * Service to get license feature remaining time information-
+     *
+     * Gets the time remaining and license type for a feature license.
+     * When multiple licenses exist, the function returns PERMAMENT if
+     * any permanent licenses exist, else it returns the type of the
+     * time-based license with the greatest validity period remaining.
+     *
+     */
+    rpc LicenseGetRemainingTime (LicenseQuerySend) returns (LicenseRemainingTimeReply) {}
+
+
+    /**
+     *
+     * Service to get customer id and SSN of license feature-
+     *
+     * Given a license feature id, retrieve the customer-id and software-sn
+     * attributes from the license . If multiple licenses match, use the one
+     * having the furthest end date.
+     *
+     */
+    rpc LicenseGetCidAndSsn (LicenseQuerySend) returns (LicenseCidAndSsnReply) {}
+
+
+    /*
+     *
+     * Service to add license key for testing purpose-
+     *
+     * This call is meant for testing purpose so that required license keys can
+     * be installed to check corresponding events generated
+     *
+     */
+    rpc TestLicenseKeyAdd (TestLicenseKeySend) returns (TestLicenseKeyReply) {}
+
+    /*
+     *
+     * Service to delete license key for testing purpose-
+     *
+     * This call is meant for testing purpose so that required license keys can
+     * be deleted to check corresponding events generated
+     *
+     */
+    rpc TestLicenseKeyDelete (TestLicenseKeySend) returns (TestLicenseKeyReply) {}
+
+}

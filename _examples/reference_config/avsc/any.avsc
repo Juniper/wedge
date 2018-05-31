@@ -1,0 +1,18 @@
+[
+  {
+    "type": "record",
+    "name": "Google__Protobuf__Any",
+    "fields": [
+      {
+        "name": "type_url",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  }
+]

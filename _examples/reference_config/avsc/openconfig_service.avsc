@@ -1,0 +1,279 @@
+[
+  {
+    "type": "record",
+    "name": "Openconfig__GetDataEncodingsRequest",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__GetDataEncodingsResponse",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "encoding", "type": ["null", { "type": "enum", "name": "Openconfig__GetDataEncodingsResponse__OpenConfigDataEncodingTypes", "symbols": ["OPENCONFIG__ENCODING__XML", "OPENCONFIG__ENCODING__JSON"] } ], "default": null }
+      ,
+      { "name": "response_code", "type": ["null", { "type": "enum", "name": "Openconfig__GetDataEncodingsResponse__OpenConfigRpcResponseTypes", "symbols": ["OPENCONFIG__OK", "OPENCONFIG__NOK", "OPENCONFIG__UNSUPPORTED__PATH", "OPENCONFIG__INVALID__PATH", "OPENCONFIG__INVALID__CONFIGURATION", "OPENCONFIG__UNSUPPORTED__INTERVAL", "OPENCONFIG__INVALID__SUBSCRIPTION__ID", "OPENCONFIG__UNSUPPORTED__ENCODING"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__SetDataEncodingRequest",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "encoding", "type": ["null", { "type": "enum", "name": "Openconfig__SetDataEncodingRequest__OpenConfigDataEncodingTypes", "symbols": ["OPENCONFIG__ENCODING__XML", "OPENCONFIG__ENCODING__JSON"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__SetDataEncodingResponse",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "response_code", "type": ["null", { "type": "enum", "name": "Openconfig__SetDataEncodingResponse__OpenConfigRpcResponseTypes", "symbols": ["OPENCONFIG__OK", "OPENCONFIG__NOK", "OPENCONFIG__UNSUPPORTED__PATH", "OPENCONFIG__INVALID__PATH", "OPENCONFIG__INVALID__CONFIGURATION", "OPENCONFIG__UNSUPPORTED__INTERVAL", "OPENCONFIG__INVALID__SUBSCRIPTION__ID", "OPENCONFIG__UNSUPPORTED__ENCODING"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__GetModelsRequest",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__Model",
+    "fields": [
+      {
+        "name": "name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "namespace",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "version",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__GetModelsResponse",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "model",
+        "type": ["null", {"type": "array", "items": "Openconfig__Model"}],
+        "default": null
+      },
+      { "name": "response_code", "type": ["null", { "type": "enum", "name": "Openconfig__GetModelsResponse__OpenConfigRpcResponseTypes", "symbols": ["OPENCONFIG__OK", "OPENCONFIG__NOK", "OPENCONFIG__UNSUPPORTED__PATH", "OPENCONFIG__INVALID__PATH", "OPENCONFIG__INVALID__CONFIGURATION", "OPENCONFIG__UNSUPPORTED__INTERVAL", "OPENCONFIG__INVALID__SUBSCRIPTION__ID", "OPENCONFIG__UNSUPPORTED__ENCODING"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__GetRequestList",
+    "fields": [
+      {
+        "name": "operation_id",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Openconfig__GetRequestList__GetDataCommands", "symbols": ["OPENCONFIG__GET__ALL", "OPENCONFIG__GET__CONFIG", "OPENCONFIG__GET__OPSTATE", "OPENCONFIG__GET__OPER"] } ], "default": null }
+      ,
+      {
+        "name": "path",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__GetRequest",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "encoding", "type": ["null", { "type": "enum", "name": "Openconfig__GetRequest__OpenConfigDataEncodingTypes", "symbols": ["OPENCONFIG__ENCODING__XML", "OPENCONFIG__ENCODING__JSON"] } ], "default": null }
+      ,
+      {
+        "name": "get_request",
+        "type": ["null", {"type": "array", "items": "Openconfig__GetRequestList"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__GetResponse__ResponseList",
+    "fields": [
+      {
+        "name": "operation_id",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "path",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "response_code", "type": ["null", { "type": "enum", "name": "Openconfig__GetResponse__ResponseList__OpenConfigRpcResponseTypes", "symbols": ["OPENCONFIG__OK", "OPENCONFIG__NOK", "OPENCONFIG__UNSUPPORTED__PATH", "OPENCONFIG__INVALID__PATH", "OPENCONFIG__INVALID__CONFIGURATION", "OPENCONFIG__UNSUPPORTED__INTERVAL", "OPENCONFIG__INVALID__SUBSCRIPTION__ID", "OPENCONFIG__UNSUPPORTED__ENCODING"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__GetResponse",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "response",
+        "type": ["null", {"type": "array", "items": "Openconfig__GetResponse__ResponseList"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__SetRequest__ConfigOperationList",
+    "fields": [
+      {
+        "name": "operation_id",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Openconfig__SetRequest__ConfigOperationList__SetConfigCommands", "symbols": ["OPENCONFIG__UPDATE__CONFIG", "OPENCONFIG__REPLACE__CONFIG", "OPENCONFIG__DELETE__CONFIG"] } ], "default": null }
+      ,
+      {
+        "name": "path",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__SetRequest",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "transaction",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      { "name": "encoding", "type": ["null", { "type": "enum", "name": "Openconfig__SetRequest__OpenConfigDataEncodingTypes", "symbols": ["OPENCONFIG__ENCODING__XML", "OPENCONFIG__ENCODING__JSON"] } ], "default": null }
+      ,
+      {
+        "name": "config_operation",
+        "type": ["null", {"type": "array", "items": "Openconfig__SetRequest__ConfigOperationList"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__SetResponse__ResponseList",
+    "fields": [
+      {
+        "name": "operation_id",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "response_code", "type": ["null", { "type": "enum", "name": "Openconfig__SetResponse__ResponseList__OpenConfigRpcResponseTypes", "symbols": ["OPENCONFIG__OK", "OPENCONFIG__NOK", "OPENCONFIG__UNSUPPORTED__PATH", "OPENCONFIG__INVALID__PATH", "OPENCONFIG__INVALID__CONFIGURATION", "OPENCONFIG__UNSUPPORTED__INTERVAL", "OPENCONFIG__INVALID__SUBSCRIPTION__ID", "OPENCONFIG__UNSUPPORTED__ENCODING"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Openconfig__SetResponse",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "response",
+        "type": ["null", {"type": "array", "items": "Openconfig__SetResponse__ResponseList"}],
+        "default": null
+      }
+    ]
+  }
+]

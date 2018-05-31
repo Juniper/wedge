@@ -1,0 +1,2166 @@
+syntax = "proto3";
+
+package cos;
+
+import "jnx_base_types.proto";
+
+service Cos {
+
+    /**
+     * Forwarding class methods queried by forwarding class name
+     *
+     * Needs key attribute forwarding class name in the request message.
+     * optionally presence of single ref_objects in request allows server to
+     * send all objects referring to this object.  
+     */
+    rpc CosForwardingClassGet (CosForwardingClassQueryRequest) 
+        returns (CosForwardingClassQueryResponse) {}
+
+    /**
+     * Key attribute forwarding class name is optional in the request message.
+     * If key is present then Getnext RPC returns next available forwarding class
+     * object. Otherwise returns first object.
+     * optionally presence of single ref_objects in request allows server to
+     * send all objects referring to this object.  
+     */
+    rpc CosForwardingClassGetNext (CosForwardingClassQueryRequest) 
+        returns (CosForwardingClassQueryResponse) {}
+
+    /**
+     * Key attribute forwarding class name is optional in the request message.
+     * If key is present then Getbulk RPC returns forwarding class matching to
+     * key and next all available forwarding class objects.
+     * optionally presence of single ref_objects in request allows server to
+     * send all objects referring to this object.  
+     */
+    rpc CosForwardingClassBulkGet (CosForwardingClassQueryRequest) 
+        returns (stream CosForwardingClassQueryResponse) {}
+
+    /**
+     * Forwarding class methods queried by forwarding class id 
+     * Needs key attribute forwarding class id in the request message.
+     * optionally presence of single ref_objects in request allows server to
+     * send all objects referring to this object.  
+     */
+    rpc CosForwardingClassGetByForwardingClassId (CosForwardingClassIdQueryRequest) 
+        returns (CosForwardingClassIdQueryResponse) {}
+
+    /**
+     * Forwarding class methods queried by forwarding class queue id
+     * Needs key attribute forwarding class queue id in the request message.
+     * optionally presence of single ref_objects in request allows server to
+     * send all objects referring to this object.  
+     */
+    rpc CosForwardingClassGetByQueueId (CosForwardingClassQueueQueryRequest) 
+        returns (CosForwardingClassQueueQueryResponse) {}
+
+    /**
+     * Forwarding class methods queried by forwarding class restricted queue id
+     *
+     * Needs key attribute forwarding class restrict queue id in the request
+     * message.
+     * optionally presence of single ref_objects in request allows server to
+     * send all objects referring to this object.  
+     */
+    rpc CosForwardingClassGetByRestrictQueueId (CosForwardingClassRestrictQueueQueryRequest) 
+        returns (CosForwardingClassRestrictQueueQueryResponse) {}
+
+    /**
+     * Classifier RPC methods
+     *
+     * Add : Adds a classifier object
+     * The classifier add request includes
+     * 1. classifier type and name.
+     * 2. one or more classifier rules.
+     */
+    rpc CosClassifierAdd (CosClassifierRequest) returns (CosStatus) {}
+
+    /**
+     * Delete : Deletes a classifier object
+     * The classifier delete request includes
+     * 1. classifier type and name.
+     */
+    rpc CosClassifierDelete (CosClassifierDeleteRequest) returns (CosStatus) {}
+
+    /**
+     * Update : Updates classifier rules
+     * The classifier update requests includes
+     * 1. classifier type and name.
+     * 2. one or more classifier rules to be updated/deleted.
+     *    update/delete classifier rules
+     */
+    rpc CosClassifierUpdate (CosClassifierRequest) returns (CosStatus) {}
+
+    /**
+     * Get: Needs key attributes classifier type and name in the request message.
+     * optionally presence of single ref_objects in request allows server to
+     * send all objects referring to this object.  
+     */
+    rpc CosClassifierGet (CosClassifierQueryRequest) returns (CosClassifierQueryResponse) {}
+
+    /**
+     * GetNext: Key attributes classifier type and/or name are optional in the
+     * request message.
+     * Request will contain either a
+     * - 1. classifier name and type or
+     * - 2. classifier type or
+     * - 3. NULL
+     * Response will be classifier object for the corresponding request which
+     * can be either
+     * - Next classifier entry or
+     * - Next classifier entry for given type or
+     * - First classifier entry respectively
+     * optionally presence of single ref_objects in request allows server to
+     * send all objects referring to this object.  
+     */
+    rpc CosClassifierGetNext (CosClassifierQueryRequest) returns (CosClassifierQueryResponse) {}
+
+    /**
+     * BulkGet: Key attributes classifier type and/or name are optional in the
+     * request message.
+     * Request will contain either a
+     * - 1. classifier name and type or
+     * - 2. classifier type or
+     * - 3. NULL
+     * Response will be classifier info for the corresponding request which can
+     * be either
+     * - Requested and next set of classifier objects or
+     * - Next set of classifier entries for the requested type or
+     * - All classifier objects respectively
+     * optionally presence of single ref_objects in request allows server to
+     * send all objects referring to this object.  
+     */
+    rpc CosClassifierBulkGet (CosClassifierQueryRequest) returns (stream CosClassifierQueryResponse) {}
+
+    /**
+     * Rewrite RPC methods
+     * Add : Adds a rewrite object
+     * The rewrite add request includes
+     * 1. rewrite type and name.
+     * 2. one or more rewrite rules.
+     */
+    rpc CosRewriteAdd (CosRewriteRequest) returns (CosStatus) {}
+
+    /**
+     * Delete : Deletes a rewrite object
+     * The rewrite delete request includes
+     * 1. rewrite type and name.
+     */
+    rpc CosRewriteDelete (CosRewriteDeleteRequest) returns (CosStatus) {}
+
+    /**
+     * Update : Updates rewrite rules
+     * The rewrite update requests includes
+     * 1. rewrite type and name.
+     * 2. one or more rewrite rules to be updated/deleted.
+     *    update/delete rewrite rules
+     */
+    rpc CosRewriteUpdate (CosRewriteRequest) returns (CosStatus) {}
+
+    /**
+     * Get: Needs key attributes rewrite type and name in the request message.
+     * optionally presence of single ref_objects in request allows server to
+     * send all objects referring to this object.  
+     */
+    rpc CosRewriteGet (CosRewriteQueryRequest) returns (CosRewriteQueryResponse) {}
+
+    /**
+     * GetNext: Key attributes rewrite type and/or name are optional in the
+     * request message.
+     * Request will contain either a
+     * - 1. rewrite name and type or
+     * - 2. rewrite type or
+     * - 3. NULL
+     * Response will be rewrite object for the corresponding request which
+     * can be either
+     * - Next rewrite entry or
+     * - Next rewrite entry for given type or
+     * - First rewrite entry respectively
+     * optionally presence of single ref_objects in request allows server to
+     * send all objects referring to this object.  
+     */
+    rpc CosRewriteGetNext (CosRewriteQueryRequest) returns (CosRewriteQueryResponse) {}
+
+    /**
+     * BulkGet: Key attributes rewrite type and/or name are optional in the
+     * request message.
+     * Request will contain either a
+     * - 1. rewrite name and type or
+     * - 2. rewrite type or
+     * - 3. NULL
+     * Response will be rewrite info for the corresponding request which can
+     * be either
+     * - Requested and next set of rewrite objects or
+     * - Next set of rewrite entries for the requested type or
+     * - All rewrite objects respectively
+     * optionally presence of single ref_objects in request allows server to
+     * send all objects referring to this object.  
+     */
+    rpc CosRewriteBulkGet (CosRewriteQueryRequest) returns (stream CosRewriteQueryResponse) {}
+
+    /**
+     * Node bind feature RPC methods
+     * Add : Adds a node object's features
+     * The node add request includes
+     * 1. node type and name.
+     * 2. parent node type and name if node type is not COS_BP_TYPE_IFD
+     * 3. features to be binded.
+     */
+    rpc CosNodeBindFeaturesAdd (CosNodeBindFeaturesRequest) returns (CosStatus) {}
+
+    /**
+     * Delete : Deletes a node or node object's features.
+     * If node present in the data plane then node's customized features will be
+     * deleted and applicable features will be updated with defaults. Otherwise
+     * node will be deleted.
+     * The node delete request includes
+     * 1. node type and name.
+     */
+    rpc CosNodeBindFeaturesDelete (CosNodeBindFeaturesDeleteRequest) returns (CosStatus) {}
+
+    /**
+     * Update : Updates a node object's features
+     * If node present in the data plane then node's features will be
+     * updated. Deleted features will be updated with their defaults. 
+     * The node update request includes
+     * 1. node type and name.
+     * 2. optional parent node type and name if node type is not COS_BP_TYPE_IFD
+     * 3. features to be updated/deleted.
+     */
+    rpc CosNodeBindFeaturesUpdate (CosNodeBindFeaturesRequest) returns (CosStatus) {}
+
+    /**
+     * Get: To obtain specific node corresponding to key attributes.
+     * The get request should include key attributes node type and name 
+     * 1. node type and name.
+     * 2. optional parent node type and name if node type is not COS_BP_TYPE_IFD
+     */
+    rpc CosNodeBindFeaturesGet (CosNodeBindFeaturesQueryRequest) returns (CosNodeBindFeaturesQueryResponse) {}
+
+    /**
+     * GetNext: To obtain next available node object for given key attribute(s).
+     * Key attributes node type and/or name are optional in the request message.
+     * Request will contain either a (parent node type and name are optional).
+     * - 1. node name and type or
+     * - 2. node type or
+     * - 3. NULL
+     * Response will be node object for the corresponding request which
+     * can be either
+     * - Next node entry or
+     * - Next node entry for given node type or
+     * - First IFD node entry respectively
+     */
+    rpc CosNodeBindFeaturesGetNext (CosNodeBindFeaturesQueryRequest) returns (CosNodeBindFeaturesQueryResponse) {}
+
+    /**
+     * BulkGet: To obtain requested and next available node objects for given key
+     * attribute(s).
+     * Key attributes node type and/or name are optional in the request message.
+     * Request will contain either a (parent node type and name are optional).
+     * - 1. node name and type or
+     * - 2. node type or
+     * - 3. NULL
+     * Response will be node object and next bunch of node objects for the
+     * corresponding request which can be either
+     * - Requested node entry and bunch of next available node objects.
+     * - A bunch of node objects for given node type or
+     * - All node objects respectively
+     */
+    rpc CosNodeBindFeaturesBulkGet (CosNodeBindFeaturesQueryRequest) returns (stream CosNodeBindFeaturesQueryResponse) {}
+
+    /**
+     * Routing Instance methods
+     *
+     * Add : Adds a routing instance object's features
+     * The routing instance add request includes
+     * 1. routing instance name.
+     * 2. features to be binded.
+     */
+    rpc CosRoutingInstanceBindPointAdd (CosRoutingInstanceBindPointRequest)
+        returns (CosStatus) {}
+
+    /**
+     * Delete : Deletes a routing instance or routing instance object's features.
+     * If routing instance present in the data plane then routing instance's customized features will be
+     * deleted and applicable features will be updated with defaults. Otherwise
+     * routing instance object will be deleted.
+     * The routing instance delete request includes
+     * 1. routing instance name.
+     */
+    rpc CosRoutingInstanceBindPointDelete (CosRoutingInstanceBindPointDeleteRequest)
+        returns (CosStatus) {}
+
+    /**
+     * Update : Updates a routing instance object's features
+     * If routing instance present in the data plane then routing instance's features will be
+     * updated. Deleted features will be updated with their defaults. 
+     * The routing instance update request includes
+     * 1. routing instance name.
+     * 2. features to be updated/deleted.
+     */
+    rpc CosRoutingInstanceBindPointUpdate (CosRoutingInstanceBindPointRequest)
+        returns (CosStatus) {}
+
+    /**
+     * Get: To obtain specific routing instance corresponding to key attributes.
+     * The get request should include key attributes routing instance name 
+     * 1. routing instance name.
+     */
+    rpc CosRoutingInstanceBindPointGet (CosRoutingInstanceBindPointQueryRequest)
+        returns (CosRoutingInstanceBindPointQueryResponse) {}
+
+    /**
+     * GetNext: To obtain next available routing instance object for given key attribute.
+     * Key attribute is routing instance name is optional in the request message.
+     * Request will contain either a
+     * - 1. routing instance name or
+     * - 2. NULL
+     * Response will be routing instance object for the corresponding request which
+     * can be either
+     * - Next routing instance entry or
+     * - First routing instance entry respectively
+     */
+    rpc CosRoutingInstanceBindPointGetNext (CosRoutingInstanceBindPointQueryRequest)
+        returns (CosRoutingInstanceBindPointQueryResponse) {}
+
+    /**
+     * BulkGet: To obtain requested and next available routing instance objects for given key
+     * attribute.
+     * Key attribute routing instance name is optional in the request message.
+     * Request will contain either a 
+     * - 1. routing instance name or
+     * - 3. NULL
+     * Response will be routing instance object and next bunch of routing
+     * instance objects for the corresponding request which can be either
+     * - Requested routing instance entry and bunch of next available routing
+     *   instance objects.
+     * - All routing instance objects respectively
+     */
+    rpc CosRoutingInstanceBindPointBulkGet (CosRoutingInstanceBindPointQueryRequest)
+        returns (stream CosRoutingInstanceBindPointQueryResponse) {}
+
+    /**
+     * Purge time RPC methods
+     *
+     * Delete : Resets purge time to its default value.
+     * The purge time delete request includes
+     * 1. purge time (value is optional and ignored).
+     */
+    rpc CosPurgeTimeDelete (CosPurgeTimeRequest) returns (CosStatus) {}
+
+    /**
+     * Update : Set purge time to custom value in secs.
+     * The purge time update request includes
+     * 1. purge time in secs.
+     */
+    rpc CosPurgeTimeUpdate (CosPurgeTimeRequest) returns (CosStatus) {}
+
+    /**
+     * Get : Get current purge time.
+     * The purge time response includes
+     * 1. purge time in secs.
+     */
+    rpc CosPurgeTimeGet (CosPurgeTimeRequest) returns (CosPurgeTimeResponse) {}
+}
+
+enum CosMessageAttribOperation {
+    ATTRIB_NOOP = 0;
+    ATTRIB_ADD = 1;
+    ATTRIB_CHANGE = 2;
+    ATTRIB_DELETE = 3;
+}
+
+enum CosLossPriority {
+    CLFR_RW_LP_INVALID = 0;
+    CLFR_RW_LP_HIGH = 1;
+    CLFR_RW_LP_MEDIUM_HIGH = 2;
+    CLFR_RW_LP_MEDIUM_LOW = 3;
+    CLFR_RW_LP_LOW = 4;
+}
+
+enum CosSchedulerPriority {
+    SCHED_PRI_INVALID = 0;
+    SCHED_PRI_HIGH = 1;
+    SCHED_PRI_MEDIUM_HIGH = 2;
+    SCHED_PRI_MEDIUM_LOW = 3;
+    SCHED_PRI_LOW = 4;
+    SCHED_PRI_STRICT_HIGH = 5;
+}
+
+enum CosSchedulerExcessPriority {
+    SCHED_EXCESS_PRI_INVALID = 0;
+    SCHED_EXCESS_PRI_HIGH = 1;
+    SCHED_EXCESS_PRI_MEDIUM_HIGH = 2;
+    SCHED_EXCESS_PRI_MEDIUM_LOW = 3;
+    SCHED_EXCESS_PRI_LOW = 4;
+    SCHED_EXCESS_PRI_NONE = 5;
+}
+
+enum CosSchedulerBufferSizeSpec {
+    SCHED_BUF_SIZE_SPEC_INVALID = 0;
+    SCHED_BUF_SIZE_SPEC_REMAINDER = 1;
+
+    // percent 0 - 100
+    SCHED_BUF_SIZE_SPEC_PERCENT = 2;
+
+    // microseconds
+    SCHED_BUF_SIZE_SPEC_TEMPORAL = 3;
+}
+
+enum CosExcessRateSpec {
+    EXCESS_RATE_SPEC_INVALID = 0;
+
+    // range 1 - 100
+    EXCESS_RATE_SPEC_PERCENT = 1;
+
+    // range 0 - 1000
+    EXCESS_RATE_SPEC_PROPORTION = 2;
+}
+
+enum CosTcpRateSpec {
+    TCP_RATE_SPEC_INVALID = 0;
+
+    // 1000..6400000000000 bits per second
+    TCP_RATE_SPEC_ABSOLUTE = 1;
+
+    // percent 0 - 100
+    // not valid for per priority shaping rates
+    // not valid for adjust-minimum
+    TCP_RATE_SPEC_PERCENT = 2;
+}
+
+enum CosSchedulerRateSpec {
+    SCHED_RATE_SPEC_INVALID = 0;
+
+    // 3200 - 6400000000000 bits per second
+    SCHED_RATE_SPEC_ABSOLUTE = 1;
+
+    // percent range 0-100 for guaranteed rates
+    // percent range 1-100 for shaping rates
+    SCHED_RATE_SPEC_PERCENT = 2;
+
+    // not valid for shaping rate.
+    SCHED_RATE_SPEC_REMAINDER = 3;
+}
+
+enum CosSchedulerGuaranteedRateExtendSpec {
+    SCHED_G_RATE_EXTEND_SPEC_INVALID = 0;
+    SCHED_G_RATE_EXTEND_SPEC_EXACT = 1;
+    SCHED_G_RATE_EXTEND_SPEC_RATE_LIMIT = 2;
+}
+
+enum CosDelayBufferRateSpec {
+    DELAY_BUF_RATE_SPEC_INVALID = 0;
+    DELAY_BUF_RATE_SPEC_ABSOLUTE = 1;
+    DELAY_BUF_RATE_SPEC_CELL_PER_SECOND = 2;
+    DELAY_BUF_RATE_SPEC_PERCENT = 3;
+}
+
+enum CosOverheadAccountingMode {
+    OH_ACCT_MODE_INVALID = 0;
+    OH_ACCT_MODE_FRAME = 1;
+    OH_ACCT_MODE_CELL = 2;
+}
+
+enum CosSchedulerLossPriority {
+    SCHED_DP_LP_INVALID = 0;
+    SCHED_DP_LP_HIGH = 1;
+    SCHED_DP_LP_MEDIUM_HIGH = 2;
+    SCHED_DP_LP_MEDIUM_LOW = 3;
+    SCHED_DP_LP_LOW = 4;
+    SCHED_DP_LP_ANY = 5;
+}
+
+enum CosSchedulerProtocol {
+    SCHED_DP_PROTO_INVALID = 0;
+    SCHED_DP_PROTO_TCP = 1;
+    SCHED_DP_PROTO_NON_TCP = 2;
+    SCHED_DP_PROTO_ANY = 3;
+}
+
+enum CosDropProfileType {
+    DP_TYPE_INVALID = 0;
+    DP_TYPE_DISCRETE = 1;  // discrete fill levels
+    DP_TYPE_INTERPOLATE = 2;
+}
+
+enum CosFeatureCodePointType {  // classifierType, and rewriteType
+    FEATURE_CP_TYPE_INVALID = 0;
+    FEATURE_CP_TYPE_DSCP = 1;
+    FEATURE_CP_TYPE_DSCP_IPV6 = 2;
+    FEATURE_CP_TYPE_EXP = 3;
+    FEATURE_CP_TYPE_IEEE8021 = 4;
+    FEATURE_CP_TYPE_IEEE8021AD = 5;
+    FEATURE_CP_TYPE_INET_PRECEDENCE = 6;
+}
+
+enum CosExcessBandwidthShareSpec {
+    EXCESS_BW_SHARE_SPEC_INVALID = 0;
+    EXCESS_BW_SHARE_SPEC_EQUAL = 1;
+    EXCESS_BW_SHARE_SPEC_PROPORTION = 2;
+}
+
+/**
+ * Return values for the RPCs.
+ * used for message for GET/GETBULK requests
+ */
+
+enum CosReturnVal {
+
+    // Success
+    EOK = 0;
+    
+    // Invalid status
+    INVALID = 1;
+
+    // The RPC was a NULL buffer
+    NULL_MESSAGE = 2;
+
+    // Wrong input
+    EINVALID_MESSAGE = 3;
+
+    // Server Internal error
+    EINTERNAL = 4;
+
+    // Operation not supported
+    UNSUPPORTED_OP = 5;
+
+    // Resource not available at server
+    NO_RESOURCE = 6;
+
+    // No entry available at server
+    NO_ENTRY = 7;
+
+    // No more entries available at server
+    NO_MORE_ENTRIES = 8;
+
+    // Object is in use by other dependants
+    E_IN_USE = 9;
+
+    // unsupported feature
+    E_UNSUPP_FEATURE = 10;
+}
+
+// Status  message for ADD/CHANGE/DELETE requests
+message CosStatus {
+
+    // Top level RPC status
+    jnxBase.StatusCode code     = 1;
+
+    // Component specific sub-code common for all operations
+    CosReturnVal sub_code      = 2;
+
+    // Error string for descriptive error information
+    string message              = 3;
+}
+
+// optional for GET/GETNEXT/GETBULK
+// to see referencing objects for a given cos object.
+message CosObjRefInfo {
+    string referencing_obj_type = 1;
+    string referencing_obj_name = 2;
+    int32  referencing_obj_count = 3;
+}
+
+/**
+ * Following is the RPC get-xxx request message for forwarding classes
+ * queried by forwarding class name
+ *
+ * RPC Methods:
+ * ============
+ * ForwardClassGet
+ * ForwardClassGetNext
+ * ForwardClassBulkGet
+ *
+ * Request message:
+ * ===============
+ * Request must have forwarding_class_name specified for Get request
+ * For GetNext and BulkGet requests, its optional
+ *
+ */
+message CosForwardingClassQueryRequest {
+    
+    // Forwarding class name. Length: 1-64 bytes.
+    // Mandatory
+    string forwarding_class_name = 1;
+    
+    // valid for GET/GETNEXT/BULKGET request to indicate that response to be
+    // filled with objects referring to this object.
+    // Optional
+    repeated CosObjRefInfo ref_objects = 2;
+}
+
+
+
+/**
+ * Following is the RPC response message for forwarding classes
+ * queried by forwarding class name
+ *
+ * RPC Methods:
+ * ============
+ * ForwardClassGet
+ * ForwardClassGetNext
+ * ForwardClassBulkGet
+ *
+ * Response message:
+ * ================
+ * All the fields of the message will be populated
+ * for requested forwarding class name
+ * 
+ */
+message CosForwardingClassQueryResponse {
+
+    // Top level RPC status
+    // valid for GET/GETNEXT/BULKGET responses
+    jnxBase.StatusCode code                     = 1;
+
+    // Component specific sub-code common for all operations
+    // valid for GET/GETNEXT/BULKGET responses
+    CosReturnVal sub_code                       = 2;
+
+    // Error string for descriptive error information
+    // valid for GET/GETNEXT/BULKGET responses
+    string message                              = 3;
+    
+    // Forwarding class name. Length: 1-64 bytes
+    string forwarding_class_name                = 4;
+    
+    // Forwarding class queue id. Platform dependent. Default range: 0-7
+    int32  queue_id                             = 5;
+    
+    // Forwarding class restricted queue id. 
+    // Platform dependent. Default range: 0-3
+    int32 restrict_queue_id                     = 6;
+    
+    // Forwarding class id. Range: 0-15
+    int32 forwarding_class_id                   = 7;
+    
+    // Fabric priority
+    CosFcFabricPriority fabric_priority         = 8;
+    
+    // policing priority
+    CosFcPolicingPriority policing_priority     = 9;
+    
+    // spu priority
+    CosFcSpuPriority spu_priority               = 10;
+    
+    // sharable flag. Currently ignored.
+    bool sharable                               = 11;
+
+    // valid for GET/GETNEXT/BULKGET responses
+    repeated CosObjRefInfo ref_objects          = 12;
+}
+
+
+/**
+ * Following is the RPC request message for forwarding classes
+ * queried by forwarding class id
+ *
+ * RPC Methods:
+ * ============
+ * ForwardClassGetByForwardingClassId
+ *
+ * Request message:
+ * ===============
+ * Request will have forwarding_class_id field specified
+ *  -- By default forwarding_class_id 0 will be used
+ *     if not specified explicitly
+ *
+ */
+message CosForwardingClassIdQueryRequest {
+    // Forwarding class id. 
+    // Platform dependent. Default range: 0-15
+    // Mandatory
+    int32 forwarding_class_id = 1;
+}
+
+/**
+ * Following is the RPC response message for forwarding classes
+ * queried by forwarding class id
+ *
+ * RPC Methods:
+ * ============
+ * ForwardClassGetByForwardingClassId
+ *
+ * Response message:
+ * ================
+ * All the fields of the message will be populated
+ * for requested forwarding class id
+ * 
+ */
+message CosForwardingClassIdQueryResponse {
+
+    // Top level RPC status
+    // valid for GET response
+    jnxBase.StatusCode code                                 = 1;
+
+    // Component specific sub-code common for all operations
+    // valid for GET response
+    CosReturnVal sub_code                                   = 2;
+
+    // Error string for descriptive error information
+    // valid for GET response
+    string message                                          = 3;
+
+    // Forwarding class id
+    // Platform dependent. Default range: 0-15
+    int32 forwarding_class_id                               = 4;
+    
+    // Forwarding class queue id
+    // Platform dependent. Default range: 0-7
+    int32  queue_id                                         = 5;
+
+    // Forwarding class name. Length: 1-64
+    string forwarding_class_name                            = 6;
+
+    // Forwarding class restricted queue id
+    // Platform dependent. Default range: 0-3
+    int32 restrict_queue_id                                 = 7;
+    
+    // Fabric priority
+    CosFcFabricPriority fabric_priority                     = 8;
+
+    // policing priority
+    CosFcPolicingPriority policing_priority                 = 9;
+
+    // spu priority
+    CosFcSpuPriority spu_priority                           = 10;
+
+    // sharable flag. Currently ignored.
+    bool sharable                                           = 11;
+}
+
+/**
+ * Following is the RPC request message for forwarding classes
+ * queried by queue id
+ *
+ * RPC Methods:
+ * ============
+ * ForwardClassGetByQueueId
+ *
+ * Request message:
+ * ===============
+ * Request will have queue_id field specified
+ *  -- By default queue_id 0 will be used if not specified explicitly
+ *
+ */
+message CosForwardingClassQueueQueryRequest {
+    
+    // Forwarding class queue id. 
+    // Platform dependent. Default range: 0-7
+    // Mandatory
+    int32 queue_id = 1;
+}
+
+
+/**
+ * Following is the RPC response message for forwarding classes
+ * queried by queue id
+ *
+ * RPC Methods:
+ * ============
+ * ForwardClassGetByQueueId
+ *
+ * Response message:
+ * ================
+ * Response message will have
+ * >  queue_id 
+ * >  list of forwarding classes for the requested queue id
+ * 
+ */
+message CosForwardingClassQueueQueryResponse {
+
+    // Top level RPC status
+    // valid for GET response
+    jnxBase.StatusCode code                                 = 1;
+
+    // Component specific sub-code common for all operations
+    // valid for GET response
+    CosReturnVal sub_code                                   = 2;
+
+    // Error string for descriptive error information
+    // valid for GET response
+    string message                                          = 3;
+    
+    // Forwarding class queue id
+    // Platform dependent. Default range: 0-7
+    int32 queue_id                                          = 4;
+
+    // List of Forwarding class names. Length: 1-64 bytes
+    repeated string forwarding_class_names                  = 5;
+
+    // sharable flag. Currently ignored.
+    bool sharable                                           = 6;
+}
+
+/**
+ * Following is the RPC request message for forwarding classes
+ * queried by restricted queue id
+ *
+ * RPC Methods:
+ * ============
+ * ForwardClassGetByRestrictQueueId
+ *
+ * Request message:
+ * ===============
+ * Request will have restricte_queue_id field specified
+ *  -- By default restrict_queue_id 0 will be used
+ *     if not specified explicitly
+ * 
+ */
+message CosForwardingClassRestrictQueueQueryRequest {
+    
+    // Forwarding class restricted queue id
+    // Platform dependent. Default range: 0-3
+    // Mandatory
+    int32 restrict_queue_id  = 1;
+}
+
+
+/**
+ * Following is the RPC response message for forwarding classes
+ * queried by restricted queue id
+ *
+ * RPC Methods:
+ * ============
+ * ForwardClassGetByRestrictQueueId
+ *
+ * Response message:
+ * ================
+ * Response message will have
+ * > restrict_queue_id
+ * > list of forwarding classes for the requested restricted queue id
+ * 
+ * 
+ */
+message CosForwardingClassRestrictQueueQueryResponse {
+
+    // Top level RPC status
+    // valid for GET response
+    jnxBase.StatusCode code                                 = 1;
+
+    // Component specific sub-code common for all operations
+    // valid for GET response
+    CosReturnVal sub_code                                   = 2;
+
+    // Error string for descriptive error information
+    // valid for GET response
+    string message                                          = 3;
+    
+    // Forwarding class restricted queue id
+    // Platform dependent. Default range: 0-3
+    int32 restrict_queue_id                                 = 4;
+    
+    // List of Forwarding class names. Length: 1-64
+    repeated string forwarding_class_names                  = 5;
+    
+    // sharable flag. Currently ignored.
+    bool sharable                                           = 6;
+    
+}
+
+
+message CosConfigPreference  {
+    int32 priority = 1;  // resolve conflicts in configuration for bind points, etc.
+}
+
+
+/**
+ * Classifier rules
+ * When operation is delete, the forwarding class and loss-priority are optional or ignored.
+ */
+message ClassifierRule {
+    
+    // Attribute operation
+    CosMessageAttribOperation operation = 1;
+
+    // Forwarding class name. Length: 1-64.
+    string forwarding_class_name = 2;
+
+    // Loss priority
+    CosLossPriority loss_priority = 3;
+
+    // Array of code points. Range varies depending on type of classifier.
+    repeated int32 code_points = 4;
+}
+
+/**
+ * Following is the RPC Delete request message for classifiers
+ *
+ * RPC Methods:
+ * ============
+ * ClassifierDelete
+ *
+ * Request message:
+ * ===============
+ * Delete requests must have classifier name and type
+ *
+ * Response message:
+ * ================
+ * Delete requests will return CosStatus
+ * 
+ */
+message CosClassifierDeleteRequest {
+    // Name of the classifier. Length: 1-64.
+    // Mandatory
+    string classifier_name = 1;
+
+    // Classifier type. Part of the key.
+    // Mandatory
+    CosFeatureCodePointType classifier_type = 2;
+}
+
+/**
+ * Following is the RPC Query request message for classifiers
+ *
+ * RPC Methods:
+ * ============
+ * ClassifierGet
+ * ClassifierGetNext
+ * ClassifierBulkGet
+ *
+ * Request message:
+ * ===============
+ * Get requests must have classifier name and type
+ * GetNext/BulkGet requests optionally have name and type,
+ *                 i.e type, type & name, or none of them. 
+ *
+ * Response message:
+ * ================
+ * Get/GetNext/BulkGet requests will return CosClassifierQueryResponse info
+ * 
+ */
+message CosClassifierQueryRequest {
+    // Name of the classifier. Length: 1-64.
+    // Mandatory for Get Request.
+    // Optional for GetNext and BulkGet
+    string classifier_name = 1;
+
+    // Mandatory for Get Request.
+    // Optional for GetNext and BulkGet
+    CosFeatureCodePointType classifier_type = 2;
+
+    // valid for GET/GETNEXT/BULKGET requests to indicate client 
+    // interested in referring objects to this classifier
+    // Optional
+    repeated CosObjRefInfo ref_objects = 3;
+}
+
+/**
+ * Following is the RPC Add/Update request message for classifiers
+ *
+ * RPC Methods:
+ * ============
+ * ClassifierAdd
+ * ClassifierUpdate
+ *
+ * Request message:
+ * ===============
+ * Add, Update requests must have classifier name and type along with the rules
+ *
+ * Response message:
+ * ================
+ * Add/Update requests will return CosStatus
+ * 
+ */
+message CosClassifierRequest {
+    // Name of the classifier. Length: 1-64.
+    // Mandatory
+    string classifier_name = 1;
+
+    // Mandatory
+    CosFeatureCodePointType classifier_type = 2;
+
+    // sharable flag. Currently ignored.
+    // Optional
+    bool sharable = 3;
+
+    // Mandatory, 1 or more rules.
+    repeated ClassifierRule rule = 4;
+}
+
+/**
+ * Following is the RPC query response message for classifiers
+ *
+ * RPC Methods:
+ * ============
+ * ClassifierGet
+ * ClassifierGetNext
+ * ClassifierBulkGet
+ *
+ * Request message:
+ * ===============
+ * Get requests must have classifier name and type
+ * GetNext/BulkGet requests optionally have name and type,
+ *                 i.e type, type & name, or none of them. 
+ *
+ * Response message:
+ * ================
+ * Get/GetNext/BulkGet requests will return CosClassifierQueryResponse info
+ * 
+ */
+message CosClassifierQueryResponse {
+
+    // Top level RPC status
+    // valid for GET/GETNEXT/BULKGET response
+    jnxBase.StatusCode code                                 = 1;
+
+    // Component specific sub-code common for all operations
+    // valid for GET/GETNEXT/BULKGET response
+    CosReturnVal sub_code                                   = 2;
+
+    // Error string for descriptive error information
+    // valid for GET/GETNEXT/BULKGET response
+    string message                                          = 3;
+
+    // Name of the classifier. Length: 1-64.
+    string classifier_name                                  = 4;
+
+    CosFeatureCodePointType classifier_type                 = 5;
+
+    // sharable flag. Currently ignored.
+    bool sharable                                           = 6;
+
+    repeated ClassifierRule rule                            = 7;
+
+    // valid for GET/GETNEXT/BULKGET responses
+    repeated CosObjRefInfo ref_objects                      = 8;
+}
+
+
+/**
+ * Code points
+ */
+message FeatureCodePoint {
+    oneof one_of_code_point_option {
+        // depending on code point type, the range varies. 
+        int32 code_point = 1;
+        
+        // some code points such as 0 need to be specified as binary string.
+        string code_point_str = 2;
+    }
+}
+
+
+/**
+ * Rewrite Rules
+ * When operation is delete, the code point is optional or ignored.
+ */
+message RewriteRule {
+
+    // Attribute operation
+    CosMessageAttribOperation operation = 1;
+
+    // Forwarding class name. Length: 1-64    
+    string forwarding_class_name = 2;
+   
+    // Loss priority 
+    CosLossPriority loss_priority = 3;
+    
+    // Code points
+    FeatureCodePoint code_point_options = 4;
+}
+
+/**
+ * Following is the RPC delete request message for rewrites
+ *
+ * RPC Methods:
+ * ============
+ * RewriteDelete
+ *
+ * Request message:
+ * ===============
+ * Delete requests must have rewrite name and type
+ *
+ * Response message:
+ * ================
+ * Delete requests will return CosStatus
+ * 
+ */
+message CosRewriteDeleteRequest {
+
+    // Rewrite name. Length: 1-64
+    // Mandatory
+    string rewrite_name = 1;
+
+    // Rewrite type
+    // Mandatory
+    CosFeatureCodePointType rewrite_type = 2;
+}
+
+/**
+ * Following is the RPC query request message for rewrites
+ *
+ * RPC Methods:
+ * ============
+ * RewriteGet
+ * RewriteGetNext
+ * RewriteBulkGet
+ *
+ * Request message:
+ * ===============
+ * Get requests must have rewrite name and type
+ * GetNext/BulkGet requests optionally have name and type
+ *                 i.e type, type & name, or none of them. 
+ *
+ * Response message:
+ * ================
+ * Get/GetNext/BulkGet requests will return CosRewriteQueryResponse info
+ * 
+ */
+message CosRewriteQueryRequest {
+
+    // Rewrite name. Length: 1-64
+    // Mandatory for Get Request.
+    // Optional for GetNext and BulkGet
+    string rewrite_name = 1;
+
+    // Rewrite type
+    // Mandatory for Get Request.
+    // Optional for GetNext and BulkGet
+    CosFeatureCodePointType rewrite_type = 2;
+    
+    // valid for GET/GETNEXT/BULKGET requests
+    // if specified then referring objects this rewrite will be added in the
+    // response.
+    // Optional
+    repeated CosObjRefInfo ref_objects = 3;
+}
+
+/**
+ * Following is the RPC Add/update request message for rewrites
+ *
+ * RPC Methods:
+ * ============
+ * RewriteAdd
+ * RewriteUpdate
+ *
+ * Request message:
+ * ===============
+ * Add, Update requests must have rewrite name and type along with the rules
+ *
+ * Response message:
+ * ================
+ * Add/Update requests will return CosStatus
+ * 
+ */
+message CosRewriteRequest {
+
+    // Rewrite name. Length: 1-64
+    // Mandatory
+    string rewrite_name = 1;
+
+    // Rewrite type
+    // Mandatory
+    CosFeatureCodePointType rewrite_type = 2;
+    
+    // sharable flag. Currently ignored.
+    // Optional
+    bool sharable = 3;
+    
+    // Rewrite rules
+    // Mandatory 1 or more rules
+    repeated RewriteRule rule = 4;
+    
+}
+
+/**
+ * Following is the RPC query response message for rewrites
+ *
+ * RPC Methods:
+ * ============
+ * RewriteGet
+ * RewriteGetNext
+ * RewriteBulkGet
+ *
+ * Response message:
+ * ================
+ * Get/GetNext/BulkGet responds with CosRewriteQueryResponse info
+ * 
+ */
+message CosRewriteQueryResponse {
+
+    // Top level RPC status
+    // valid for GET/GETNEXT/BULKGET response
+    jnxBase.StatusCode code                                 = 1;
+
+    // Component specific sub-code common for all operations
+    // valid for GET/GETNEXT/BULKGET response
+    CosReturnVal sub_code                                   = 2;
+
+    // Error string for descriptive error information
+    // valid for GET/GETNEXT/BULKGET response
+    string message                                          = 3;
+    
+    // Rewrite name. Length: 1-64
+    string rewrite_name                                     = 4;
+
+    // Rewrite type
+    CosFeatureCodePointType rewrite_type                    = 5;
+    
+    // sharable flag. Currently ignored.
+    bool sharable                                           = 6;
+    
+    // Rewrite rules
+    repeated RewriteRule rule                               = 7;
+
+    // valid for GET/GETNEXT/BULKGET responses
+    repeated CosObjRefInfo ref_objects                      = 8;
+}
+
+
+message LevelToDropProbability {
+    CosMessageAttribOperation operation = 1;
+    int32 fill_level = 2 ;  // 0 - 100
+    int32 drop_probability = 3 ;  // 0 - 100
+}
+
+/**
+ * RPC message for drop profile
+ */
+message CosDropProfile {
+    string drop_profile_name = 1;
+    bool sharable = 2; // this is sharable to other apps
+    CosDropProfileType drop_profile_type = 3 ;
+    repeated LevelToDropProbability level_to_drop_probabilities = 4;
+
+    CosReturnVal status = 5 ; // valid for GET/GETNEXT/BULKGET responses
+
+    // valid for GET/GETNEXT/BULKGET responses
+    repeated CosObjRefInfo ref_objects = 6;
+}
+
+message DropProfileMap {
+    CosMessageAttribOperation operation = 1;
+    CosSchedulerLossPriority scheduler_loss_priority = 2;
+    CosSchedulerProtocol scheduler_protocol = 3;
+    string drop_profile_name = 4;
+    bool drop_profile_shared = 5; // this drop profile is shared reference.
+}
+
+message SchedulerDropProfileMap {
+    CosMessageAttribOperation operation = 1;
+    repeated DropProfileMap   sets = 2;
+}
+
+message SchedulerShapingRate {
+    CosMessageAttribOperation operation = 1;
+    fixed64 value = 2;
+
+    CosSchedulerRateSpec value_spec = 3;
+
+    // 1..1000000000 bytes
+    fixed64 burst_size = 4;
+
+}
+
+message ExcessRate {
+    CosMessageAttribOperation operation = 1;
+    fixed64 value = 2;
+    CosExcessRateSpec value_spec = 3;
+}
+
+message BufferSize {
+    CosMessageAttribOperation operation = 1;
+    CosSchedulerBufferSizeSpec value_spec = 2;
+    fixed64 value = 3;
+}
+
+message AdjustMinRate {
+    CosMessageAttribOperation operation = 1;
+
+    // 3200..6400000000000 bits per second
+    fixed64 value = 2;
+}
+
+message AdjustPercent {
+    CosMessageAttribOperation operation = 1;
+
+    // percent 0 - 100
+    int32 value = 2;
+}
+
+message GuaranteedRate {
+    CosMessageAttribOperation operation = 1;
+    CosSchedulerRateSpec value_spec = 2;
+    fixed64 value = 3;
+    CosSchedulerGuaranteedRateExtendSpec value_extend_spec = 4;
+}
+
+message SchedulerPriority {
+    CosMessageAttribOperation operation = 1;
+    CosSchedulerPriority value = 2;
+}
+
+message SchedulerExcessPriority {
+    CosMessageAttribOperation operation = 1;
+    CosSchedulerExcessPriority value = 2;
+}
+
+/**
+ * RPC message for scheduler
+ */
+message CosScheduler {
+    string scheduler_name = 1;
+
+    AdjustMinRate adjust_min_rate = 2;
+
+    AdjustPercent  adjust_percent = 3;
+
+    GuaranteedRate g_rate= 4;
+
+    SchedulerShapingRate s_rate = 5;
+
+    ExcessRate e_rate = 6;
+
+    BufferSize b_size = 7;
+
+    SchedulerPriority priority = 8;
+
+    SchedulerExcessPriority excess_priority = 9;
+
+    repeated DropProfileMap drop_profile_mappings = 10;
+
+    CosReturnVal status = 11 ; // valid for GET/GETNEXT/BULKGET responses
+
+    // valid for GET/GETNEXT/BULKGET responses
+    repeated CosObjRefInfo ref_objects = 12;
+}
+
+message ForwardingClassToScheduler {
+    CosMessageAttribOperation operation = 1;
+    string forwarding_class_name = 2;
+    string scheduler_name = 3;
+}
+
+/**
+ * RPC message for scheduler maps
+ */
+message CosSchedulerMap {
+    string scheduler_map_name = 1;
+
+    repeated ForwardingClassToScheduler fc_to_scheduler_mapping = 2;
+    CosReturnVal status = 3 ; // valid for GET/GETNEXT/BULKGET responses
+
+    // valid for GET/GETNEXT/BULKGET responses
+    repeated CosObjRefInfo ref_objects = 4;
+}
+
+enum AtmServiceCategory {
+    ATM_SERVICE_INVALID =  0;
+    CBR = 1;
+    NRT_VBR = 2;
+    RT_VBR = 3;
+}
+
+message TcpAdjustRate {
+    CosMessageAttribOperation operation = 1;
+    fixed64 value = 2;
+
+    // absolute only rate spec is valid.
+    CosTcpRateSpec value_spec = 3;
+}
+
+message DelayBufferRate {
+    CosMessageAttribOperation operation = 1;
+    fixed64 value = 2;
+    CosDelayBufferRateSpec value_spec = 3;
+}
+
+message TcpGuaranteedRate {
+    CosMessageAttribOperation operation = 1;
+    fixed64 value = 2;
+    CosTcpRateSpec value_spec = 3;
+}
+
+message TcpShapingRate {
+    CosMessageAttribOperation operation = 1;
+    fixed64 value = 2;
+    CosTcpRateSpec value_spec = 3;
+}
+
+message OverheadAccounting {
+    CosMessageAttribOperation operation = 1;
+    int32 value = 2;
+    CosOverheadAccountingMode mode = 3;
+}
+
+message TcpSchedulerMap {
+    CosMessageAttribOperation operation = 1;
+    string scheduler_map_name = 2; // String
+}
+
+message BurstSize {
+    CosMessageAttribOperation operation = 1;
+    fixed64 value = 2;
+}
+
+message CosRate {
+    CosMessageAttribOperation operation = 1;
+    fixed64 value = 2;
+}
+
+message CosAtmService {
+    CosMessageAttribOperation operation = 1;
+    AtmServiceCategory category = 2;
+}
+
+/**
+ * RPC message for TCPs
+ */
+message CosTrafficControlProfile {
+    string traffic_control_profile_name = 1;
+    TcpSchedulerMap scheduler_map = 2;
+
+    TcpAdjustRate a_rate = 3;
+
+    DelayBufferRate delay_buf_rate = 4;
+
+    TcpGuaranteedRate g_rate = 5;
+
+    BurstSize guaranteed_burst_size = 6;
+
+    TcpShapingRate s_rate = 7;
+
+    BurstSize shaping_burst_size = 8;
+
+    TcpShapingRate s_rate_priority_high = 9;
+
+    BurstSize shaping_burst_size_priority_high = 10;
+
+    TcpShapingRate s_rate_priority_low = 11;
+
+    BurstSize shaping_burst_size_priority_low = 12;
+
+    TcpShapingRate s_rate_priority_medium = 13;
+
+    BurstSize shaping_burst_size_priority_medium = 14;
+
+    TcpShapingRate s_rate_excess_priority_high = 15;
+
+    BurstSize shaping_burst_size_excess_priority_high = 16;
+
+    TcpShapingRate s_rate_excess_priority_low = 17;
+
+    BurstSize shaping_burst_size_excess_priority_low = 18;
+
+    ExcessRate e_rate = 19;
+
+    ExcessRate e_rate_low = 20;
+
+    ExcessRate e_rate_high = 21;
+
+    OverheadAccounting o_head_accounting = 22;
+
+    TcpShapingRate s_rate_priority_medium_low = 23;
+
+    BurstSize shaping_burst_size_priority_medium_low = 24;
+
+    TcpShapingRate s_rate_priority_strict_high = 25;
+
+    BurstSize shaping_burst_size_priority_strict_high = 26;
+
+    TcpShapingRate s_rate_excess_priority_meidum_high = 27;
+
+    BurstSize shaping_burst_size_excess_priority_medium_high = 28;
+
+    TcpShapingRate s_rate_excess_priority_meidum_low = 29;
+
+    BurstSize shaping_burst_size_excess_priority_medium_low = 30;
+
+    CosAtmService atm_service = 31;
+
+    CosRate peak_rate = 32;
+
+    CosRate sustained_rate = 33;
+
+    CosReturnVal status = 34 ; // valid for GET/GETNEXT/BULKGET responses
+
+    // valid for GET/GETNEXT/BULKGET responses
+    repeated CosObjRefInfo ref_objects = 35;
+}
+
+enum CosNodeFeatureType {
+    NODE_FEATURE_INVALID = 0;
+    NODE_FEATURE_SMAP = 1;
+    NODE_FEATURE_SRATE = 2; // not valid for interface sets
+    NODE_FEATURE_TCP = 3;
+    NODE_FEATURE_TCP_REMAINING = 4;
+    NODE_FEATURE_FORWARDING_CLASS = 5; // not valid for interface sets
+    NODE_FEATURE_MEMBER_LINK_SCHED = 6;
+    NODE_FEATURE_EXCESS_BW_SHARE = 7;
+}
+
+enum CosDirection {
+    DIRECTION_INVALID = 0;
+    INGRESS = 1;
+    EGRESS = 2;
+}
+
+enum CosNodeType {
+    NODE_TYPE_INVALID = 0;
+    NODE_TYPE_INTERFACE = 1;
+    NODE_TYPE_LOGICAL_INTERFACE = 2;
+    NODE_TYPE_INTERFACE_SET = 3;
+}
+
+message CosNodeFeatureVal {
+    oneof one_of_feature_option {
+        fixed64 value = 1;
+        // Length 1-64
+        string object_name = 2;
+    }
+}
+
+enum CosNodeFeatureFamilyType {
+    NODE_FEATURE_FAMILY_INVALID = 0;
+    NODE_FEATURE_FAMILY_CLFR_RULE = 1;
+    NODE_FEATURE_FAMILY_RW_RULE = 2;
+}
+
+
+/**
+ * Classifier family
+ */
+enum CosNodeFeatureClassifierFamily {
+    NODE_FEATURE_CLFR_PROTO_INVALID = 0;
+
+    NODE_FEATURE_CLFR_DSCP = 1;
+    NODE_FEATURE_CLFR_DSCP_MPLS = 2;
+    NODE_FEATURE_CLFR_DSCP_IPV6 = 3;
+    NODE_FEATURE_CLFR_DSCP_IPV6_MPLS = 4;
+
+    NODE_FEATURE_CLFR_EXP = 5;
+
+    NODE_FEATURE_CLFR_INET_PRECEDENCE = 6;
+
+    NODE_FEATURE_CLFR_IEEE8021P = 7;
+    NODE_FEATURE_CLFR_IEEE8021P_TAG_MODE_INNER = 8;
+    NODE_FEATURE_CLFR_IEEE8021P_TAG_MODE_TRANSPARENT = 9;
+
+    NODE_FEATURE_CLFR_IEEE8021AD = 10;
+    NODE_FEATURE_CLFR_IEEE8021_AD_TAG_MODE_INNER = 11;
+
+    NODE_FEATURE_CLFR_NO_DEFAULT = 12;
+}
+
+
+/**
+ * Rewrite family
+ */
+enum CosNodeFeatureRewriteFamily {
+    NODE_FEATURE_RW_PROTO_INVALID = 0;
+
+    NODE_FEATURE_RW_DSCP = 1;
+    NODE_FEATURE_RW_DSCP_MPLS = 2;
+
+    NODE_FEATURE_RW_DSCP_IPV6 = 3;
+    NODE_FEATURE_RW_DSCP_IPV6_MPLS = 4;
+
+    NODE_FEATURE_RW_EXP = 5;
+    NODE_FEATURE_RW_EXP_MPLS_INET_BOTH = 6;
+    NODE_FEATURE_RW_EXP_MPLS_INET_BOTH_NON_VPN = 7;
+
+    NODE_FEATURE_RW_INET_PRECEDENCE = 8;
+    NODE_FEATURE_RW_INET_PREC_MPLS= 9;
+
+    NODE_FEATURE_RW_IEEE8021P = 10;
+    NODE_FEATURE_RW_IEEE8021_TAG_MODE_OUTER_AND_INNER = 11;
+
+    NODE_FEATURE_RW_IEEE8021AD = 12;
+    NODE_FEATURE_RW_IEEE8021AD_TAG_MODE_OUTER_AND_INNER = 13;
+}
+
+
+/**
+ * Node feature options
+ */
+/**
+ * Forwarding class policing priority
+ */
+enum CosFcPolicingPriority {
+    NORMAL  = 0;
+    PREMIUM = 1;
+}
+
+/**
+ * Forwarding class fabric priority
+ */
+enum CosFcFabricPriority {
+    FAB_LOW  = 0;
+    FAB_HIGH = 1;
+}
+
+/**
+ * Forwarding class spu priority
+ */
+enum CosFcSpuPriority {
+    SPU_LOW  = 0;
+    SPU_HIGH = 1;
+}
+message CosNodeFeatureOption {
+    oneof one_of_feature_option {
+        CosNodeFeatureClassifierFamily classifier_family = 1;  
+        CosNodeFeatureRewriteFamily    rewrite_family = 2;
+    }
+}
+
+/**
+ * Node family features
+ */
+message CosNodeFamilyFeature {
+    // Attribute operation
+    CosMessageAttribOperation operation = 1;
+
+    // Direction ( Ingress or egress )
+    CosDirection direction = 2;
+
+    // Classifier or rewrite type 
+    CosNodeFeatureFamilyType feature_type = 3;
+
+    // Classifier or rewrite family
+    CosNodeFeatureOption feature_option = 4;
+
+    // Feature name. Length: 1-64
+    string feature_object_name = 5;
+
+    // Currently ignored.
+    bool object_shared = 6;
+}
+
+message CosNodeFeature {
+    CosMessageAttribOperation operation = 1;
+    CosDirection direction = 2;
+    CosNodeFeatureType feature_type = 3;
+    CosNodeFeatureVal  feature_val = 4;
+}
+
+enum CosFeaturesType {
+    // To retrieve mapped features.
+    FEATURES_MAPPED     = 0;
+    // To retrieve all configured features.
+    FEATURES_CONFIGURED = 1;
+    // To retrieve all features.
+    FEATURES_ALL        = 2;
+}
+
+/**
+ * Following is the RPC delete request message for 
+ * interface, logical interface, and interface sets
+ *
+ * RPC Methods:
+ * ============
+ * NodeFeaturesDelete
+ *
+ * Request message:
+ * ===============
+ *
+ * Delete requests must have
+ *  1. Node name and type
+ *  2. Parent node name and type ( optional in case if node is IFL/logical interface, and ignored for IFD )
+ *
+ * Response message:
+ * ================
+ * Delete requests will returns CosStatus message.
+ * 
+ */
+message CosNodeBindFeaturesDeleteRequest {
+    // Node type ( IFD , IFL OR IFLSET )
+    // Mandatory
+    CosNodeType node_type = 1;
+
+    // Node name ( IFD, IFL or IFLSET name ). 
+    // IFD name: Name of the physical interafce eg: ge-1/0/0, Length 1-60
+    // IFL name: Name of the Logical interface, eg: ge-1/0/0.0, Length: 1-72 
+    // IFLSET name: Name of the IFLSET or interafce-set which is a group of logical interafece of an physical interafce, Length 1-64
+    // Mandatory
+    string node_name = 2;
+
+    // Parent node ( eg: IFD is parent for IFL )
+    // Optional
+    CosNodeType node_parent_type = 3;
+
+    // Parent node name
+    // IFD name: Length 1-60, IFL name: Length: 1-72 
+    // IFLSET name: Length 1-64
+    // Optional
+    string node_parent_name = 4;
+}
+
+
+/**
+ * Following is the RPC request message for 
+ * interface, logical interface, and interface sets
+ *
+ * RPC Methods:
+ * ============
+ * NodeFeaturesGet
+ * NodeFeaturesGetNext
+ * NodeFeaturesBulkGet
+ *
+ * Request message:
+ * ===============
+ *
+ * Get requests must have
+ *  1. Node name and type
+ *  2. Parent node name and type ( ignored  )
+ *
+ * GetNext/BulkGet requests can have
+ *  1. Node type
+ *  2. Node type and node name
+ *  3. Parent node name and type ( Ignored )
+ *  4. Nothing
+ *
+ * Response message:
+ * ================
+ * Get/GetNext/BulkGet requests will return CosNodeBindFeaturesQueryResponse
+ * 
+ */
+message CosNodeBindFeaturesQueryRequest {
+    // Node type ( IFD , IFL OR IFLSET )
+    // Mandatory for Get Request.
+    // Optional for GetNext and BulkGet
+    CosNodeType node_type = 1;
+
+    // Node name ( IFD, IFL or IFLSET name )
+    // IFD name: Name of the physical interafce eg: ge-1/0/0, Length 1-60
+    // IFL name: Name of the Logical interface, eg: ge-1/0/0.0, Length: 1-72 
+    // IFLSET name: Name of the IFLSET or interafce-set which is a group of logical interafece of an physical interafce, Length 1-64
+
+    // Mandatory for Get Request.
+    // Optional for GetNext and BulkGet
+    string node_name = 2;
+
+    // Parent node ( eg: IFD is parent for IFL )
+    // Optional
+    CosNodeType node_parent_type = 3;
+
+    // Parent node name
+    // IFD name: Length 1-60, IFL name: Length: 1-72 
+    // IFLSET name: Length 1-64
+    // Optional
+    string node_parent_name = 4;
+
+    // filter for GET/GETNEXT/BULKGET requests 
+    // Optional, default: MAPPED
+    CosFeaturesType    features_type = 5; 
+}
+
+/**
+ * Following is the RPC Add/Update request message for 
+ * interface, logical interface, and interface sets
+ *
+ * RPC Methods:
+ * ============
+ * NodeFeaturesAdd
+ * NodeFeaturesUpdate
+ *
+ * Request message:
+ * ===============
+ *
+ * Add requests must have
+ *  1. Node name and type
+ *  2. Parent node name and type ( in case if node is IFL/logical interface, and ignored for IFD)
+ *  3. Node features AND/OR Family features [optional for IFD, must for IFL/logical interface)
+ *
+ * Update requests must have
+ *  1. Node name and type
+ *  2. Parent node name and type ( optional for IFL/logical interface and will be validated if specified, and ignored for IFD)
+ *  3. Node features AND/OR Family features [for this RLI, it optional for IFD, must for IFL/logical interface)
+ *
+ * Response message:
+ * ================
+ * Add/Update requests will return CosStatus
+ * 
+ */
+message CosNodeBindFeaturesRequest {
+    // Node type ( IFD , IFL OR IFLSET )
+    // Mandatory
+    CosNodeType node_type = 1;
+
+    // Node name ( IFD, IFL or IFLSET name )
+    // IFD name: Name of the physical interafce eg: ge-1/0/0, Length 1-60
+    // IFL name: Name of the Logical interface, eg: ge-1/0/0.0, Length: 1-72 
+    // IFLSET name: Name of the IFLSET or interafce-set which is a group of logical interafece of an physical interafce, Length 1-64
+    // Mandatory
+    string node_name = 2;
+
+    // Parent node ( eg: IFD is parent for IFL )
+    // Mandatory
+    CosNodeType node_parent_type = 3;
+
+    // Parent node name
+    // IFD name: Length 1-60, IFL name: Length: 1-72 
+    // IFLSET name: Length 1-64
+    // Mandatory
+    string node_parent_name = 4;
+
+    // Node features
+    // Optional
+    repeated CosNodeFeature node_features = 5;
+
+    // Family features
+    // Optional
+    repeated CosNodeFamilyFeature node_family_features = 6;
+}
+
+/**
+ * Following is the RPC query response message for 
+ * interface, logical interface, and interface sets
+ *
+ * RPC Methods:
+ * ============
+ * NodeFeaturesGet
+ * NodeFeaturesGetNext
+ * NodeFeaturesBulkGet
+ *
+ * Response message:
+ * ================
+ * Get/GetNext/BulkGet requests will returns CosNodeBindFeaturesQueryResponse
+ * 
+ */
+message CosNodeBindFeaturesQueryResponse {
+
+    // Top level RPC status
+    // valid for GET/GETNEXT/BULKGET response
+    jnxBase.StatusCode code                                 = 1;
+
+    // Component specific sub-code common for all operations
+    // valid for GET/GETNEXT/BULKGET response
+    CosReturnVal sub_code                                   = 2;
+
+    // Error string for descriptive error information
+    // valid for GET/GETNEXT/BULKGET response
+    string message                                          = 3;
+
+    // Node type ( IFD , IFL OR IFLSET )
+    CosNodeType node_type                                   = 4;
+
+    // Node name ( IFD, IFL or IFLSET name )
+    // IFD name: Name of the physical interafce eg: ge-1/0/0, Length 1-60
+    // IFL name: Name of the Logical interface, eg: ge-1/0/0.0, Length: 1-72 
+    // IFLSET name: Name of the IFLSET or interafce-set which is a group of logical interafece of an physical interafce, Length 1-64
+    string node_name                                        = 5;
+
+    // Parent node ( eg: IFD is parent for IFL )
+    CosNodeType node_parent_type                            = 6;
+
+    // Parent node name
+    // IFD name: Length 1-60, IFL name: Length: 1-72 
+    // IFLSET name: Length 1-64
+    string node_parent_name                                 = 7;
+
+    // filter for GET/GETNEXT/BULKGET requests & responses
+    CosFeaturesType    features_type                        = 8; 
+
+    // Node features
+    repeated CosNodeFeature node_features                   = 9;
+
+    // Family features
+    repeated CosNodeFamilyFeature node_family_features      = 10;
+
+}
+
+enum CosRoutingInstanceFeatureType {
+    RI_FEATURE_TYPE_INVALID = 0;
+    RI_FEATURE_TYPE_CLFR_RULE = 1;
+    RI_FEATURE_TYPE_RW_RULE = 2;
+}
+
+enum CosRoutingInstanceClassifierCodePointType {  // classifierType
+    RI_CLFR_CP_TYPE_INVALID = 0;
+    RI_CLFR_CP_TYPE_DSCP = 1;
+    RI_CLFR_CP_TYPE_DSCP_IPV6 = 2;
+    RI_CLFR_CP_TYPE_EXP = 3;
+    RI_CLFR_CP_TYPE_IEEE8021 = 4;
+    RI_CLFR_CP_TYPE_NO_DEFAULT = 5;
+}
+
+enum CosRoutingInstanceRewriteCodePointType {  //  rewriteType
+    RI_RW_CP_TYPE_INVALID = 0;
+    RI_RW_CP_TYPE_IEEE8021 = 1;
+    RI_RW_CP_TYPE_IEEE8021AD = 2;
+}
+
+/**
+ * Classifier tag modes
+ */
+enum CosRoutingInstanceClassifierIeee8021TagMode {
+    RI_CLFR_IEEE8021_TAG_MODE_INVALID = 0;
+    RI_CLFR_IEEE8021_TAG_MODE_ENCAP_VLAN_TAG_INNER = 1;
+    RI_CLFR_IEEE8021_TAG_MODE_ENCAP_VLAN_TAG_OUTER = 2;
+}
+
+/**
+ * Rewrite tag modes
+ */
+enum CosRoutingInstanceRewriteIeee8021xTagMode {
+    RI_RW_IEEE8021X_TAG_MODE_INVALID = 0;
+    RI_RW_IEEE8021X_TAG_MODE_ENCAP_VLAN_TAG_OUTER = 1;
+    RI_RW_IEEE8021X_TAG_MODE_ENCAP_VLAN_TAG_OUTER_AND_INNER = 2;
+}
+
+
+/**
+ * Routing instance classifiers
+ */
+message CosRoutingInstanceClassifier {
+    
+    // Attribute operation
+    CosMessageAttribOperation operation = 1;
+   
+    // Code point type 
+    CosRoutingInstanceClassifierCodePointType type = 2;
+    
+    // Tag mode
+    CosRoutingInstanceClassifierIeee8021TagMode feature_ieee8021_tag_mode = 3;
+    
+    // Length: 1-64
+    string feature_object_name = 4;
+    
+    // Currently ignored.
+    bool object_shared = 5;
+}
+
+
+/**
+ * Routing instance rewrites
+ */
+message CosRoutingInstanceRewrite {
+
+    // Attribute operation
+    CosMessageAttribOperation operation = 1;
+
+    // Code point type
+    CosRoutingInstanceRewriteCodePointType type = 2;
+
+    // Tag mode
+    CosRoutingInstanceRewriteIeee8021xTagMode feature_ieee8021_tag_mode = 3;
+    
+    // Feature object name. Length: 1-64
+    string feature_object_name = 4;
+
+    // Currently ignored.
+    bool object_shared = 5;
+
+}
+
+/**
+ * Following is the RPC Delete request message for 
+ * Routing instances
+ *
+ * RPC Methods:
+ * ============
+ * RoutingInstanceBindPointDelete
+ *
+ * Request message:
+ * ===============
+ *
+ * Delete requests must have
+ *  1. Routing instance name
+ *
+ * Response message:
+ * ================
+ * Delete requests will CosStatus
+ */
+message CosRoutingInstanceBindPointDeleteRequest {
+    
+    // Routing instance name. Length: 1-127
+    // Mandatory
+    string routing_instance_name = 1;
+}
+
+
+/**
+ * Following is the RPC query request message for 
+ * Routing instances
+ *
+ * RPC Methods:
+ * ============
+ * RoutingInstanceBindPointGet
+ * RoutingInstanceBindPointGetNext
+ * RoutingInstanceBindPointBulkGet
+ *
+ * Request message:
+ * ===============
+ * Get requests must have
+ *  1. Routing instance name
+ *
+ * GetNext/BulkGet requests can have
+ *  1. Routing instance name or NULL
+ *
+ * Response message:
+ * ================
+ * Get/GetNext/BulkGet requests will return CosRoutingInstanceBindPointQueryResponse
+ * 
+ */
+message CosRoutingInstanceBindPointQueryRequest {
+    
+    // Routing instance name. Length: 1-127
+    // Mandatory
+    string routing_instance_name = 1;
+}
+
+/**
+ * Following is the RPC Add/Update request message for 
+ * Routing instances
+ *
+ * RPC Methods:
+ * ============
+ * RoutingInstanceBindPointAdd
+ * RoutingInstanceBindPointUpdate
+ *
+ * Request message:
+ * ===============
+ *
+ * Add, Update requests must have
+ *  1. Routing instance name
+ *  2. Routing instances classifier/rewrite features
+ *
+ * Response message:
+ * ================
+ * Add/Update requests will return CosStatus
+ * 
+ */
+message CosRoutingInstanceBindPointRequest {
+    // Routing instance name. Length: 1-127
+    // Mandatory
+    string routing_instance_name = 4;
+
+    // Classifiers
+    // Mandatory/Optional: at least one of classifiers or rewrites features
+    // needs to be present.
+    repeated CosRoutingInstanceClassifier classifiers = 5;
+
+    // Rewrites
+    // Mandatory/Optional: at least one of classifiers or rewrites features
+    // needs to be present.
+    repeated CosRoutingInstanceRewrite rewrites = 6;
+}
+
+
+/**
+ * Following is the RPC Query response message for 
+ * Routing instances
+ *
+ * RPC Methods:
+ * ============
+ * RoutingInstanceBindPointGet
+ * RoutingInstanceBindPointGetNext
+ * RoutingInstanceBindPointBulkGet
+ *
+ * Response message:
+ * ================
+ * Get/GetNext/BulkGet requests will return CosRoutingInstanceBindPointQueryResponse
+ * 
+ */
+message CosRoutingInstanceBindPointQueryResponse {
+
+    // Top level RPC status
+    // valid for GET/GETNEXT/BULKGET response
+    jnxBase.StatusCode code                                 = 1;
+
+    // Component specific sub-code common for all operations
+    // valid for GET/GETNEXT/BULKGET response
+    CosReturnVal sub_code                                   = 2;
+
+    // Error string for descriptive error information
+    // valid for GET/GETNEXT/BULKGET response
+    string message                                          = 3;
+
+    
+    // Routing instance name. Length: 1-127
+    string routing_instance_name                            = 4;
+
+    // Classifiers
+    repeated CosRoutingInstanceClassifier classifiers       = 5;
+
+    // Rewrites
+    repeated CosRoutingInstanceRewrite rewrites             = 6;
+}
+
+message CosResourceLimit {
+
+    // Top level RPC status
+    // valid for GET/GETNEXT/BULKGET response
+    jnxBase.StatusCode code = 1;
+
+    // Component specific sub-code common for all operations
+    // valid for GET/GETNEXT/BULKGET response
+    CosReturnVal sub_code = 2;
+
+    // Error string for descriptive error information
+    // valid for GET/GETNEXT/BULKGET response
+    string message = 3;
+
+    int32 num_of_rate_limit_qs = 4;
+    int32 buf_size_temporal_limit_value = 5;
+    int32 max_ucast_fc_sets_per_interface = 6;
+    int32 max_mcast_fc_sets_per_interface = 7;
+    int32 max_wred_profile_points = 8;
+    int32 num_of_fcs_in_fc_set = 9;
+    int32 max_queue_to_pause_profiles = 10;
+    int32 max_ingress_shared_buffer = 11;
+    int32 max_egress_shared_buffer = 12;
+    int32 max_global_buffer = 13;
+    int32 max_qcn_queues = 14;
+    int32 max_queues_per_interface = 15;
+    int32 default_fc_size = 16;
+}
+
+/**
+ * Following is the RPC Update request message for tunable purge time
+ * to cleanup client state of configuration.
+ * Note: 
+ *  RPC - CosPurgeTimeDelete
+ *  Delete requests resets purge time to default value of 300 secs and 
+ *  will return CosStatus
+ *
+ * RPC Methods:
+ * ============
+ * CosPurgeTimeUpdate
+ *
+ * Request message:
+ * ===============
+ * Update requests must have purge time in secs from 30-86400
+ *
+ * Response message:
+ * ================
+ * Update requests will return CosStatus
+ * 
+ */
+message CosPurgeTimeRequest {
+    // Mandatory for update request. Value is ignored for delete and get requests.
+    int32 purge_time = 1; // range 30-86400
+}
+
+/**
+ * Following is the RPC response message for tunable purge time
+ * to cleanup client state of configuration.
+ *
+ * RPC Methods:
+ * ============
+ * CosPurgeTimeGet
+ *
+ * Response message:
+ * ================
+ * Get requests will return CosPurgeTimeResponse
+ * 
+ */
+message CosPurgeTimeResponse {
+
+    // Top level RPC status
+    // valid for GET response
+    jnxBase.StatusCode code                                 = 1;
+
+    // Component specific sub-code common for all operations
+    // valid for GET response
+    CosReturnVal sub_code                                   = 2;
+
+    // Error string for descriptive error information
+    // valid for GET response
+    string message                                          = 3;
+
+    // range 30-86400
+    int32 purge_time                                        = 4; 
+}

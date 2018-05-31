@@ -1,0 +1,12 @@
+github.com/confluentinc/confluent-kafka-go 467fbeaba03c316f7799e3ae3ae25a91fafa9946
+github.com/elodina/go-avro 0c8185d9a3ba82aeac98db3313a268a5b6df99b5
+github.com/fluent/fluent-logger-golang 8bbc2356beaf021b04c9bd5cdc76ea5a7ccb40ec
+github.com/golang/protobuf e325f446bebc2998605911c0a2650d9920361d4a
+github.com/philhofer/fwd bb6d471dc95d4fe11e432687f8b70ff496cf3136
+github.com/srikanth2212/jsonez 961f93ee5284b369d33b49647a8f99d3474ffe41
+github.com/tinylib/msgp 428e467e72ad3e435f398b9b148f581c69444410
+golang.org/x/net ddf80d0970594e2e4cccf5a98861cad3d9eaa4cd
+golang.org/x/text 9e2f80a6ba7ed4ba13e0cd4b1f094bf916875735
+google.golang.org/genproto aa2eb687b4d3e17154372564ad8d6bf11c3cf21f
+google.golang.org/grpc 834dbd54e05e578c44aa018d5fab8d17892f9d4d
+gopkg.in/yaml.v2 d670f9405373e636a5a2765eea47fac0c9bc91a4

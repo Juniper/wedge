@@ -1,0 +1,41 @@
+/*
+ * $Id$
+ *
+ * Copyright (c) 2017, Juniper Networks, Inc.
+ * All rights reserved.
+ */
+
+syntax = "proto3";
+
+package jnxBase;
+
+
+/**
+ * Global status codes to be returned in response messages.
+ * Per-RPC specific status/error codes are to be conveyed
+ * in sub-codes defined in respective API definitions.
+ */
+enum StatusCode {
+    /** Indicates that the RPC executed without error */
+    SUCCESS = 0;
+    /** Indicates a failure condition that should be treated as fatal */
+    FAILURE = 1;
+}
+
+/**
+ * Message containing an associated key value
+ * pair
+ */
+message StrKeyStrVal  {
+    string key = 1;
+    string value = 2;
+}
+
+/**
+ * Message representing timeval structure
+ */
+message TimeVal {
+   uint64 seconds = 1;
+   uint64 microseconds = 2;
+}
+

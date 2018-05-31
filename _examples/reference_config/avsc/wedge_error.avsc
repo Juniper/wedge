@@ -1,0 +1,13 @@
+[
+    {
+        "type": "record",
+        "name": "Error",
+        "fields": [
+                {
+                    "name": "Message",
+                    "type": ["null", "string"],
+                    "default": null
+                }
+        ]
+    }
+]

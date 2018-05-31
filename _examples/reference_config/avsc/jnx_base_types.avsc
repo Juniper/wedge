@@ -1,0 +1,34 @@
+[
+  {
+    "type": "record",
+    "name": "JnxBase__StrKeyStrVal",
+    "fields": [
+      {
+        "name": "key",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "JnxBase__TimeVal",
+    "fields": [
+      {
+        "name": "seconds",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "microseconds",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  }
+]

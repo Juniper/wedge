@@ -1,0 +1,538 @@
+[
+  {
+    "type": "record",
+    "name": "Interface__IpAddress",
+    "doc": "Only one of the following fields should be specified: addr_string, addr_bytes",
+    "fields": [
+      {
+        "name": "addr_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr_bytes",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__MacAddress",
+    "doc": "Only one of the following fields should be specified: addr_string, addr_bytes",
+    "fields": [
+      {
+        "name": "addr_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr_bytes",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__StringAttr",
+    "fields": [
+      {
+        "name": "attr_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "attr_value",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__IntegerAttr",
+    "fields": [
+      {
+        "name": "attr_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "attr_value",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__InterfaceConfig",
+    "fields": [
+      {
+        "name": "port_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "tagging", "type": ["null", { "type": "enum", "name": "Interface__InterfaceConfig__InterfaceTaggingType", "symbols": ["INTERFACE__VLAN__TAGGING", "INTERFACE__INTERFACE__TAGGING__MAX"] } ], "default": null }
+      ,
+      { "name": "encap", "type": ["null", { "type": "enum", "name": "Interface__InterfaceConfig__InterfaceEncapsulationType", "symbols": ["INTERFACE__VLAN__BRIDGE", "INTERFACE__VLAN__EXTENDED__BRIDGE", "INTERFACE__INTERFACE__ENCAP__MAX"] } ], "default": null }
+      ,
+      {
+        "name": "aggregate_members",
+        "type": ["null", {"type": "array", "items": "string"}],
+        "default": null
+      },
+      {
+        "name": "string_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__StringAttr"}],
+        "default": null
+      },
+      {
+        "name": "integer_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__IntegerAttr"}],
+        "default": null
+      },
+      {
+        "name": "operation",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "client_ctx",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__Value32",
+    "fields": [
+      {
+        "name": "unit",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__InterfaceLogicalConfig",
+    "fields": [
+      {
+        "name": "port_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "ifl_unit",
+        "type": ["null", "Interface__Value32"],
+        "default": null
+      },
+      {
+        "name": "lr_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "bd_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "ri_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Interface__InterfaceLogicalConfig__IfStatus", "symbols": ["INTERFACE__INTF__DOWN", "INTERFACE__INTF__UP"] } ], "default": null }
+      ,
+      {
+        "name": "string_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__StringAttr"}],
+        "default": null
+      },
+      {
+        "name": "integer_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__IntegerAttr"}],
+        "default": null
+      },
+      {
+        "name": "operation",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "client_ctx",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__InterfaceFamilyConfig",
+    "fields": [
+      {
+        "name": "port_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "ifl_unit",
+        "type": ["null", "Interface__Value32"],
+        "default": null
+      },
+      { "name": "family", "type": ["null", { "type": "enum", "name": "Interface__InterfaceFamilyConfig__FamilyType", "symbols": ["INTERFACE__INTF__AF__UNKNOWN", "INTERFACE__INTF__AF__INET", "INTERFACE__INTF__AF__INET6"] } ], "default": null }
+      ,
+      {
+        "name": "string_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__StringAttr"}],
+        "default": null
+      },
+      {
+        "name": "integer_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__IntegerAttr"}],
+        "default": null
+      },
+      {
+        "name": "operation",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "client_ctx",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__InterfaceAddressConfig",
+    "fields": [
+      {
+        "name": "port_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "ifl_unit",
+        "type": ["null", "Interface__Value32"],
+        "default": null
+      },
+      { "name": "family", "type": ["null", { "type": "enum", "name": "Interface__InterfaceAddressConfig__FamilyType", "symbols": ["INTERFACE__INTF__AF__UNKNOWN", "INTERFACE__INTF__AF__INET", "INTERFACE__INTF__AF__INET6"] } ], "default": null }
+      ,
+      {
+        "name": "interface_address",
+        "type": ["null", "Interface__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "string_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__StringAttr"}],
+        "default": null
+      },
+      {
+        "name": "integer_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__IntegerAttr"}],
+        "default": null
+      },
+      {
+        "name": "operation",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "client_ctx",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__RTConfig",
+    "fields": [
+      {
+        "name": "port_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "ifl_unit",
+        "type": ["null", "Interface__Value32"],
+        "default": null
+      },
+      { "name": "family", "type": ["null", { "type": "enum", "name": "Interface__RTConfig__FamilyType", "symbols": ["INTERFACE__INTF__AF__UNKNOWN", "INTERFACE__INTF__AF__INET", "INTERFACE__INTF__AF__INET6"] } ], "default": null }
+      ,
+      {
+        "name": "interface_address",
+        "type": ["null", "Interface__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "arp_address",
+        "type": ["null", "Interface__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "string_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__StringAttr"}],
+        "default": null
+      },
+      {
+        "name": "integer_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__IntegerAttr"}],
+        "default": null
+      },
+      {
+        "name": "operation",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "client_ctx",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__ConfigResp",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Interface__ConfigResp__RetStatus", "symbols": ["INTERFACE__SUCCESS", "INTERFACE__FAILURE", "INTERFACE__OWNER", "INTERFACE__NOT__OWNER", "INTERFACE__OBJECT__FOUND", "INTERFACE__OBJECT__NOT__FOUND", "INTERFACE__OBJECT__CLI__OWNER", "INTERFACE__OBJECT__JAPI__OWNER", "INTERFACE__ATTRIBUTE__FOUND", "INTERFACE__ATTRIBUTE__NOT__FOUND", "INTERFACE__NO__PORT__NAME", "INTERFACE__NO__IFL__UNIT", "INTERFACE__NO__IFF__FAMILY", "INTERFACE__NO__IP__ADDR", "INTERFACE__NO__ARP__ADDR", "INTERFACE__NO__ARP__MAC"] } ], "default": null }
+      ,
+      {
+        "name": "error_message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "client_ctx",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__AttributeRequestInfo",
+    "fields": [
+      {
+        "name": "port_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "ifl_unit",
+        "type": ["null", "Interface__Value32"],
+        "default": null
+      },
+      { "name": "family", "type": ["null", { "type": "enum", "name": "Interface__AttributeRequestInfo__FamilyType", "symbols": ["INTERFACE__INTF__AF__UNKNOWN", "INTERFACE__INTF__AF__INET", "INTERFACE__INTF__AF__INET6"] } ], "default": null }
+      ,
+      {
+        "name": "interface_address",
+        "type": ["null", "Interface__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "arp_address",
+        "type": ["null", "Interface__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "string_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__StringAttr"}],
+        "default": null
+      },
+      {
+        "name": "integer_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__IntegerAttr"}],
+        "default": null
+      },
+      {
+        "name": "client_ctx",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__AttributeResponseInfo",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Interface__AttributeResponseInfo__RetStatus", "symbols": ["INTERFACE__SUCCESS", "INTERFACE__FAILURE", "INTERFACE__OWNER", "INTERFACE__NOT__OWNER", "INTERFACE__OBJECT__FOUND", "INTERFACE__OBJECT__NOT__FOUND", "INTERFACE__OBJECT__CLI__OWNER", "INTERFACE__OBJECT__JAPI__OWNER", "INTERFACE__ATTRIBUTE__FOUND", "INTERFACE__ATTRIBUTE__NOT__FOUND", "INTERFACE__NO__PORT__NAME", "INTERFACE__NO__IFL__UNIT", "INTERFACE__NO__IFF__FAMILY", "INTERFACE__NO__IP__ADDR", "INTERFACE__NO__ARP__ADDR", "INTERFACE__NO__ARP__MAC"] } ], "default": null }
+      ,
+      {
+        "name": "error_message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "string_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__StringAttr"}],
+        "default": null
+      },
+      {
+        "name": "integer_attr_list",
+        "type": ["null", {"type": "array", "items": "Interface__IntegerAttr"}],
+        "default": null
+      },
+      {
+        "name": "client_ctx",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__ObjectOwnershipQuery",
+    "fields": [
+      {
+        "name": "port_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "ifl_unit",
+        "type": ["null", "Interface__Value32"],
+        "default": null
+      },
+      { "name": "family", "type": ["null", { "type": "enum", "name": "Interface__ObjectOwnershipQuery__FamilyType", "symbols": ["INTERFACE__INTF__AF__UNKNOWN", "INTERFACE__INTF__AF__INET", "INTERFACE__INTF__AF__INET6"] } ], "default": null }
+      ,
+      {
+        "name": "interface_address",
+        "type": ["null", "Interface__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "arp_address",
+        "type": ["null", "Interface__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "client_ctx",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__ObjectOwnershipResp",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Interface__ObjectOwnershipResp__RetStatus", "symbols": ["INTERFACE__SUCCESS", "INTERFACE__FAILURE", "INTERFACE__OWNER", "INTERFACE__NOT__OWNER", "INTERFACE__OBJECT__FOUND", "INTERFACE__OBJECT__NOT__FOUND", "INTERFACE__OBJECT__CLI__OWNER", "INTERFACE__OBJECT__JAPI__OWNER", "INTERFACE__ATTRIBUTE__FOUND", "INTERFACE__ATTRIBUTE__NOT__FOUND", "INTERFACE__NO__PORT__NAME", "INTERFACE__NO__IFL__UNIT", "INTERFACE__NO__IFF__FAMILY", "INTERFACE__NO__IP__ADDR", "INTERFACE__NO__ARP__ADDR", "INTERFACE__NO__ARP__MAC"] } ], "default": null }
+      ,
+      {
+        "name": "error_message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "client_ctx",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__TimeoutInfo",
+    "fields": [
+      {
+        "name": "timeout",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__TimeoutResp",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Interface__TimeoutResp__RetStatus", "symbols": ["INTERFACE__SUCCESS", "INTERFACE__FAILURE", "INTERFACE__OWNER", "INTERFACE__NOT__OWNER", "INTERFACE__OBJECT__FOUND", "INTERFACE__OBJECT__NOT__FOUND", "INTERFACE__OBJECT__CLI__OWNER", "INTERFACE__OBJECT__JAPI__OWNER", "INTERFACE__ATTRIBUTE__FOUND", "INTERFACE__ATTRIBUTE__NOT__FOUND", "INTERFACE__NO__PORT__NAME", "INTERFACE__NO__IFL__UNIT", "INTERFACE__NO__IFF__FAMILY", "INTERFACE__NO__IP__ADDR", "INTERFACE__NO__ARP__ADDR", "INTERFACE__NO__ARP__MAC"] } ], "default": null }
+      ,
+      {
+        "name": "error_message",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Interface__PublicIflResp",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Interface__PublicIflResp__RetStatus", "symbols": ["INTERFACE__SUCCESS", "INTERFACE__FAILURE", "INTERFACE__OWNER", "INTERFACE__NOT__OWNER", "INTERFACE__OBJECT__FOUND", "INTERFACE__OBJECT__NOT__FOUND", "INTERFACE__OBJECT__CLI__OWNER", "INTERFACE__OBJECT__JAPI__OWNER", "INTERFACE__ATTRIBUTE__FOUND", "INTERFACE__ATTRIBUTE__NOT__FOUND", "INTERFACE__NO__PORT__NAME", "INTERFACE__NO__IFL__UNIT", "INTERFACE__NO__IFF__FAMILY", "INTERFACE__NO__IP__ADDR", "INTERFACE__NO__ARP__ADDR", "INTERFACE__NO__ARP__MAC"] } ], "default": null }
+      ,
+      {
+        "name": "error_message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "client_ctx",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  }
+]

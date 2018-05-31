@@ -1,0 +1,482 @@
+[
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncHwInitRequest",
+    "fields": [
+      {
+        "name": "modules_bitmap",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncOperReply",
+    "fields": [
+      { "name": "ret_code", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncOperReply__ReturnCode", "symbols": ["CLKSYNC__RET__SUCCESS", "CLKSYNC__RET__FAILURE", "CLKSYNC__RET__NOT__FOUND", "CLKSYNC__RET__INVALID__PARAMS"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncTodTime",
+    "fields": [
+      {
+        "name": "utc_secs",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "utc_nsecs",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncGetTodReply",
+    "fields": [
+      { "name": "ret_code", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncGetTodReply__ReturnCode", "symbols": ["CLKSYNC__RET__SUCCESS", "CLKSYNC__RET__FAILURE", "CLKSYNC__RET__NOT__FOUND", "CLKSYNC__RET__INVALID__PARAMS"] } ], "default": null }
+      ,
+      {
+        "name": "utc_secs",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "utc_nsecs",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "parser_status",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "utc_offset",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncPushInfoUpMsg",
+    "fields": [
+      { "name": "submsg_type", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPushInfoUpMsg__ClkSubmsgType", "symbols": ["CLKSYNC__UNKNOWN__SUBMSG", "CLKSYNC__PID", "CLKSYNC__VERSION"] } ], "default": null }
+      ,
+      {
+        "name": "param1",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "param2",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncPllFreqStatusMsg",
+    "fields": [
+      { "name": "dpll_type", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllFreqStatusMsg__ClkPllType", "symbols": ["CLKSYNC__UNKNOWN", "CLKSYNC__CHASSIS", "CLKSYNC__SETS", "CLKSYNC__PTP", "CLKSYNC__GPS"] } ], "default": null }
+      ,
+      { "name": "clk_src", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllFreqStatusMsg__ClkSrcType", "symbols": ["CLKSYNC__INVALID", "CLKSYNC__CHASSIS__FREQ", "CLKSYNC__CHASSIS__PHASE", "CLKSYNC__LINE__PRI", "CLKSYNC__LINE__SEC", "CLKSYNC__GPS__FREQ", "CLKSYNC__GPS__PHASE", "CLKSYNC__GPS__FREQ__N__PHASE", "CLKSYNC__BITS__FREQ", "CLKSYNC__PTP__FREQ__N__PHASE", "CLKSYNC__FREERUN", "CLKSYNC__HYBRID__FREQ", "CLKSYNC__HYBRID__PHASE", "CLKSYNC__HYBRID__FREQ__N__PHASE"] } ], "default": null }
+      ,
+      {
+        "name": "clk_src_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "freq_status", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllFreqStatusMsg__ClkSrcFreqState", "symbols": ["CLKSYNC__DISABLED", "CLKSYNC__QUALIFYING", "CLKSYNC__FAILED", "CLKSYNC__QUALIFIED"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncPllSyncStatusMsg",
+    "fields": [
+      { "name": "dpll_type", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllSyncStatusMsg__ClkPllType", "symbols": ["CLKSYNC__UNKNOWN", "CLKSYNC__CHASSIS", "CLKSYNC__SETS", "CLKSYNC__PTP", "CLKSYNC__GPS"] } ], "default": null }
+      ,
+      { "name": "clk_src", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllSyncStatusMsg__ClkSrcType", "symbols": ["CLKSYNC__INVALID", "CLKSYNC__CHASSIS__FREQ", "CLKSYNC__CHASSIS__PHASE", "CLKSYNC__LINE__PRI", "CLKSYNC__LINE__SEC", "CLKSYNC__GPS__FREQ", "CLKSYNC__GPS__PHASE", "CLKSYNC__GPS__FREQ__N__PHASE", "CLKSYNC__BITS__FREQ", "CLKSYNC__PTP__FREQ__N__PHASE", "CLKSYNC__FREERUN", "CLKSYNC__HYBRID__FREQ", "CLKSYNC__HYBRID__PHASE", "CLKSYNC__HYBRID__FREQ__N__PHASE"] } ], "default": null }
+      ,
+      {
+        "name": "clk_src_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "phase_status", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllSyncStatusMsg__ClkSrcPhaseState", "symbols": ["CLKSYNC____DISABLED", "CLKSYNC____QUALIFYING", "CLKSYNC____FAILED", "CLKSYNC____QUALIFIED"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncPushInfoDownRequest",
+    "fields": [
+      { "name": "submsg_type", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPushInfoDownRequest__ClkSubmsgType", "symbols": ["CLKSYNC__UNKNOWN__SUBMSG", "CLKSYNC__PID", "CLKSYNC__VERSION"] } ], "default": null }
+      ,
+      {
+        "name": "param1",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "param2",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClkyncdSignalForClkSyncRequest",
+    "fields": [
+      { "name": "enable_disable", "type": ["null", { "type": "enum", "name": "Clksync__ClkyncdSignalForClkSyncRequest__ClkMessageSubType", "symbols": ["CLKSYNC__INVALID__REQ", "CLKSYNC__ENABLE__REQ", "CLKSYNC__DISABLE__REQ"] } ], "default": null }
+      ,
+      { "name": "dpll_type", "type": ["null", { "type": "enum", "name": "Clksync__ClkyncdSignalForClkSyncRequest__ClkPllType", "symbols": ["CLKSYNC__UNKNOWN", "CLKSYNC__CHASSIS", "CLKSYNC__SETS", "CLKSYNC__PTP", "CLKSYNC__GPS"] } ], "default": null }
+      ,
+      { "name": "input_signal_type", "type": ["null", { "type": "enum", "name": "Clksync__ClkyncdSignalForClkSyncRequest__ClkInSignalType", "symbols": ["CLKSYNC____INVALID", "CLKSYNC____CHASSIS__FREQ", "CLKSYNC____CHASSIS__PHASE", "CLKSYNC____LINE__PRI", "CLKSYNC____LINE__SEC", "CLKSYNC____GPS__FREQ", "CLKSYNC____GPS__PHASE", "CLKSYNC____BITS__FREQ", "CLKSYNC____PTP__FREQ", "CLKSYNC____PTP__PHASE"] } ], "default": null }
+      ,
+      {
+        "name": "clk_signal_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "clk_src", "type": ["null", { "type": "enum", "name": "Clksync__ClkyncdSignalForClkSyncRequest__ClkSrcType", "symbols": ["CLKSYNC__INVALID", "CLKSYNC__CHASSIS__FREQ", "CLKSYNC__CHASSIS__PHASE", "CLKSYNC__LINE__PRI", "CLKSYNC__LINE__SEC", "CLKSYNC__GPS__FREQ", "CLKSYNC__GPS__PHASE", "CLKSYNC__GPS__FREQ__N__PHASE", "CLKSYNC__BITS__FREQ", "CLKSYNC__PTP__FREQ__N__PHASE", "CLKSYNC__FREERUN", "CLKSYNC__HYBRID__FREQ", "CLKSYNC__HYBRID__PHASE", "CLKSYNC__HYBRID__FREQ__N__PHASE"] } ], "default": null }
+      ,
+      {
+        "name": "clk_src_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "clk_src_idx", "type": ["null", { "type": "enum", "name": "Clksync__ClkyncdSignalForClkSyncRequest__ClkIdx", "symbols": ["CLKSYNC__PRI", "CLKSYNC__SEC", "CLKSYNC__TERT", "CLKSYNC__QUART", "CLKSYNC__QUIN", "CLKSYNC__INVALID__IDX"] } ], "default": null }
+      ,
+      { "name": "clk_sys_mode", "type": ["null", { "type": "enum", "name": "Clksync__ClkyncdSignalForClkSyncRequest__ClkSysMode", "symbols": ["CLKSYNC____NONE", "CLKSYNC____SYNCE", "CLKSYNC____PTP", "CLKSYNC____HYBRID"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncPllSrcInputRequest",
+    "fields": [
+      { "name": "dpll_type", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllSrcInputRequest__ClkPllType", "symbols": ["CLKSYNC__UNKNOWN", "CLKSYNC__CHASSIS", "CLKSYNC__SETS", "CLKSYNC__PTP", "CLKSYNC__GPS"] } ], "default": null }
+      ,
+      { "name": "clk_src", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllSrcInputRequest__ClkSrcType", "symbols": ["CLKSYNC__INVALID", "CLKSYNC__CHASSIS__FREQ", "CLKSYNC__CHASSIS__PHASE", "CLKSYNC__LINE__PRI", "CLKSYNC__LINE__SEC", "CLKSYNC__GPS__FREQ", "CLKSYNC__GPS__PHASE", "CLKSYNC__GPS__FREQ__N__PHASE", "CLKSYNC__BITS__FREQ", "CLKSYNC__PTP__FREQ__N__PHASE", "CLKSYNC__FREERUN", "CLKSYNC__HYBRID__FREQ", "CLKSYNC__HYBRID__PHASE", "CLKSYNC__HYBRID__FREQ__N__PHASE"] } ], "default": null }
+      ,
+      {
+        "name": "clk_src_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "clk_pll_bw", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllSrcInputRequest__ClkPllBw", "symbols": ["CLKSYNC__PLL__INVALID", "CLKSYNC__PLL__P1_HZ", "CLKSYNC__PLL_1_P7_HZ", "CLKSYNC__PLL_3_P5_HZ", "CLKSYNC__PLL_14_HZ", "CLKSYNC__PLL_28_HZ", "CLKSYNC__PLL_890_HZ", "CLKSYNC__PLL__FAST__LOCK"] } ], "default": null }
+      ,
+      { "name": "clk_psl_bw", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllSrcInputRequest__ClkPiPslBw", "symbols": ["CLKSYNC__P885_US", "CLKSYNC___7_P5_US", "CLKSYNC___61_US", "CLKSYNC__UNLIMITED"] } ], "default": null }
+      ,
+      { "name": "clk_src_idx", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllSrcInputRequest__ClkIdx", "symbols": ["CLKSYNC__PRI", "CLKSYNC__SEC", "CLKSYNC__TERT", "CLKSYNC__QUART", "CLKSYNC__QUIN", "CLKSYNC__INVALID__IDX"] } ], "default": null }
+      ,
+      { "name": "clk_sys_mode", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllSrcInputRequest__ClkSysMode", "symbols": ["CLKSYNC____NONE", "CLKSYNC____SYNCE", "CLKSYNC____PTP", "CLKSYNC____HYBRID"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncCfgPllSrcInputRequest",
+    "fields": [
+      { "name": "enable_disable", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgPllSrcInputRequest__ClkMessageSubType", "symbols": ["CLKSYNC__INVALID__REQ", "CLKSYNC__ENABLE__REQ", "CLKSYNC__DISABLE__REQ"] } ], "default": null }
+      ,
+      { "name": "dpll_type", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgPllSrcInputRequest__ClkPllType", "symbols": ["CLKSYNC__UNKNOWN", "CLKSYNC__CHASSIS", "CLKSYNC__SETS", "CLKSYNC__PTP", "CLKSYNC__GPS"] } ], "default": null }
+      ,
+      { "name": "clk_src", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgPllSrcInputRequest__ClkSrcType", "symbols": ["CLKSYNC__INVALID", "CLKSYNC__CHASSIS__FREQ", "CLKSYNC__CHASSIS__PHASE", "CLKSYNC__LINE__PRI", "CLKSYNC__LINE__SEC", "CLKSYNC__GPS__FREQ", "CLKSYNC__GPS__PHASE", "CLKSYNC__GPS__FREQ__N__PHASE", "CLKSYNC__BITS__FREQ", "CLKSYNC__PTP__FREQ__N__PHASE", "CLKSYNC__FREERUN", "CLKSYNC__HYBRID__FREQ", "CLKSYNC__HYBRID__PHASE", "CLKSYNC__HYBRID__FREQ__N__PHASE"] } ], "default": null }
+      ,
+      {
+        "name": "clk_src_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "clk_signal_freq", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgPllSrcInputRequest__ClkPiExtSignalFreq", "symbols": ["CLKSYNC___1_PPS", "CLKSYNC___8__KHZ", "CLKSYNC___1544__KHZ", "CLKSYNC___2048__KHZ", "CLKSYNC____T1", "CLKSYNC____E1", "CLKSYNC___1__MHZ", "CLKSYNC___5__MHZ", "CLKSYNC___10__MHZ", "CLKSYNC___1944_MZ", "CLKSYNC____UNKNOWN"] } ], "default": null }
+      ,
+      {
+        "name": "disable_input_clk_line",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "clk_src_idx", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgPllSrcInputRequest__ClkIdx", "symbols": ["CLKSYNC__PRI", "CLKSYNC__SEC", "CLKSYNC__TERT", "CLKSYNC__QUART", "CLKSYNC__QUIN", "CLKSYNC__INVALID__IDX"] } ], "default": null }
+      ,
+      { "name": "clk_sys_mode", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgPllSrcInputRequest__ClkSysMode", "symbols": ["CLKSYNC____NONE", "CLKSYNC____SYNCE", "CLKSYNC____PTP", "CLKSYNC____HYBRID"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncCfgExtIntfRequest",
+    "fields": [
+      {
+        "name": "framer_reset",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "clk_src", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgExtIntfRequest__ClkSrcType", "symbols": ["CLKSYNC__INVALID", "CLKSYNC__CHASSIS__FREQ", "CLKSYNC__CHASSIS__PHASE", "CLKSYNC__LINE__PRI", "CLKSYNC__LINE__SEC", "CLKSYNC__GPS__FREQ", "CLKSYNC__GPS__PHASE", "CLKSYNC__GPS__FREQ__N__PHASE", "CLKSYNC__BITS__FREQ", "CLKSYNC__PTP__FREQ__N__PHASE", "CLKSYNC__FREERUN", "CLKSYNC__HYBRID__FREQ", "CLKSYNC__HYBRID__PHASE", "CLKSYNC__HYBRID__FREQ__N__PHASE"] } ], "default": null }
+      ,
+      {
+        "name": "clk_src_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "clk_signal_freq", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgExtIntfRequest__ClkPiExtSignalFreq", "symbols": ["CLKSYNC___1_PPS", "CLKSYNC___8__KHZ", "CLKSYNC___1544__KHZ", "CLKSYNC___2048__KHZ", "CLKSYNC____T1", "CLKSYNC____E1", "CLKSYNC___1__MHZ", "CLKSYNC___5__MHZ", "CLKSYNC___10__MHZ", "CLKSYNC___1944_MZ", "CLKSYNC____UNKNOWN"] } ], "default": null }
+      ,
+      { "name": "framing_mode", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgExtIntfRequest__ClkPiExtBitsFraming", "symbols": ["CLKSYNC__UNKNOWN__FRM", "CLKSYNC__ESF", "CLKSYNC__G704", "CLKSYNC__G704__NO__CRC4", "CLKSYNC__SF", "CLKSYNC__D4", "CLKSYNC__FAS", "CLKSYNC__CAS", "CLKSYNC__CRC4", "CLKSYNC__CAS__CRC4"] } ], "default": null }
+      ,
+      { "name": "clk_line_encoding", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgExtIntfRequest__ClkBitsLineEncoding", "symbols": ["CLKSYNC__UNKNOWN__ENC", "CLKSYNC__AMI", "CLKSYNC__B8_ZS", "CLKSYNC__HDB3"] } ], "default": null }
+      ,
+      { "name": "clk_sabit", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgExtIntfRequest__ClkSabit", "symbols": ["CLKSYNC__UNKNOWN__SA", "CLKSYNC__NA", "CLKSYNC__SA4", "CLKSYNC__SA5", "CLKSYNC__SA6", "CLKSYNC__SA7", "CLKSYNC__SA8"] } ], "default": null }
+      ,
+      {
+        "name": "intf_cfg_changed",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncSelectExtClkOutputRequest",
+    "fields": [
+      { "name": "dpll_type", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncSelectExtClkOutputRequest__ClkPllType", "symbols": ["CLKSYNC__UNKNOWN", "CLKSYNC__CHASSIS", "CLKSYNC__SETS", "CLKSYNC__PTP", "CLKSYNC__GPS"] } ], "default": null }
+      ,
+      {
+        "name": "clk_output_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "clk_src", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncSelectExtClkOutputRequest__ClkSrcType", "symbols": ["CLKSYNC__INVALID", "CLKSYNC__CHASSIS__FREQ", "CLKSYNC__CHASSIS__PHASE", "CLKSYNC__LINE__PRI", "CLKSYNC__LINE__SEC", "CLKSYNC__GPS__FREQ", "CLKSYNC__GPS__PHASE", "CLKSYNC__GPS__FREQ__N__PHASE", "CLKSYNC__BITS__FREQ", "CLKSYNC__PTP__FREQ__N__PHASE", "CLKSYNC__FREERUN", "CLKSYNC__HYBRID__FREQ", "CLKSYNC__HYBRID__PHASE", "CLKSYNC__HYBRID__FREQ__N__PHASE"] } ], "default": null }
+      ,
+      {
+        "name": "clk_src_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "clk_signal_freq", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncSelectExtClkOutputRequest__ClkPiExtSignalFreq", "symbols": ["CLKSYNC___1_PPS", "CLKSYNC___8__KHZ", "CLKSYNC___1544__KHZ", "CLKSYNC___2048__KHZ", "CLKSYNC____T1", "CLKSYNC____E1", "CLKSYNC___1__MHZ", "CLKSYNC___5__MHZ", "CLKSYNC___10__MHZ", "CLKSYNC___1944_MZ", "CLKSYNC____UNKNOWN"] } ], "default": null }
+      ,
+      { "name": "ext_out_status", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncSelectExtClkOutputRequest__ClkExtOutTxStatus", "symbols": ["CLKSYNC_____DISABLED", "CLKSYNC__SQUELCHED", "CLKSYNC__ACTIVE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncCfgExtClkOutputRequest",
+    "fields": [
+      { "name": "enable_disable", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgExtClkOutputRequest__ClkMessageSubType", "symbols": ["CLKSYNC__INVALID__REQ", "CLKSYNC__ENABLE__REQ", "CLKSYNC__DISABLE__REQ"] } ], "default": null }
+      ,
+      { "name": "dpll_type", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgExtClkOutputRequest__ClkPllType", "symbols": ["CLKSYNC__UNKNOWN", "CLKSYNC__CHASSIS", "CLKSYNC__SETS", "CLKSYNC__PTP", "CLKSYNC__GPS"] } ], "default": null }
+      ,
+      {
+        "name": "clk_output_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "clk_src", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgExtClkOutputRequest__ClkSrcType", "symbols": ["CLKSYNC__INVALID", "CLKSYNC__CHASSIS__FREQ", "CLKSYNC__CHASSIS__PHASE", "CLKSYNC__LINE__PRI", "CLKSYNC__LINE__SEC", "CLKSYNC__GPS__FREQ", "CLKSYNC__GPS__PHASE", "CLKSYNC__GPS__FREQ__N__PHASE", "CLKSYNC__BITS__FREQ", "CLKSYNC__PTP__FREQ__N__PHASE", "CLKSYNC__FREERUN", "CLKSYNC__HYBRID__FREQ", "CLKSYNC__HYBRID__PHASE", "CLKSYNC__HYBRID__FREQ__N__PHASE"] } ], "default": null }
+      ,
+      {
+        "name": "clk_src_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "disable_input_clk_src",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "ext_out_status", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncCfgExtClkOutputRequest__ClkExtOutTxStatus", "symbols": ["CLKSYNC_____DISABLED", "CLKSYNC__SQUELCHED", "CLKSYNC__ACTIVE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncSetExtTxQlRequest",
+    "fields": [
+      {
+        "name": "clk_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "ssm_tx_ql",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncSetExtLedRequest",
+    "fields": [
+      {
+        "name": "clk_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "ext_led_type", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncSetExtLedRequest__ClkExtLedType", "symbols": ["CLKSYNC__BITS__CLK", "CLKSYNC__GPS__CLK", "CLKSYNC__DTI__CLK"] } ], "default": null }
+      ,
+      { "name": "led_rx_color", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncSetExtLedRequest__ClkLedColor", "symbols": ["CLKSYNC__EXT__NONE", "CLKSYNC__EXT__GREEN", "CLKSYNC__EXT__RED"] } ], "default": null }
+      ,
+      { "name": "led_tx_color", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncSetExtLedRequest__ClkLedColor", "symbols": ["CLKSYNC__EXT__NONE", "CLKSYNC__EXT__GREEN", "CLKSYNC__EXT__RED"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncPllStatusMsg",
+    "fields": [
+      { "name": "dpll_type", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllStatusMsg__ClkPllType", "symbols": ["CLKSYNC__UNKNOWN", "CLKSYNC__CHASSIS", "CLKSYNC__SETS", "CLKSYNC__PTP", "CLKSYNC__GPS"] } ], "default": null }
+      ,
+      { "name": "clk_src", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllStatusMsg__ClkSrcType", "symbols": ["CLKSYNC__INVALID", "CLKSYNC__CHASSIS__FREQ", "CLKSYNC__CHASSIS__PHASE", "CLKSYNC__LINE__PRI", "CLKSYNC__LINE__SEC", "CLKSYNC__GPS__FREQ", "CLKSYNC__GPS__PHASE", "CLKSYNC__GPS__FREQ__N__PHASE", "CLKSYNC__BITS__FREQ", "CLKSYNC__PTP__FREQ__N__PHASE", "CLKSYNC__FREERUN", "CLKSYNC__HYBRID__FREQ", "CLKSYNC__HYBRID__PHASE", "CLKSYNC__HYBRID__FREQ__N__PHASE"] } ], "default": null }
+      ,
+      {
+        "name": "clk_src_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "dpll_state", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncPllStatusMsg__ClkPllState", "symbols": ["CLKSYNC__UNKNOWN__STATE", "CLKSYNC__INIT__STATE", "CLKSYNC__LOCK__ACQ__STATE", "CLKSYNC__LOCKED__STATE", "CLKSYNC__HOLDOVER__STATE", "CLKSYNC__FREERUN__STATE"] } ], "default": null }
+      ,
+      {
+        "name": "holdover_status",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncExtIntfStatusMsg",
+    "fields": [
+      {
+        "name": "clk_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "link_state", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncExtIntfStatusMsg__ClkLinkState", "symbols": ["CLKSYNC__LINK__STATE__UP", "CLKSYNC__LINK__STATE__UP__TO__DOWN", "CLKSYNC__LINK__STATE__DOWN__TO__UP", "CLKSYNC__LINK__STATE__DOWN"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncExtRxQlMsg",
+    "fields": [
+      {
+        "name": "clk_unit_num",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "ql_value", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncExtRxQlMsg__ClkQlLevel", "symbols": ["CLKSYNC__QL__UNDEFINED", "CLKSYNC__QL__PRC", "CLKSYNC__QL__SSU__A", "CLKSYNC__QL__SSU__B", "CLKSYNC__QL__SEC", "CLKSYNC__QL__PRS", "CLKSYNC__QL__STU", "CLKSYNC__QL__ST2", "CLKSYNC__QL__TNC", "CLKSYNC__QL__ST3_E", "CLKSYNC__QL__ST3", "CLKSYNC__QL__SMC", "CLKSYNC__QL__ST4"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncSetPllModeRequest",
+    "fields": [
+      { "name": "dpll_type", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncSetPllModeRequest__ClkPllType", "symbols": ["CLKSYNC__UNKNOWN", "CLKSYNC__CHASSIS", "CLKSYNC__SETS", "CLKSYNC__PTP", "CLKSYNC__GPS"] } ], "default": null }
+      ,
+      { "name": "dpll_mode", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncSetPllModeRequest__ClkDpllMode", "symbols": ["CLKSYNC__MODE__UNKNOWN", "CLKSYNC__MODE__NORMAL", "CLKSYNC__MODE__HOLDOVER", "CLKSYNC__MODE__FREERUN", "CLKSYNC__MODE__AUTO", "CLKSYNC__MODE__TOP"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncSetPllBwPslRequest",
+    "fields": [
+      { "name": "dpll_type", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncSetPllBwPslRequest__ClkPllType", "symbols": ["CLKSYNC__UNKNOWN", "CLKSYNC__CHASSIS", "CLKSYNC__SETS", "CLKSYNC__PTP", "CLKSYNC__GPS"] } ], "default": null }
+      ,
+      { "name": "clk_pll_bw", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncSetPllBwPslRequest__ClkPllBw", "symbols": ["CLKSYNC__PLL__INVALID", "CLKSYNC__PLL__P1_HZ", "CLKSYNC__PLL_1_P7_HZ", "CLKSYNC__PLL_3_P5_HZ", "CLKSYNC__PLL_14_HZ", "CLKSYNC__PLL_28_HZ", "CLKSYNC__PLL_890_HZ", "CLKSYNC__PLL__FAST__LOCK"] } ], "default": null }
+      ,
+      { "name": "clk_psl_bw", "type": ["null", { "type": "enum", "name": "Clksync__ClksyncSetPllBwPslRequest__ClkPiPslBw", "symbols": ["CLKSYNC__P885_US", "CLKSYNC___7_P5_US", "CLKSYNC___61_US", "CLKSYNC__UNLIMITED"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncSetTodConfigRequest",
+    "fields": [
+      {
+        "name": "tod_port_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "tod_cfg_format",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncConnectMsg",
+    "fields": [
+      {
+        "name": "connect_type",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncStatusGetReq",
+    "fields": [
+      {
+        "name": "update",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncExtStatusGetReq",
+    "fields": [
+      {
+        "name": "update",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncExtRxQlGetReq",
+    "fields": [
+      {
+        "name": "update",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Clksync__ClksyncTodStartMsg",
+    "fields": [
+      {
+        "name": "utc_sec",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "utc_nsec",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "start_epats",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  }
+]

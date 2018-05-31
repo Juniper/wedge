@@ -1,0 +1,329 @@
+[
+
+
+  {
+    "type": "record",
+    "name": "JnxBase__IpAddress",
+    "doc": "Only one of the following fields should be specified: addr_string, addr_bytes",
+    "fields": [
+      {
+        "name": "addr_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr_bytes",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "JnxBase__MacAddress",
+    "doc": "Only one of the following fields should be specified: addr_string, addr_bytes",
+    "fields": [
+      {
+        "name": "addr_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr_bytes",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  }
+
+  ,
+  {
+    "type": "record",
+    "name": "Routing__RouteTableName",
+    "fields": [
+      {
+        "name": "name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RouteTableId",
+    "fields": [
+      {
+        "name": "id",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RouteTable",
+    "doc": "Only one of the following fields should be specified: rtt_id, rtt_name",
+    "fields": [
+      {
+        "name": "rtt_id",
+        "type": ["null", "Routing__RouteTableId"],
+        "default": null
+      },
+      {
+        "name": "rtt_name",
+        "type": ["null", "Routing__RouteTableName"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RdType0",
+    "fields": [
+      {
+        "name": "as_number",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "assigned_number",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RdType1",
+    "fields": [
+      {
+        "name": "ip_address",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "assigned_number",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RdType2",
+    "fields": [
+      {
+        "name": "as_number",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "assigned_number",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RouteDistinguisher",
+    "doc": "Only one of the following fields should be specified: rd0, rd1, rd2",
+    "fields": [
+      {
+        "name": "rd0",
+        "type": ["null", "Routing__RdType0"],
+        "default": null
+      },
+      {
+        "name": "rd1",
+        "type": ["null", "Routing__RdType1"],
+        "default": null
+      },
+      {
+        "name": "rd2",
+        "type": ["null", "Routing__RdType2"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__L3vpnAddress",
+    "fields": [
+      {
+        "name": "rd",
+        "type": ["null", "Routing__RouteDistinguisher"],
+        "default": null
+      },
+      {
+        "name": "vpn_addr",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RoutePrefix",
+    "doc": "Only one of the following fields should be specified: inet, inet6, inetvpn, inet6vpn, labeled_inet, labeled_inet6",
+    "fields": [
+      {
+        "name": "inet",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "inet6",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "inetvpn",
+        "type": ["null", "Routing__L3vpnAddress"],
+        "default": null
+      },
+      {
+        "name": "inet6vpn",
+        "type": ["null", "Routing__L3vpnAddress"],
+        "default": null
+      },
+      {
+        "name": "labeled_inet",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "labeled_inet6",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__LabelEntry",
+    "fields": [
+      {
+        "name": "label",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "traffic_class",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "ttl",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "bottom_of_stack",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__LabelStackEntry",
+    "fields": [
+      { "name": "opcode", "type": ["null", { "type": "enum", "name": "Routing__LabelStackEntry__LabelOperation", "symbols": ["ROUTING__NOOP", "ROUTING__POP", "ROUTING__PUSH", "ROUTING__SWAP"] } ], "default": null }
+      ,
+      {
+        "name": "label_entry",
+        "type": ["null", "Routing__LabelEntry"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__MplsAddress",
+    "fields": [
+      {
+        "name": "label",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__LabelStack",
+    "fields": [
+      {
+        "name": "entries",
+        "type": ["null", {"type": "array", "items": "Routing__LabelStackEntry"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__NetworkAddress",
+    "doc": "Only one of the following fields should be specified: inet, inet6, mpls",
+    "fields": [
+      {
+        "name": "inet",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "inet6",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "mpls",
+        "type": ["null", "Routing__MplsAddress"],
+        "default": null
+      }
+    ]
+  }
+
+  ,
+  {
+    "type": "record",
+    "name": "Routing__RtPurgeConfigRequest",
+    "fields": [
+      {
+        "name": "time",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RtEmptyRequest",
+    "fields": [
+      {
+        "name": "WedgePlaceholder",
+        "type": "null"
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RtOperReply",
+    "fields": [
+      { "name": "ret_code", "type": ["null", { "type": "enum", "name": "Routing__RtOperReply__ReturnCode", "symbols": ["ROUTING__RET__SUCCESS", "ROUTING__RET__FAILURE", "ROUTING__RET__NOT__FOUND", "ROUTING__RET__INVALID__PARAMS"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RtPurgeTimeGetReply",
+    "fields": [
+      { "name": "ret_code", "type": ["null", { "type": "enum", "name": "Routing__RtPurgeTimeGetReply__ReturnCode", "symbols": ["ROUTING__RET__SUCCESS", "ROUTING__RET__FAILURE", "ROUTING__RET__NOT__FOUND", "ROUTING__RET__INVALID__PARAMS"] } ], "default": null }
+      ,
+      {
+        "name": "time",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  }
+]

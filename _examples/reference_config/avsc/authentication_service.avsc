@@ -1,0 +1,34 @@
+[
+  {
+    "type": "record",
+    "name": "Authentication__LoginRequest",
+    "fields": [
+      {
+        "name": "user_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "password",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "client_id",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Authentication__LoginReply",
+    "fields": [
+      {
+        "name": "result",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  }
+]

@@ -1,0 +1,552 @@
+[
+
+
+  {
+    "type": "record",
+    "name": "JnxBase__IpAddress",
+    "doc": "Only one of the following fields should be specified: addr_string, addr_bytes",
+    "fields": [
+      {
+        "name": "addr_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr_bytes",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "JnxBase__MacAddress",
+    "doc": "Only one of the following fields should be specified: addr_string, addr_bytes",
+    "fields": [
+      {
+        "name": "addr_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr_bytes",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  }
+
+  ,
+  {
+    "type": "record",
+    "name": "Routing__RouteTableName",
+    "fields": [
+      {
+        "name": "name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RouteTableId",
+    "fields": [
+      {
+        "name": "id",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RouteTable",
+    "doc": "Only one of the following fields should be specified: rtt_id, rtt_name",
+    "fields": [
+      {
+        "name": "rtt_id",
+        "type": ["null", "Routing__RouteTableId"],
+        "default": null
+      },
+      {
+        "name": "rtt_name",
+        "type": ["null", "Routing__RouteTableName"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RdType0",
+    "fields": [
+      {
+        "name": "as_number",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "assigned_number",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RdType1",
+    "fields": [
+      {
+        "name": "ip_address",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "assigned_number",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RdType2",
+    "fields": [
+      {
+        "name": "as_number",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "assigned_number",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RouteDistinguisher",
+    "doc": "Only one of the following fields should be specified: rd0, rd1, rd2",
+    "fields": [
+      {
+        "name": "rd0",
+        "type": ["null", "Routing__RdType0"],
+        "default": null
+      },
+      {
+        "name": "rd1",
+        "type": ["null", "Routing__RdType1"],
+        "default": null
+      },
+      {
+        "name": "rd2",
+        "type": ["null", "Routing__RdType2"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__L3vpnAddress",
+    "fields": [
+      {
+        "name": "rd",
+        "type": ["null", "Routing__RouteDistinguisher"],
+        "default": null
+      },
+      {
+        "name": "vpn_addr",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RoutePrefix",
+    "doc": "Only one of the following fields should be specified: inet, inet6, inetvpn, inet6vpn, labeled_inet, labeled_inet6",
+    "fields": [
+      {
+        "name": "inet",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "inet6",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "inetvpn",
+        "type": ["null", "Routing__L3vpnAddress"],
+        "default": null
+      },
+      {
+        "name": "inet6vpn",
+        "type": ["null", "Routing__L3vpnAddress"],
+        "default": null
+      },
+      {
+        "name": "labeled_inet",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "labeled_inet6",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__LabelEntry",
+    "fields": [
+      {
+        "name": "label",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "traffic_class",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "ttl",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "bottom_of_stack",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__LabelStackEntry",
+    "fields": [
+      { "name": "opcode", "type": ["null", { "type": "enum", "name": "Routing__LabelStackEntry__LabelOperation", "symbols": ["ROUTING__NOOP", "ROUTING__POP", "ROUTING__PUSH", "ROUTING__SWAP"] } ], "default": null }
+      ,
+      {
+        "name": "label_entry",
+        "type": ["null", "Routing__LabelEntry"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__MplsAddress",
+    "fields": [
+      {
+        "name": "label",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__LabelStack",
+    "fields": [
+      {
+        "name": "entries",
+        "type": ["null", {"type": "array", "items": "Routing__LabelStackEntry"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__NetworkAddress",
+    "doc": "Only one of the following fields should be specified: inet, inet6, mpls",
+    "fields": [
+      {
+        "name": "inet",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "inet6",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "mpls",
+        "type": ["null", "Routing__MplsAddress"],
+        "default": null
+      }
+    ]
+  }
+
+  ,
+  {
+    "type": "record",
+    "name": "Routing__RsvpLspFlags",
+    "fields": [
+      {
+        "name": "rsvp_dynamic_bypass_lsp",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "rsvp_manual_bypass_lsp",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RsvpLspPingInfoRequest",
+    "fields": [
+      {
+        "name": "flags",
+        "type": ["null", "Routing__RsvpLspFlags"],
+        "default": null
+      },
+      {
+        "name": "lsp_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "path_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "interface_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "instance_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__MplsForwardingInfo",
+    "fields": [
+      {
+        "name": "nexthop_address",
+        "type": ["null", "Routing__RoutePrefix"],
+        "default": null
+      },
+      {
+        "name": "nexthop_router_id",
+        "type": ["null", "Routing__RoutePrefix"],
+        "default": null
+      },
+      {
+        "name": "nexthop_route_idx",
+        "type": ["null", "Routing__RoutePrefix"],
+        "default": null
+      },
+      {
+        "name": "nexthop_control_channel_flag",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "nexthop_label",
+        "type": ["null", "Routing__LabelStack"],
+        "default": null
+      },
+      {
+        "name": "nexthop_interface_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RsvpLspPingInfo",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__RsvpLspPingInfo__RsvpLspPingStatus", "symbols": ["ROUTING__RSVP__LSP__PING__NOERROR", "ROUTING__RSVP__LSP__PING__LSP__NOTFOUND", "ROUTING__RSVP__LSP__PING__NO__RSVP__INFO", "ROUTING__RSVP__LSP__PING__NO__PATH__INFO", "ROUTING__RSVP__LSP__PING__NO__ROUTE__INFO", "ROUTING__RSVP__LSP__PING__NO__ACTIVE__PATH", "ROUTING__RSVP__LSP__PING__STANDBY__PATH__NOTFOUND", "ROUTING__RSVP__LSP__PING__CCC__NORRO", "ROUTING__RSVP__LSP__PING__P2_MP__NOSUP", "ROUTING__RSVP__LSP__PING__P2_MP__NO__EGRESS", "ROUTING__RSVP__LSP__PING__P2_MP__NO__FLOOD__NHOP", "ROUTING__RSVP__LSP__PING__BYPASS__NEED__IINTERFACE__NAME"] } ], "default": null }
+      ,
+      { "name": "success_status", "type": ["null", { "type": "enum", "name": "Routing__RsvpLspPingInfo__RsvpLspPingSuccessStatus", "symbols": ["ROUTING__RSVP__LSP__PING__LSP__PRIMARY", "ROUTING__RSVP__LSP__PING__LSP__SECONDARY", "ROUTING__RSVP__LSP__PING__LSP__BYPASS"] } ], "default": null }
+      ,
+      {
+        "name": "destination_address",
+        "type": ["null", "Routing__RoutePrefix"],
+        "default": null
+      },
+      {
+        "name": "ext_tunnel_id",
+        "type": ["null", "Routing__RoutePrefix"],
+        "default": null
+      },
+      {
+        "name": "sender_address",
+        "type": ["null", "Routing__RoutePrefix"],
+        "default": null
+      },
+      {
+        "name": "tunnel_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "lsp_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "nexthops",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "bfd_discriminator",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "lsp_from_address",
+        "type": ["null", "Routing__RoutePrefix"],
+        "default": null
+      },
+      {
+        "name": "sensor_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "flags",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "nexthop_info",
+        "type": ["null", "Routing__MplsForwardingInfo"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RsvpLspPingInfoReply",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__RsvpLspPingInfoReply__LspPingGetInfoStatus", "symbols": ["ROUTING__LSP__PING__GET__SUCCESS", "ROUTING__LSP__PING__GET__INTERNAL__ERROR", "ROUTING__LSP__PING__GET__INVALID__PARAMETER"] } ], "default": null }
+      ,
+      {
+        "name": "rsvp_info",
+        "type": ["null", "Routing__RsvpLspPingInfo"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__LdpLspPingInfoRequest",
+    "fields": [
+      {
+        "name": "prefix",
+        "type": ["null", "Routing__RoutePrefix"],
+        "default": null
+      },
+      {
+        "name": "prefix_length",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "instance_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__LdpLspPingInfo",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__LdpLspPingInfo__LdpLspPingStatus", "symbols": ["ROUTING__LDP__LSP__PING__NOERROR", "ROUTING__LDP__LSP__PING__FEC__NOTFOUND", "ROUTING__LDP__LSP__PING__P2_MP__FEC__NOTFOUND", "ROUTING__LDP__LSP__PING__INSTANCE__NOTFOUND"] } ], "default": null }
+      ,
+      {
+        "name": "bfd_discriminator",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "nexthop_info",
+        "type": ["null", "Routing__MplsForwardingInfo"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__LdpLspPingInfoReply",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__LdpLspPingInfoReply__LspPingGetInfoStatus", "symbols": ["ROUTING__LSP__PING__GET__SUCCESS", "ROUTING__LSP__PING__GET__INTERNAL__ERROR", "ROUTING__LSP__PING__GET__INVALID__PARAMETER"] } ], "default": null }
+      ,
+      {
+        "name": "ldp_info",
+        "type": ["null", "Routing__LdpLspPingInfo"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__VpnLspPingInfoRequest",
+    "fields": [
+      {
+        "name": "prefix",
+        "type": ["null", "Routing__RoutePrefix"],
+        "default": null
+      },
+      {
+        "name": "prefix_length",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "instance_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__VpnLspPingInfo",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__VpnLspPingInfo__VpnLspPingStatus", "symbols": ["ROUTING__VPN__LSP__PING__NOERROR", "ROUTING__VPN__LSP__PING__NOTFOUND", "ROUTING__VPN__LSP__PING__PFX__NOTFOUND", "ROUTING__VPN__LSP__PING__NH__NOTFOUND", "ROUTING__VPN__LSP__PING__NH__NOT__REMOTE", "ROUTING__VPN__LSP__PING__NH__NOT__RESOLVED", "ROUTING__VPN__LSP__PING__IN__GRACEFUL__RESTART"] } ], "default": null }
+      ,
+      {
+        "name": "rd",
+        "type": ["null", "Routing__RouteDistinguisher"],
+        "default": null
+      },
+      {
+        "name": "nexthop_info",
+        "type": ["null", "Routing__MplsForwardingInfo"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__VpnLspPingInfoReply",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__VpnLspPingInfoReply__LspPingGetInfoStatus", "symbols": ["ROUTING__LSP__PING__GET__SUCCESS", "ROUTING__LSP__PING__GET__INTERNAL__ERROR", "ROUTING__LSP__PING__GET__INVALID__PARAMETER"] } ], "default": null }
+      ,
+      {
+        "name": "vpn_info",
+        "type": ["null", "Routing__VpnLspPingInfo"],
+        "default": null
+      }
+    ]
+  }
+]

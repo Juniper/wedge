@@ -1,0 +1,301 @@
+[
+  {
+    "type": "record",
+    "name": "Management__ExecuteOpCommandRequest",
+    "doc": "Only one of the following fields should be specified: cli_command, xml_command, json_command",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "cli_command",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "xml_command",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "json_command",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "out_format", "type": ["null", { "type": "enum", "name": "Management__ExecuteOpCommandRequest__OperationFormatType", "symbols": ["MANAGEMENT__OPERATION__FORMAT__JSON", "MANAGEMENT__OPERATION__FORMAT__XML", "MANAGEMENT__OPERATION__FORMAT__CLI"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Management__ExecuteOpCommandResponse",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "data",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Management__ExecuteOpCommandResponse__JunosRpcResponseTypes", "symbols": ["MANAGEMENT__SUCCESS", "MANAGEMENT__NOK", "MANAGEMENT__UNSUPPORTED__PATH", "MANAGEMENT__INVALID__PATH", "MANAGEMENT__INVALID__CONFIGURATION", "MANAGEMENT__UNSUPPORTED__ENCODING"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Management__EphConfigRequestList",
+    "fields": [
+      {
+        "name": "operation_id",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "path",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Management__GetEphemeralConfigRequest",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "encoding", "type": ["null", { "type": "enum", "name": "Management__GetEphemeralConfigRequest__JunosDataEncodingTypes", "symbols": ["MANAGEMENT__ENCODING__XML", "MANAGEMENT__ENCODING__JSON"] } ], "default": null }
+      ,
+      {
+        "name": "eph_config_requests",
+        "type": ["null", {"type": "array", "items": "Management__EphConfigRequestList"}],
+        "default": null
+      },
+      {
+        "name": "eph_instance_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "merge_view",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Management__GetEphemeralConfigResponse__ResponseList",
+    "fields": [
+      {
+        "name": "operation_id",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "path",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Management__GetEphemeralConfigResponse__ResponseList__JunosRpcResponseTypes", "symbols": ["MANAGEMENT__SUCCESS", "MANAGEMENT__NOK", "MANAGEMENT__UNSUPPORTED__PATH", "MANAGEMENT__INVALID__PATH", "MANAGEMENT__INVALID__CONFIGURATION", "MANAGEMENT__UNSUPPORTED__ENCODING"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Management__GetEphemeralConfigResponse",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "response",
+        "type": ["null", {"type": "array", "items": "Management__GetEphemeralConfigResponse__ResponseList"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Management__EditEphemeralConfigRequest__ConfigOperationList",
+    "doc": "Only one of the following fields should be specified: xml_config, json_config",
+    "fields": [
+      {
+        "name": "operation_id",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Management__EditEphemeralConfigRequest__ConfigOperationList__ConfigCommands", "symbols": ["MANAGEMENT__UPDATE__CONFIG", "MANAGEMENT__REPLACE__CONFIG", "MANAGEMENT__DELETE__CONFIG"] } ], "default": null }
+      ,
+      {
+        "name": "path",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "xml_config",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "json_config",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Management__EditEphemeralConfigRequest",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "eph_config_operations",
+        "type": ["null", {"type": "array", "items": "Management__EditEphemeralConfigRequest__ConfigOperationList"}],
+        "default": null
+      },
+      {
+        "name": "eph_instance_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "enable_config_validation",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "load_only",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Management__EditEphemeralConfigResponse__ResponseList",
+    "fields": [
+      {
+        "name": "operation_id",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Management__EditEphemeralConfigResponse__ResponseList__JunosRpcResponseTypes", "symbols": ["MANAGEMENT__SUCCESS", "MANAGEMENT__NOK", "MANAGEMENT__UNSUPPORTED__PATH", "MANAGEMENT__INVALID__PATH", "MANAGEMENT__INVALID__CONFIGURATION", "MANAGEMENT__UNSUPPORTED__ENCODING"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Management__EditEphemeralConfigResponse",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "response",
+        "type": ["null", {"type": "array", "items": "Management__EditEphemeralConfigResponse__ResponseList"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Management__ConfigCommit",
+    "fields": [
+      { "name": "commit_type", "type": ["null", { "type": "enum", "name": "Management__ConfigCommit__ConfigCommitType", "symbols": ["MANAGEMENT__CONFIG__COMMIT__SYNCHRONIZE", "MANAGEMENT__CONFIG__COMMIT"] } ], "default": null }
+      ,
+      {
+        "name": "comment",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Management__ExecuteCfgCommandRequest",
+    "doc": "Only one of the following fields should be specified: xml_config, json_config, text_config",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "xml_config",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "json_config",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "text_config",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "load_type", "type": ["null", { "type": "enum", "name": "Management__ExecuteCfgCommandRequest__ConfigLoadType", "symbols": ["MANAGEMENT__CONFIG__LOAD__REPLACE", "MANAGEMENT__CONFIG__LOAD__MERGE", "MANAGEMENT__CONFIG__LOAD__OVERRIDE", "MANAGEMENT__CONFIG__LOAD__UPDATE", "MANAGEMENT__CONFIG__LOAD__SET"] } ], "default": null }
+      ,
+      {
+        "name": "commit",
+        "type": ["null", "Management__ConfigCommit"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Management__ExecuteCfgCommandResponse",
+    "fields": [
+      {
+        "name": "request_id",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Management__ExecuteCfgCommandResponse__JunosRpcResponseTypes", "symbols": ["MANAGEMENT__SUCCESS", "MANAGEMENT__NOK", "MANAGEMENT__UNSUPPORTED__PATH", "MANAGEMENT__INVALID__PATH", "MANAGEMENT__INVALID__CONFIGURATION", "MANAGEMENT__UNSUPPORTED__ENCODING"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  }
+]

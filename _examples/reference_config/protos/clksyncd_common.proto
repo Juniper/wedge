@@ -1,0 +1,479 @@
+/*
+ * $Id: clksyncd_common.proto$
+ *
+ * clksyncd_common.proto - RPC messages and service definitions. 
+ *                        This file is shared with client.
+ * Ramana Reddy M, May 2016
+ *
+ * Copyright (c) 2016-2017, Juniper Networks, Inc.
+ * All rights reserved.
+ */
+
+syntax = "proto3";
+package clksync;
+
+/* Review notes:  I have removed the MAX/ definitions etc., from IPC */
+enum ClkSrcType {
+    INVALID             = 0;
+    CHASSIS_FREQ        = 1;
+    CHASSIS_PHASE       = 2;
+    LINE_PRI            = 3;
+    LINE_SEC            = 4;
+    GPS_FREQ            = 5;
+    GPS_PHASE           = 6;
+    GPS_FREQ_N_PHASE    = 7;
+    BITS_FREQ           = 8;
+    PTP_FREQ_N_PHASE    = 9;
+    FREERUN             = 10;
+    HYBRID_FREQ         = 11;
+    HYBRID_PHASE        = 12;
+    HYBRID_FREQ_N_PHASE = 13;
+}
+
+enum ClkInSignalType{
+    _INVALID              = 0;
+    _CHASSIS_FREQ         = 1;
+    _CHASSIS_PHASE        = 2;
+    _LINE_PRI             = 3;
+    _LINE_SEC             = 4;
+    _GPS_FREQ             = 5;
+    _GPS_PHASE            = 6;
+    _BITS_FREQ            = 7;
+    _PTP_FREQ             = 8;
+    _PTP_PHASE            = 9;
+}
+
+enum ClkSubmsgType {
+    UNKNOWN_SUBMSG    = 0;
+    PID               = 1;
+    VERSION           = 2;
+}
+
+enum ClkPllType {
+    UNKNOWN    = 0;
+    CHASSIS    = 1;
+    SETS       = 2;
+    PTP        = 3;
+    GPS        = 4;
+}
+
+enum ClkSysMode {
+    _NONE       = 0;
+    _SYNCE      = 1;
+    _PTP        = 2;
+    _HYBRID     = 3;
+}
+
+enum ClkIdx {
+    PRI          = 0;
+    SEC          = 1;
+    TERT         = 2;
+    QUART        = 3;
+    QUIN         = 4;
+    INVALID_IDX  = 5;
+}
+enum ClkSrcFreqState
+{
+    DISABLED   = 0;
+    QUALIFYING = 1;
+    FAILED     = 2;
+    QUALIFIED  = 3;
+}
+
+enum ClkSrcPhaseState
+{
+    _DISABLED   = 0;
+    _QUALIFYING = 1;
+    _FAILED     = 2;
+    _QUALIFIED  = 3;
+}
+
+enum ClkPllBw
+{
+    PLL_INVALID   =  0;
+    PLL_P1Hz      =  1;
+    PLL_1P7Hz     =  2;
+    PLL_3P5Hz     =  3;
+    PLL_14Hz      =  4;
+    PLL_28Hz      =  5;
+    PLL_890Hz     =  6;
+    PLL_FAST_LOCK =  7;
+}
+
+enum ClkPiPslBw
+{
+    P885US    = 0;
+    _7P5US     = 1;
+    _61US      = 2;
+    UNLIMITED = 3;
+}
+
+enum ClkPiExtSignalFreq{
+    _1PPS     =  0;
+    _8_KHZ    =  1;
+    _1544_KHZ =  2;
+    _2048_KHZ =  3;
+    _T1       =  4;
+    _E1       =  5;
+    _1_MHZ    =  6;
+    _5_MHZ    =  7;
+    _10_MHZ   =  8;
+    _1944MZ   =  9;
+    _UNKNOWN  =  10;
+}
+
+enum ClkPiExtBitsFraming{
+    UNKNOWN_FRM     = 0;
+    ESF             = 1;
+    G704            = 2;
+    G704_NO_CRC4    = 3;
+    SF              = 4;
+    D4              = 5;
+    FAS             = 6;
+    CAS             = 7;
+    CRC4            = 8;
+    CAS_CRC4        = 9;
+}
+
+enum ClkBitsLineEncoding{
+    UNKNOWN_ENC    = 0;
+    AMI        = 1;
+    B8ZS       = 2;
+    HDB3       = 3;
+}
+
+enum ClkSabit{
+    UNKNOWN_SA = 0;
+    NA         = 1;
+    SA4        = 4;
+    SA5        = 5;
+    SA6        = 6;
+    SA7        = 7;
+    SA8        = 8;
+}
+
+enum ClkExtOutTxStatus{
+    __DISABLED  = 0;
+    SQUELCHED = 1;
+    ACTIVE    = 2;
+}
+
+enum ClkExtLedType {
+    BITS_CLK   = 0;
+    GPS_CLK    = 1;
+    DTI_CLK    = 2;
+}
+
+enum ClkDpllMode {
+    MODE_UNKNOWN  = 0;
+    MODE_NORMAL   = 1;
+    MODE_HOLDOVER = 2;
+    MODE_FREERUN = 3;
+    MODE_AUTO    = 4;
+    MODE_TOP     = 5;
+}
+
+enum ClkPllState {
+    UNKNOWN_STATE   = 0;
+    INIT_STATE      = 1;
+    LOCK_ACQ_STATE  = 2;
+    LOCKED_STATE    = 3;
+    HOLDOVER_STATE  = 4;
+    FREERUN_STATE   = 5;
+}
+
+enum ClkQlLevel{
+    QL_UNDEFINED    = 0;
+    QL_PRC          = 1;
+    QL_SSU_A        = 2;
+    QL_SSU_B        = 3;
+    QL_SEC          = 4;
+    QL_PRS          = 5;
+    QL_STU          = 6;
+    QL_ST2          = 7;
+    QL_TNC          = 8;
+    QL_ST3E         = 9;
+    QL_ST3          = 10;
+    QL_SMC          = 11;
+    QL_ST4          = 12;
+}
+
+enum ClkLinkState {
+    LINK_STATE_UP  = 0;
+    LINK_STATE_UP_TO_DOWN  = 1;
+    LINK_STATE_DOWN_TO_UP  = 2;
+    LINK_STATE_DOWN        = 3;
+}
+
+enum ClkMessageSubType {
+    INVALID_REQ  = 0;
+    ENABLE_REQ   = 1;
+    DISABLE_REQ  = 2;
+}
+
+enum ClkLedColor {
+    EXT_NONE  = 0;
+    EXT_GREEN = 1;
+    EXT_RED   = 2;
+}
+
+/*
+ * ----------------------------------------------------------------------------
+ * Different types of return codes to be sent back to client based on the
+ * operation was successful or not and if not, possibly more specific reasons
+ * as to why it failed.
+ * ----------------------------------------------------------------------------
+ */
+enum ReturnCode {
+    // Operation was executed successfully
+    RET_SUCCESS        =  0;
+    // General failure : operation not executed successfully
+    RET_FAILURE        =  1;
+    // Entry was not found
+    RET_NOT_FOUND      =  2;
+    // Invalid input paramters
+    RET_INVALID_PARAMS =  3;
+}
+
+/* To check if clksync_pi_init_clock_modules_msg_ to merge with common init message */
+message ClksyncHwInitRequest {
+   /*
+    * bitmap of type clksync_pi_clock_module_type_t to
+    * decide which all HW types to initialise
+    */
+   uint32 modules_bitmap = 1;
+}
+
+message ClksyncOperReply {
+    // Return code indicating the success or failure of the operation and in
+    // case of failure, the code will indicate the type of the failure which
+    // occurred.
+    ReturnCode ret_code  = 1;
+}
+
+message ClksyncTodTime{
+    uint32     utc_secs = 1;
+    uint32     utc_nsecs = 2;
+}
+
+message ClksyncGetTodReply {
+    ReturnCode ret_code  = 1;
+    uint32     utc_secs = 2;
+    uint32     utc_nsecs = 3;
+    int32      parser_status = 4;
+    uint32     utc_offset = 5;
+}
+
+/*
+ * Below strucutres are for messages from lclksyncd to clksyncd.
+ */
+
+message ClksyncPushInfoUpMsg {
+    ClkSubmsgType             submsg_type   = 1;
+    uint32                    param1        = 2;
+    uint32                    param2        = 3;
+}
+
+message ClksyncPllFreqStatusMsg {
+    ClkPllType          dpll_type           = 1;
+    ClkSrcType          clk_src             = 2;
+    uint32              clk_src_unit_num    = 3;
+    ClkSrcFreqState     freq_status         = 4;
+}
+
+message ClksyncPllSyncStatusMsg {
+    ClkPllType          dpll_type           = 1;
+    ClkSrcType          clk_src             = 2;
+    uint32              clk_src_unit_num    = 3;
+    ClkSrcPhaseState    phase_status        = 4;
+}
+
+message ClksyncPushInfoDownRequest {
+    ClkSubmsgType             submsg_type   = 1;
+    uint32                    param1        = 2;
+    uint32                    param2        = 3;
+}
+
+message ClkyncdSignalForClkSyncRequest {
+    ClkMessageSubType   enable_disable      = 1;
+    ClkPllType          dpll_type           = 2;
+    ClkInSignalType     input_signal_type   = 3;
+    uint32              clk_signal_unit_num = 4;
+    ClkSrcType          clk_src             = 5;
+    uint32              clk_src_unit_num    = 6;
+    ClkIdx              clk_src_idx         = 7;
+    ClkSysMode          clk_sys_mode        = 8;
+}
+
+message ClksyncPllSrcInputRequest {
+    ClkPllType          dpll_type           = 1;
+    ClkSrcType          clk_src             = 2;
+    uint32              clk_src_unit_num    = 3;
+    ClkPllBw            clk_pll_bw          = 4;
+    ClkPiPslBw          clk_psl_bw          = 5;
+    ClkIdx              clk_src_idx         = 6;
+    ClkSysMode          clk_sys_mode        = 7;
+}
+
+/*Mapped to clksync_pi_enable_dpll_clk_src_input_msg_ */
+message ClksyncCfgPllSrcInputRequest {
+    ClkMessageSubType   enable_disable         = 1;
+    ClkPllType          dpll_type              = 2;
+    ClkSrcType          clk_src                = 3;
+    uint32              clk_src_unit_num       = 4;
+    ClkPiExtSignalFreq  clk_signal_freq        = 5;
+    uint32              disable_input_clk_line = 6;
+    ClkIdx              clk_src_idx            = 7;
+    ClkSysMode          clk_sys_mode           = 8;
+}
+
+/* Maps to clksync_pi_ext_config_interface_msg_ */
+message ClksyncCfgExtIntfRequest {
+    uint32              framer_reset        = 1;
+    ClkSrcType          clk_src             = 2;
+    uint32              clk_src_unit_num    = 3;
+    ClkPiExtSignalFreq  clk_signal_freq     = 4;
+    ClkPiExtBitsFraming framing_mode        = 5;
+    ClkBitsLineEncoding clk_line_encoding   = 6;
+    ClkSabit            clk_sabit           = 7;
+    bool                intf_cfg_changed    = 8;
+}
+
+/*Maps to clksync_pi_select_clk_src_for_clk_out_msg_ */
+message ClksyncSelectExtClkOutputRequest {
+    ClkPllType          dpll_type           = 1;
+    uint32              clk_output_unit_num = 2;
+    ClkSrcType          clk_src             = 3;
+    uint32              clk_src_unit_num    = 4;
+    ClkPiExtSignalFreq  clk_signal_freq     = 5;
+    ClkExtOutTxStatus   ext_out_status      = 6;
+}
+
+/* Maps to clksync_pi_ext_disable_clk_output_msg_ & clksync_pi_ext_enable_clk_output_msg_ */
+message ClksyncCfgExtClkOutputRequest {
+    ClkMessageSubType   enable_disable          = 1;
+    ClkPllType          dpll_type               = 2;
+    uint32              clk_output_unit_num     = 3;
+    ClkSrcType          clk_src                 = 4;
+    uint32              clk_src_unit_num        = 5;
+    uint32              disable_input_clk_src   = 6;
+    ClkExtOutTxStatus   ext_out_status          = 7;
+
+}
+
+/* Maps to clksync_pi_ext_set_tx_ql_msg_ */
+message ClksyncSetExtTxQlRequest{
+    uint32          clk_unit_num    = 1;
+    uint32          ssm_tx_ql       = 2;
+}
+
+/* Maps to clksync_pi_ext_set_led_color_msg_t */
+message ClksyncSetExtLedRequest {
+    uint32              clk_unit_num       = 1;
+    ClkExtLedType       ext_led_type       = 2;
+    ClkLedColor         led_rx_color       = 3;
+    ClkLedColor         led_tx_color       = 4;
+}
+
+/* Maps to clksync_pi_update_dpll_status_change_msg_ */
+message ClksyncPllStatusMsg {
+    ClkPllType      dpll_type           = 1;
+    ClkSrcType      clk_src             = 2;
+    uint32          clk_src_unit_num    = 3;
+    ClkPllState     dpll_state          = 4;
+    uint32          holdover_status     = 5;
+}
+
+/*Maps to clksync_pi_update_ext_ssm_ql_change_msg_ */
+message ClksyncExtIntfStatusMsg {
+    uint32       clk_unit_num    = 1;
+    ClkLinkState link_state      = 2;
+}
+
+/*Maps to clksync_pi_update_ext_ssm_ql_change_msg_ */
+message ClksyncExtRxQlMsg {
+    uint32          clk_unit_num    = 1;
+    ClkQlLevel      ql_value        = 2;
+}
+
+/*Maps to clksync_pi_dpll_set_mode_msg_ */
+message ClksyncSetPllModeRequest {
+    ClkPllType      dpll_type           = 1;
+    ClkDpllMode     dpll_mode           = 2;
+}
+
+/*Maps to clksync_pi_dpll_set_bw_psl_msg_  */
+message ClksyncSetPllBwPslRequest {
+    ClkPllType      dpll_type           = 1;
+    ClkPllBw        clk_pll_bw          = 2;
+    ClkPiPslBw      clk_psl_bw          = 3;
+}
+
+message ClksyncSetTodConfigRequest {
+    string tod_port_name  = 1;
+    string tod_cfg_format = 2;
+}
+
+message ClksyncConnectMsg {
+    uint32      connect_type = 1;
+}
+
+message ClksyncStatusGetReq {
+    bool        update = 1;
+}
+
+message ClksyncExtStatusGetReq{
+    bool        update = 1;
+}
+
+message ClksyncExtRxQlGetReq{
+    bool        update = 1;
+}
+
+message ClksyncTodStartMsg{
+    uint32 utc_sec = 1;
+    uint32 utc_nsec = 2;
+    uint32  start_epats = 3;
+}
+
+service Timing {
+    /* First IPC */
+    rpc ClksyncConnect(ClksyncConnectMsg) returns (ClksyncOperReply) {}
+
+    rpc ClksyncCfgPushInfoDownRequest(ClksyncPushInfoDownRequest) returns (ClksyncOperReply) {}
+    /* Comment merging ClkyncdSetSignalForClkSyncRequest and ClkyncdReSetSignalForClkSyncRequest */
+    rpc ClksyncCfgSignalForClkSrc(ClkyncdSignalForClkSyncRequest) returns (ClksyncOperReply) {}
+    rpc ClksyncInitHw (ClksyncHwInitRequest) returns (ClksyncOperReply) {}
+    rpc ClksyncSelectPllSrcInput(ClksyncPllSrcInputRequest) returns (ClksyncOperReply) {}
+    /* This merges Enable/Disable dpll clk_src_input */
+    rpc ClksyncCfgPllSrcInput(ClksyncCfgPllSrcInputRequest)returns (ClksyncOperReply) {}
+    rpc ClksyncCfgExtIntf (ClksyncCfgExtIntfRequest) returns (ClksyncOperReply) {}
+    rpc ClksyncSelectExtClkOutput (ClksyncSelectExtClkOutputRequest) returns (ClksyncOperReply) {}
+    /* This is merged for Enable/Disable EXT */
+    rpc ClksyncCfgExtClkOutput(ClksyncCfgExtClkOutputRequest) returns (ClksyncOperReply) {}
+    rpc ClksyncSetExtTxQl(ClksyncSetExtTxQlRequest)returns (ClksyncOperReply) {}
+    rpc ClksyncSetExtLed (ClksyncSetExtLedRequest)  returns (ClksyncOperReply) {}
+    rpc ClksyncSetPllMode (ClksyncSetPllModeRequest) returns (ClksyncOperReply) {}
+    rpc ClksyncSetPllBwPsl (ClksyncSetPllBwPslRequest) returns (ClksyncOperReply) {}
+
+    rpc ClksyncSetTodConfig (ClksyncSetTodConfigRequest) returns (ClksyncOperReply) {}
+    rpc ClksyncGetTodValue  (ClksyncStatusGetReq) returns (ClksyncGetTodReply) {}
+
+    /* Calls from Lclksyncd to Clksyncd */
+    rpc ClksyncPushInfoUp (ClksyncStatusGetReq)
+        returns (stream ClksyncPushInfoUpMsg) {}
+    rpc ClksyncPllFreqStatusGet (ClksyncStatusGetReq)
+        returns (stream ClksyncPllFreqStatusMsg) {}
+    /* Merges both holdover and dpll status change */
+    rpc ClksyncPllStatusGet (ClksyncStatusGetReq)
+        returns (stream ClksyncPllStatusMsg) {}
+    rpc ClksyncPllSyncStatusGet (ClksyncStatusGetReq)
+        returns (stream ClksyncPllSyncStatusMsg) {}
+    rpc ClksyncExtIntfStatusGet (ClksyncStatusGetReq)
+        returns (stream ClksyncExtIntfStatusMsg) {}
+    rpc ClksyncExtRxQlGet (ClksyncStatusGetReq)
+        returns (stream ClksyncExtRxQlMsg) {}
+    rpc ClksyncTodStartReq (ClksyncStatusGetReq)
+        returns (stream ClksyncTodStartMsg) {}
+}
+

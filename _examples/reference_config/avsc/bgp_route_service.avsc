@@ -1,0 +1,698 @@
+[
+
+
+  {
+    "type": "record",
+    "name": "JnxBase__IpAddress",
+    "doc": "Only one of the following fields should be specified: addr_string, addr_bytes",
+    "fields": [
+      {
+        "name": "addr_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr_bytes",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "JnxBase__MacAddress",
+    "doc": "Only one of the following fields should be specified: addr_string, addr_bytes",
+    "fields": [
+      {
+        "name": "addr_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr_bytes",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  }
+
+  ,
+  {
+    "type": "record",
+    "name": "Routing__RouteTableName",
+    "fields": [
+      {
+        "name": "name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RouteTableId",
+    "fields": [
+      {
+        "name": "id",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RouteTable",
+    "doc": "Only one of the following fields should be specified: rtt_id, rtt_name",
+    "fields": [
+      {
+        "name": "rtt_id",
+        "type": ["null", "Routing__RouteTableId"],
+        "default": null
+      },
+      {
+        "name": "rtt_name",
+        "type": ["null", "Routing__RouteTableName"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RdType0",
+    "fields": [
+      {
+        "name": "as_number",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "assigned_number",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RdType1",
+    "fields": [
+      {
+        "name": "ip_address",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "assigned_number",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RdType2",
+    "fields": [
+      {
+        "name": "as_number",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "assigned_number",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RouteDistinguisher",
+    "doc": "Only one of the following fields should be specified: rd0, rd1, rd2",
+    "fields": [
+      {
+        "name": "rd0",
+        "type": ["null", "Routing__RdType0"],
+        "default": null
+      },
+      {
+        "name": "rd1",
+        "type": ["null", "Routing__RdType1"],
+        "default": null
+      },
+      {
+        "name": "rd2",
+        "type": ["null", "Routing__RdType2"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__L3vpnAddress",
+    "fields": [
+      {
+        "name": "rd",
+        "type": ["null", "Routing__RouteDistinguisher"],
+        "default": null
+      },
+      {
+        "name": "vpn_addr",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__RoutePrefix",
+    "doc": "Only one of the following fields should be specified: inet, inet6, inetvpn, inet6vpn, labeled_inet, labeled_inet6",
+    "fields": [
+      {
+        "name": "inet",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "inet6",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "inetvpn",
+        "type": ["null", "Routing__L3vpnAddress"],
+        "default": null
+      },
+      {
+        "name": "inet6vpn",
+        "type": ["null", "Routing__L3vpnAddress"],
+        "default": null
+      },
+      {
+        "name": "labeled_inet",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "labeled_inet6",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__LabelEntry",
+    "fields": [
+      {
+        "name": "label",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "traffic_class",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "ttl",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "bottom_of_stack",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__LabelStackEntry",
+    "fields": [
+      { "name": "opcode", "type": ["null", { "type": "enum", "name": "Routing__LabelStackEntry__LabelOperation", "symbols": ["ROUTING__NOOP", "ROUTING__POP", "ROUTING__PUSH", "ROUTING__SWAP"] } ], "default": null }
+      ,
+      {
+        "name": "label_entry",
+        "type": ["null", "Routing__LabelEntry"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__MplsAddress",
+    "fields": [
+      {
+        "name": "label",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__LabelStack",
+    "fields": [
+      {
+        "name": "entries",
+        "type": ["null", {"type": "array", "items": "Routing__LabelStackEntry"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__NetworkAddress",
+    "doc": "Only one of the following fields should be specified: inet, inet6, mpls",
+    "fields": [
+      {
+        "name": "inet",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "inet6",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "mpls",
+        "type": ["null", "Routing__MplsAddress"],
+        "default": null
+      }
+    ]
+  }
+
+  ,
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteOperationFlags",
+    "fields": [
+      {
+        "name": "no_advertise",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "no_export",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "use_nexthop_reject",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpAttrib32",
+    "fields": [
+      {
+        "name": "value",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpAttrib64",
+    "fields": [
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__Community",
+    "fields": [
+      {
+        "name": "community_string",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__CommunityList",
+    "fields": [
+      {
+        "name": "com_list",
+        "type": ["null", {"type": "array", "items": "Routing__Community"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__AsPath",
+    "fields": [
+      {
+        "name": "aspath_string",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteMatch",
+    "fields": [
+      {
+        "name": "dest_prefix",
+        "type": ["null", "Routing__RoutePrefix"],
+        "default": null
+      },
+      {
+        "name": "dest_prefix_len",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "table",
+        "type": ["null", "Routing__RouteTable"],
+        "default": null
+      },
+      { "name": "protocol", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteMatch__RouteProtocol", "symbols": ["ROUTING__PROTO__UNSPECIFIED", "ROUTING__PROTO__BGP", "ROUTING__PROTO__BGP__STATIC"] } ], "default": null }
+      ,
+      {
+        "name": "path_cookie",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "communities",
+        "type": ["null", "Routing__CommunityList"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteEntry",
+    "doc": "Only one of the following fields should be specified: vpn_label, labels",
+    "fields": [
+      {
+        "name": "dest_prefix",
+        "type": ["null", "Routing__RoutePrefix"],
+        "default": null
+      },
+      {
+        "name": "dest_prefix_len",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "table",
+        "type": ["null", "Routing__RouteTable"],
+        "default": null
+      },
+      { "name": "protocol", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteEntry__RouteProtocol", "symbols": ["ROUTING__PROTO__UNSPECIFIED", "ROUTING__PROTO__BGP", "ROUTING__PROTO__BGP__STATIC"] } ], "default": null }
+      ,
+      {
+        "name": "path_cookie",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "route_preference",
+        "type": ["null", "Routing__BgpAttrib32"],
+        "default": null
+      },
+      {
+        "name": "local_preference",
+        "type": ["null", "Routing__BgpAttrib32"],
+        "default": null
+      },
+      {
+        "name": "med",
+        "type": ["null", "Routing__BgpAttrib32"],
+        "default": null
+      },
+      {
+        "name": "aigp_distance",
+        "type": ["null", "Routing__BgpAttrib64"],
+        "default": null
+      },
+      {
+        "name": "vpn_label",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "labels",
+        "type": ["null", "Routing__LabelStack"],
+        "default": null
+      },
+      {
+        "name": "communities",
+        "type": ["null", "Routing__CommunityList"],
+        "default": null
+      },
+      {
+        "name": "aspath",
+        "type": ["null", "Routing__AsPath"],
+        "default": null
+      },
+      {
+        "name": "originator_id",
+        "type": ["null", "Routing__BgpAttrib32"],
+        "default": null
+      },
+      {
+        "name": "cluster_list",
+        "type": ["null", {"type": "array", "items": "Routing__BgpAttrib32"}],
+        "default": null
+      },
+      {
+        "name": "cluster_id",
+        "type": ["null", "Routing__BgpAttrib32"],
+        "default": null
+      },
+      {
+        "name": "route_oper_flag",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "protocol_nexthops",
+        "type": ["null", {"type": "array", "items": "JnxBase__IpAddress"}],
+        "default": null
+      },
+      { "name": "route_type", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteEntry__BgpPeerType", "symbols": ["ROUTING__BGP__INTERNAL", "ROUTING__BGP__EXTERNAL"] } ], "default": null }
+      ,
+      {
+        "name": "route_flags",
+        "type": ["null", "Routing__BgpRouteOperationFlags"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteMonitorEntry",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteMonitorEntry__BgpRouteMonitorOper", "symbols": ["ROUTING__BGP_ROUTE_MONITOR_ENTRY__ROUTE__UPDATE", "ROUTING__BGP_ROUTE_MONITOR_ENTRY__ROUTE__REMOVE", "ROUTING__BGP_ROUTE_MONITOR_ENTRY__END__OF__RIBS"] } ], "default": null }
+      ,
+      {
+        "name": "bgp_route",
+        "type": ["null", "Routing__BgpRouteEntry"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteInitializeRequest",
+    "fields": [
+      {
+        "name": "WedgePlaceholder",
+        "type": "null"
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteInitializeReply",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteInitializeReply__BgpRouteInitializeStatus", "symbols": ["ROUTING__BGP_ROUTE_INITIALIZE_REPLY__SUCCESS", "ROUTING__BGP_ROUTE_INITIALIZE_REPLY__SUCCESS__STATE__REBOUND", "ROUTING__BGP_ROUTE_INITIALIZE_REPLY__INTERNAL__ERROR", "ROUTING__BGP_ROUTE_INITIALIZE_REPLY__ALREADY__INITIALIZED", "ROUTING__BGP_ROUTE_INITIALIZE_REPLY__GATEWAY__INVALID", "ROUTING__BGP_ROUTE_INITIALIZE_REPLY__CLEANUP__PENDING", "ROUTING__BGP_ROUTE_INITIALIZE_REPLY__BGP__NOT__READY"] } ], "default": null }
+      ,
+      {
+        "name": "gw_n_routes",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteCleanupRequest",
+    "fields": [
+      {
+        "name": "WedgePlaceholder",
+        "type": "null"
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteCleanupReply",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteCleanupReply__BgpRouteCleanupStatus", "symbols": ["ROUTING__BGP_ROUTE_CLEANUP_REPLY__SUCCESS", "ROUTING__BGP_ROUTE_CLEANUP_REPLY__INTERNAL__ERROR", "ROUTING__BGP_ROUTE_CLEANUP_REPLY__NOT__INITIALIZED"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteUpdateRequest",
+    "fields": [
+      {
+        "name": "bgp_routes",
+        "type": ["null", {"type": "array", "items": "Routing__BgpRouteEntry"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteRemoveRequest",
+    "fields": [
+      {
+        "name": "or_longer",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "bgp_routes",
+        "type": ["null", {"type": "array", "items": "Routing__BgpRouteMatch"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteGetRequest",
+    "fields": [
+      {
+        "name": "bgp_route",
+        "type": ["null", "Routing__BgpRouteMatch"],
+        "default": null
+      },
+      {
+        "name": "or_longer",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "active_only",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      { "name": "reply_address_format", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteGetRequest__AddressFormat", "symbols": ["JNX_BASE__ADDRESS__STRING", "JNX_BASE__ADDRESS__BYTES"] } ], "default": null }
+      ,
+      { "name": "reply_table_format", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteGetRequest__RouteTableFormat", "symbols": ["ROUTING__TABLE__STRING", "ROUTING__TABLE__ID"] } ], "default": null }
+      ,
+      {
+        "name": "route_count",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteOperReply",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteOperReply__BgpRouteOperStatus", "symbols": ["ROUTING__BGP_ROUTE_OPER_REPLY__SUCCESS", "ROUTING__BGP_ROUTE_OPER_REPLY__INTERNAL__ERROR", "ROUTING__BGP_ROUTE_OPER_REPLY__NOT__INITIALIZED", "ROUTING__BGP_ROUTE_OPER_REPLY__NO__OP", "ROUTING__BGP_ROUTE_OPER_REPLY__TOO__MANY__OPS", "ROUTING__BGP_ROUTE_OPER_REPLY__TABLE__INVALID", "ROUTING__BGP_ROUTE_OPER_REPLY__TABLE__NOT__READY", "ROUTING__BGP_ROUTE_OPER_REPLY__PREFIX__INVALID", "ROUTING__BGP_ROUTE_OPER_REPLY__PREFIX__LEN__TOO__SHORT", "ROUTING__BGP_ROUTE_OPER_REPLY__PREFIX__LEN__TOO__LONG", "ROUTING__BGP_ROUTE_OPER_REPLY__GATEWAY__INVALID", "ROUTING__BGP_ROUTE_OPER_REPLY__NEXTHOP__INVALID", "ROUTING__BGP_ROUTE_OPER_REPLY__NEXTHOP__ADDRESS__INVALID", "ROUTING__BGP_ROUTE_OPER_REPLY__NEXTHOP__ECMP__LIMIT", "ROUTING__BGP_ROUTE_OPER_REPLY__COMMUNITY__LIST__INVALID", "ROUTING__BGP_ROUTE_OPER_REPLY__ASPATH__INVALID", "ROUTING__BGP_ROUTE_OPER_REPLY__LABEL__INFO__INVALID", "ROUTING__BGP_ROUTE_OPER_REPLY__ROUTE__EXISTS", "ROUTING__BGP_ROUTE_OPER_REPLY__ROUTE__NOT__FOUND", "ROUTING__BGP_ROUTE_OPER_REPLY__CLUSTER__LIST__INVALID", "ROUTING__BGP_ROUTE_OPER_REPLY__PROTOCOL__INVALID", "ROUTING__BGP_ROUTE_OPER_REPLY__ROUTE__ADD__FAILED", "ROUTING__BGP_ROUTE_OPER_REPLY__BGP__NOT__READY", "ROUTING__BGP_ROUTE_OPER_REPLY__TRY__AGAIN", "ROUTING__BGP_ROUTE_OPER_REPLY__REQUEST__UNSUPPORTED", "ROUTING__BGP_ROUTE_OPER_REPLY__PEER__TYPE__INVALID"] } ], "default": null }
+      ,
+      {
+        "name": "operations_completed",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteGetReply",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteGetReply__BgpRouteGetStatus", "symbols": ["ROUTING__BGP_ROUTE_GET_REPLY__SUCCESS", "ROUTING__BGP_ROUTE_GET_REPLY__INTERNAL__ERROR", "ROUTING__BGP_ROUTE_GET_REPLY__NOT__INITIALIZED", "ROUTING__BGP_ROUTE_GET_REPLY__TABLE__INVALID", "ROUTING__BGP_ROUTE_GET_REPLY__TABLE__NOT__READY", "ROUTING__BGP_ROUTE_GET_REPLY__PREFIX__INVALID", "ROUTING__BGP_ROUTE_GET_REPLY__PREFIX__LEN__TOO__SHORT", "ROUTING__BGP_ROUTE_GET_REPLY__PREFIX__LEN__TOO__LONG", "ROUTING__BGP_ROUTE_GET_REPLY__ROUTE__NOT__FOUND", "ROUTING__BGP_ROUTE_GET_REPLY__PROTOCOL__INVALID", "ROUTING__BGP_ROUTE_GET_REPLY__ROUTE__INVALID", "ROUTING__BGP_ROUTE_GET_REPLY__REQUEST__UNSUPPORTED", "ROUTING__BGP_ROUTE_GET_REPLY__TRY__AGAIN", "ROUTING__BGP_ROUTE_GET_REPLY__ROUTE__COUNT__INVALID", "ROUTING__BGP_ROUTE_GET_REPLY__COMMUNITY__LIST__INVALID"] } ], "default": null }
+      ,
+      {
+        "name": "bgp_routes",
+        "type": ["null", {"type": "array", "items": "Routing__BgpRouteEntry"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteMonitorRegisterRequest",
+    "fields": [
+      { "name": "reply_address_format", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteMonitorRegisterRequest__AddressFormat", "symbols": ["JNX_BASE__ADDRESS__STRING", "JNX_BASE__ADDRESS__BYTES"] } ], "default": null }
+      ,
+      { "name": "reply_table_format", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteMonitorRegisterRequest__RouteTableFormat", "symbols": ["ROUTING__TABLE__STRING", "ROUTING__TABLE__ID"] } ], "default": null }
+      ,
+      {
+        "name": "route_count",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteMonitorRegisterReply",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteMonitorRegisterReply__BgpRouteMonitorRegisterStatus", "symbols": ["ROUTING__BGP_ROUTE_MONITOR_REGISTER_REPLY__SUCCESS", "ROUTING__BGP_ROUTE_MONITOR_REGISTER_REPLY__INTERNAL__ERROR", "ROUTING__BGP_ROUTE_MONITOR_REGISTER_REPLY__NOT__INITIALIZED", "ROUTING__BGP_ROUTE_MONITOR_REGISTER_REPLY__REGISTRATIONS__EXCEEDED", "ROUTING__BGP_ROUTE_MONITOR_REGISTER_REPLY__ALREADY__REGISTERED", "ROUTING__BGP_ROUTE_MONITOR_REGISTER_REPLY__ROUTE__COUNT__INVALID", "ROUTING__BGP_ROUTE_MONITOR_REGISTER_REPLY__ADDRESS__FORMAT__INVALID", "ROUTING__BGP_ROUTE_MONITOR_REGISTER_REPLY__TABLE__FORMAT__INVALID"] } ], "default": null }
+      ,
+      {
+        "name": "monitor_entries",
+        "type": ["null", {"type": "array", "items": "Routing__BgpRouteMonitorEntry"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteMonitorUnregisterRequest",
+    "fields": [
+      {
+        "name": "WedgePlaceholder",
+        "type": "null"
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteMonitorUnregisterReply",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteMonitorUnregisterReply__BgpRouteMonitorUnregisterStatus", "symbols": ["ROUTING__BGP_ROUTE_MONITOR_UNREGISTER_REPLY__SUCCESS", "ROUTING__BGP_ROUTE_MONITOR_UNREGISTER_REPLY__INTERNAL__ERROR", "ROUTING__BGP_ROUTE_MONITOR_UNREGISTER_REPLY__NOT__INITIALIZED", "ROUTING__BGP_ROUTE_MONITOR_UNREGISTER_REPLY__NOT__REGISTERED"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteMonitorRefreshRequest",
+    "fields": [
+      {
+        "name": "WedgePlaceholder",
+        "type": "null"
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Routing__BgpRouteMonitorRefreshReply",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Routing__BgpRouteMonitorRefreshReply__BgpRouteMonitorRefreshStatus", "symbols": ["ROUTING__BGP_ROUTE_MONITOR_REFRESH_REPLY__SUCCESS", "ROUTING__BGP_ROUTE_MONITOR_REFRESH_REPLY__INTERNAL__ERROR", "ROUTING__BGP_ROUTE_MONITOR_REFRESH_REPLY__NOT__INITIALIZED", "ROUTING__BGP_ROUTE_MONITOR_REFRESH_REPLY__NOT__REGISTERED"] } ], "default": null }
+
+    ]
+  }
+]

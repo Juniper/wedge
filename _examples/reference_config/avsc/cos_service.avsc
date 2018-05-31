@@ -1,0 +1,1544 @@
+[
+
+  {
+    "type": "record",
+    "name": "JnxBase__StrKeyStrVal",
+    "fields": [
+      {
+        "name": "key",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "JnxBase__TimeVal",
+    "fields": [
+      {
+        "name": "seconds",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "microseconds",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  }
+
+  ,
+  {
+    "type": "record",
+    "name": "Cos__CosStatus",
+    "fields": [
+      { "name": "code", "type": ["null", { "type": "enum", "name": "Cos__CosStatus__StatusCode", "symbols": ["JNX_BASE__SUCCESS", "JNX_BASE__FAILURE"] } ], "default": null }
+      ,
+      { "name": "sub_code", "type": ["null", { "type": "enum", "name": "Cos__CosStatus__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosObjRefInfo",
+    "fields": [
+      {
+        "name": "referencing_obj_type",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "referencing_obj_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "referencing_obj_count",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosForwardingClassQueryRequest",
+    "fields": [
+      {
+        "name": "forwarding_class_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "ref_objects",
+        "type": ["null", {"type": "array", "items": "Cos__CosObjRefInfo"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosForwardingClassQueryResponse",
+    "fields": [
+      { "name": "code", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassQueryResponse__StatusCode", "symbols": ["JNX_BASE__SUCCESS", "JNX_BASE__FAILURE"] } ], "default": null }
+      ,
+      { "name": "sub_code", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassQueryResponse__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "forwarding_class_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "queue_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "restrict_queue_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "forwarding_class_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "fabric_priority", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassQueryResponse__CosFcFabricPriority", "symbols": ["COS__FAB__LOW", "COS__FAB__HIGH"] } ], "default": null }
+      ,
+      { "name": "policing_priority", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassQueryResponse__CosFcPolicingPriority", "symbols": ["COS__NORMAL", "COS__PREMIUM"] } ], "default": null }
+      ,
+      { "name": "spu_priority", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassQueryResponse__CosFcSpuPriority", "symbols": ["COS__SPU__LOW", "COS__SPU__HIGH"] } ], "default": null }
+      ,
+      {
+        "name": "sharable",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "ref_objects",
+        "type": ["null", {"type": "array", "items": "Cos__CosObjRefInfo"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosForwardingClassIdQueryRequest",
+    "fields": [
+      {
+        "name": "forwarding_class_id",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosForwardingClassIdQueryResponse",
+    "fields": [
+      { "name": "code", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassIdQueryResponse__StatusCode", "symbols": ["JNX_BASE__SUCCESS", "JNX_BASE__FAILURE"] } ], "default": null }
+      ,
+      { "name": "sub_code", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassIdQueryResponse__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "forwarding_class_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "queue_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "forwarding_class_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "restrict_queue_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "fabric_priority", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassIdQueryResponse__CosFcFabricPriority", "symbols": ["COS__FAB__LOW", "COS__FAB__HIGH"] } ], "default": null }
+      ,
+      { "name": "policing_priority", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassIdQueryResponse__CosFcPolicingPriority", "symbols": ["COS__NORMAL", "COS__PREMIUM"] } ], "default": null }
+      ,
+      { "name": "spu_priority", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassIdQueryResponse__CosFcSpuPriority", "symbols": ["COS__SPU__LOW", "COS__SPU__HIGH"] } ], "default": null }
+      ,
+      {
+        "name": "sharable",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosForwardingClassQueueQueryRequest",
+    "fields": [
+      {
+        "name": "queue_id",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosForwardingClassQueueQueryResponse",
+    "fields": [
+      { "name": "code", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassQueueQueryResponse__StatusCode", "symbols": ["JNX_BASE__SUCCESS", "JNX_BASE__FAILURE"] } ], "default": null }
+      ,
+      { "name": "sub_code", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassQueueQueryResponse__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "queue_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "forwarding_class_names",
+        "type": ["null", {"type": "array", "items": "string"}],
+        "default": null
+      },
+      {
+        "name": "sharable",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosForwardingClassRestrictQueueQueryRequest",
+    "fields": [
+      {
+        "name": "restrict_queue_id",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosForwardingClassRestrictQueueQueryResponse",
+    "fields": [
+      { "name": "code", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassRestrictQueueQueryResponse__StatusCode", "symbols": ["JNX_BASE__SUCCESS", "JNX_BASE__FAILURE"] } ], "default": null }
+      ,
+      { "name": "sub_code", "type": ["null", { "type": "enum", "name": "Cos__CosForwardingClassRestrictQueueQueryResponse__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "restrict_queue_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "forwarding_class_names",
+        "type": ["null", {"type": "array", "items": "string"}],
+        "default": null
+      },
+      {
+        "name": "sharable",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosConfigPreference",
+    "fields": [
+      {
+        "name": "priority",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__ClassifierRule",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__ClassifierRule__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "forwarding_class_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "loss_priority", "type": ["null", { "type": "enum", "name": "Cos__ClassifierRule__CosLossPriority", "symbols": ["COS__CLFR__RW__LP__INVALID", "COS__CLFR__RW__LP__HIGH", "COS__CLFR__RW__LP__MEDIUM__HIGH", "COS__CLFR__RW__LP__MEDIUM__LOW", "COS__CLFR__RW__LP__LOW"] } ], "default": null }
+      ,
+      {
+        "name": "code_points",
+        "type": ["null", {"type": "array", "items": "int"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosClassifierDeleteRequest",
+    "fields": [
+      {
+        "name": "classifier_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "classifier_type", "type": ["null", { "type": "enum", "name": "Cos__CosClassifierDeleteRequest__CosFeatureCodePointType", "symbols": ["COS__FEATURE__CP__TYPE__INVALID", "COS__FEATURE__CP__TYPE__DSCP", "COS__FEATURE__CP__TYPE__DSCP__IPV6", "COS__FEATURE__CP__TYPE__EXP", "COS__FEATURE__CP__TYPE__IEEE8021", "COS__FEATURE__CP__TYPE__IEEE8021_AD", "COS__FEATURE__CP__TYPE__INET__PRECEDENCE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosClassifierQueryRequest",
+    "fields": [
+      {
+        "name": "classifier_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "classifier_type", "type": ["null", { "type": "enum", "name": "Cos__CosClassifierQueryRequest__CosFeatureCodePointType", "symbols": ["COS__FEATURE__CP__TYPE__INVALID", "COS__FEATURE__CP__TYPE__DSCP", "COS__FEATURE__CP__TYPE__DSCP__IPV6", "COS__FEATURE__CP__TYPE__EXP", "COS__FEATURE__CP__TYPE__IEEE8021", "COS__FEATURE__CP__TYPE__IEEE8021_AD", "COS__FEATURE__CP__TYPE__INET__PRECEDENCE"] } ], "default": null }
+      ,
+      {
+        "name": "ref_objects",
+        "type": ["null", {"type": "array", "items": "Cos__CosObjRefInfo"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosClassifierRequest",
+    "fields": [
+      {
+        "name": "classifier_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "classifier_type", "type": ["null", { "type": "enum", "name": "Cos__CosClassifierRequest__CosFeatureCodePointType", "symbols": ["COS__FEATURE__CP__TYPE__INVALID", "COS__FEATURE__CP__TYPE__DSCP", "COS__FEATURE__CP__TYPE__DSCP__IPV6", "COS__FEATURE__CP__TYPE__EXP", "COS__FEATURE__CP__TYPE__IEEE8021", "COS__FEATURE__CP__TYPE__IEEE8021_AD", "COS__FEATURE__CP__TYPE__INET__PRECEDENCE"] } ], "default": null }
+      ,
+      {
+        "name": "sharable",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "rule",
+        "type": ["null", {"type": "array", "items": "Cos__ClassifierRule"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosClassifierQueryResponse",
+    "fields": [
+      { "name": "code", "type": ["null", { "type": "enum", "name": "Cos__CosClassifierQueryResponse__StatusCode", "symbols": ["JNX_BASE__SUCCESS", "JNX_BASE__FAILURE"] } ], "default": null }
+      ,
+      { "name": "sub_code", "type": ["null", { "type": "enum", "name": "Cos__CosClassifierQueryResponse__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "classifier_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "classifier_type", "type": ["null", { "type": "enum", "name": "Cos__CosClassifierQueryResponse__CosFeatureCodePointType", "symbols": ["COS__FEATURE__CP__TYPE__INVALID", "COS__FEATURE__CP__TYPE__DSCP", "COS__FEATURE__CP__TYPE__DSCP__IPV6", "COS__FEATURE__CP__TYPE__EXP", "COS__FEATURE__CP__TYPE__IEEE8021", "COS__FEATURE__CP__TYPE__IEEE8021_AD", "COS__FEATURE__CP__TYPE__INET__PRECEDENCE"] } ], "default": null }
+      ,
+      {
+        "name": "sharable",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "rule",
+        "type": ["null", {"type": "array", "items": "Cos__ClassifierRule"}],
+        "default": null
+      },
+      {
+        "name": "ref_objects",
+        "type": ["null", {"type": "array", "items": "Cos__CosObjRefInfo"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__FeatureCodePoint",
+    "doc": "Only one of the following fields should be specified: code_point, code_point_str",
+    "fields": [
+      {
+        "name": "code_point",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "code_point_str",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__RewriteRule",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__RewriteRule__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "forwarding_class_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "loss_priority", "type": ["null", { "type": "enum", "name": "Cos__RewriteRule__CosLossPriority", "symbols": ["COS__CLFR__RW__LP__INVALID", "COS__CLFR__RW__LP__HIGH", "COS__CLFR__RW__LP__MEDIUM__HIGH", "COS__CLFR__RW__LP__MEDIUM__LOW", "COS__CLFR__RW__LP__LOW"] } ], "default": null }
+      ,
+      {
+        "name": "code_point_options",
+        "type": ["null", "Cos__FeatureCodePoint"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosRewriteDeleteRequest",
+    "fields": [
+      {
+        "name": "rewrite_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "rewrite_type", "type": ["null", { "type": "enum", "name": "Cos__CosRewriteDeleteRequest__CosFeatureCodePointType", "symbols": ["COS__FEATURE__CP__TYPE__INVALID", "COS__FEATURE__CP__TYPE__DSCP", "COS__FEATURE__CP__TYPE__DSCP__IPV6", "COS__FEATURE__CP__TYPE__EXP", "COS__FEATURE__CP__TYPE__IEEE8021", "COS__FEATURE__CP__TYPE__IEEE8021_AD", "COS__FEATURE__CP__TYPE__INET__PRECEDENCE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosRewriteQueryRequest",
+    "fields": [
+      {
+        "name": "rewrite_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "rewrite_type", "type": ["null", { "type": "enum", "name": "Cos__CosRewriteQueryRequest__CosFeatureCodePointType", "symbols": ["COS__FEATURE__CP__TYPE__INVALID", "COS__FEATURE__CP__TYPE__DSCP", "COS__FEATURE__CP__TYPE__DSCP__IPV6", "COS__FEATURE__CP__TYPE__EXP", "COS__FEATURE__CP__TYPE__IEEE8021", "COS__FEATURE__CP__TYPE__IEEE8021_AD", "COS__FEATURE__CP__TYPE__INET__PRECEDENCE"] } ], "default": null }
+      ,
+      {
+        "name": "ref_objects",
+        "type": ["null", {"type": "array", "items": "Cos__CosObjRefInfo"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosRewriteRequest",
+    "fields": [
+      {
+        "name": "rewrite_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "rewrite_type", "type": ["null", { "type": "enum", "name": "Cos__CosRewriteRequest__CosFeatureCodePointType", "symbols": ["COS__FEATURE__CP__TYPE__INVALID", "COS__FEATURE__CP__TYPE__DSCP", "COS__FEATURE__CP__TYPE__DSCP__IPV6", "COS__FEATURE__CP__TYPE__EXP", "COS__FEATURE__CP__TYPE__IEEE8021", "COS__FEATURE__CP__TYPE__IEEE8021_AD", "COS__FEATURE__CP__TYPE__INET__PRECEDENCE"] } ], "default": null }
+      ,
+      {
+        "name": "sharable",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "rule",
+        "type": ["null", {"type": "array", "items": "Cos__RewriteRule"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosRewriteQueryResponse",
+    "fields": [
+      { "name": "code", "type": ["null", { "type": "enum", "name": "Cos__CosRewriteQueryResponse__StatusCode", "symbols": ["JNX_BASE__SUCCESS", "JNX_BASE__FAILURE"] } ], "default": null }
+      ,
+      { "name": "sub_code", "type": ["null", { "type": "enum", "name": "Cos__CosRewriteQueryResponse__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "rewrite_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "rewrite_type", "type": ["null", { "type": "enum", "name": "Cos__CosRewriteQueryResponse__CosFeatureCodePointType", "symbols": ["COS__FEATURE__CP__TYPE__INVALID", "COS__FEATURE__CP__TYPE__DSCP", "COS__FEATURE__CP__TYPE__DSCP__IPV6", "COS__FEATURE__CP__TYPE__EXP", "COS__FEATURE__CP__TYPE__IEEE8021", "COS__FEATURE__CP__TYPE__IEEE8021_AD", "COS__FEATURE__CP__TYPE__INET__PRECEDENCE"] } ], "default": null }
+      ,
+      {
+        "name": "sharable",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      {
+        "name": "rule",
+        "type": ["null", {"type": "array", "items": "Cos__RewriteRule"}],
+        "default": null
+      },
+      {
+        "name": "ref_objects",
+        "type": ["null", {"type": "array", "items": "Cos__CosObjRefInfo"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__LevelToDropProbability",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__LevelToDropProbability__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "fill_level",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "drop_probability",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosDropProfile",
+    "fields": [
+      {
+        "name": "drop_profile_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "sharable",
+        "type": ["null", "boolean"],
+        "default": null
+      },
+      { "name": "drop_profile_type", "type": ["null", { "type": "enum", "name": "Cos__CosDropProfile__CosDropProfileType", "symbols": ["COS__DP__TYPE__INVALID", "COS__DP__TYPE__DISCRETE", "COS__DP__TYPE__INTERPOLATE"] } ], "default": null }
+      ,
+      {
+        "name": "level_to_drop_probabilities",
+        "type": ["null", {"type": "array", "items": "Cos__LevelToDropProbability"}],
+        "default": null
+      },
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Cos__CosDropProfile__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "ref_objects",
+        "type": ["null", {"type": "array", "items": "Cos__CosObjRefInfo"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__DropProfileMap",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__DropProfileMap__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      { "name": "scheduler_loss_priority", "type": ["null", { "type": "enum", "name": "Cos__DropProfileMap__CosSchedulerLossPriority", "symbols": ["COS__SCHED__DP__LP__INVALID", "COS__SCHED__DP__LP__HIGH", "COS__SCHED__DP__LP__MEDIUM__HIGH", "COS__SCHED__DP__LP__MEDIUM__LOW", "COS__SCHED__DP__LP__LOW", "COS__SCHED__DP__LP__ANY"] } ], "default": null }
+      ,
+      { "name": "scheduler_protocol", "type": ["null", { "type": "enum", "name": "Cos__DropProfileMap__CosSchedulerProtocol", "symbols": ["COS__SCHED__DP__PROTO__INVALID", "COS__SCHED__DP__PROTO__TCP", "COS__SCHED__DP__PROTO__NON__TCP", "COS__SCHED__DP__PROTO__ANY"] } ], "default": null }
+      ,
+      {
+        "name": "drop_profile_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "drop_profile_shared",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__SchedulerDropProfileMap",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__SchedulerDropProfileMap__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "sets",
+        "type": ["null", {"type": "array", "items": "Cos__DropProfileMap"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__SchedulerShapingRate",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__SchedulerShapingRate__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "value_spec", "type": ["null", { "type": "enum", "name": "Cos__SchedulerShapingRate__CosSchedulerRateSpec", "symbols": ["COS__SCHED__RATE__SPEC__INVALID", "COS__SCHED__RATE__SPEC__ABSOLUTE", "COS__SCHED__RATE__SPEC__PERCENT", "COS__SCHED__RATE__SPEC__REMAINDER"] } ], "default": null }
+      ,
+      {
+        "name": "burst_size",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__ExcessRate",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__ExcessRate__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "value_spec", "type": ["null", { "type": "enum", "name": "Cos__ExcessRate__CosExcessRateSpec", "symbols": ["COS__EXCESS__RATE__SPEC__INVALID", "COS__EXCESS__RATE__SPEC__PERCENT", "COS__EXCESS__RATE__SPEC__PROPORTION"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__BufferSize",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__BufferSize__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      { "name": "value_spec", "type": ["null", { "type": "enum", "name": "Cos__BufferSize__CosSchedulerBufferSizeSpec", "symbols": ["COS__SCHED__BUF__SIZE__SPEC__INVALID", "COS__SCHED__BUF__SIZE__SPEC__REMAINDER", "COS__SCHED__BUF__SIZE__SPEC__PERCENT", "COS__SCHED__BUF__SIZE__SPEC__TEMPORAL"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__AdjustMinRate",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__AdjustMinRate__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__AdjustPercent",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__AdjustPercent__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__GuaranteedRate",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__GuaranteedRate__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      { "name": "value_spec", "type": ["null", { "type": "enum", "name": "Cos__GuaranteedRate__CosSchedulerRateSpec", "symbols": ["COS__SCHED__RATE__SPEC__INVALID", "COS__SCHED__RATE__SPEC__ABSOLUTE", "COS__SCHED__RATE__SPEC__PERCENT", "COS__SCHED__RATE__SPEC__REMAINDER"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "value_extend_spec", "type": ["null", { "type": "enum", "name": "Cos__GuaranteedRate__CosSchedulerGuaranteedRateExtendSpec", "symbols": ["COS__SCHED__G__RATE__EXTEND__SPEC__INVALID", "COS__SCHED__G__RATE__EXTEND__SPEC__EXACT", "COS__SCHED__G__RATE__EXTEND__SPEC__RATE__LIMIT"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__SchedulerPriority",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__SchedulerPriority__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      { "name": "value", "type": ["null", { "type": "enum", "name": "Cos__SchedulerPriority__CosSchedulerPriority", "symbols": ["COS__SCHED__PRI__INVALID", "COS__SCHED__PRI__HIGH", "COS__SCHED__PRI__MEDIUM__HIGH", "COS__SCHED__PRI__MEDIUM__LOW", "COS__SCHED__PRI__LOW", "COS__SCHED__PRI__STRICT__HIGH"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__SchedulerExcessPriority",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__SchedulerExcessPriority__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      { "name": "value", "type": ["null", { "type": "enum", "name": "Cos__SchedulerExcessPriority__CosSchedulerExcessPriority", "symbols": ["COS__SCHED__EXCESS__PRI__INVALID", "COS__SCHED__EXCESS__PRI__HIGH", "COS__SCHED__EXCESS__PRI__MEDIUM__HIGH", "COS__SCHED__EXCESS__PRI__MEDIUM__LOW", "COS__SCHED__EXCESS__PRI__LOW", "COS__SCHED__EXCESS__PRI__NONE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosScheduler",
+    "fields": [
+      {
+        "name": "scheduler_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "adjust_min_rate",
+        "type": ["null", "Cos__AdjustMinRate"],
+        "default": null
+      },
+      {
+        "name": "adjust_percent",
+        "type": ["null", "Cos__AdjustPercent"],
+        "default": null
+      },
+      {
+        "name": "g_rate",
+        "type": ["null", "Cos__GuaranteedRate"],
+        "default": null
+      },
+      {
+        "name": "s_rate",
+        "type": ["null", "Cos__SchedulerShapingRate"],
+        "default": null
+      },
+      {
+        "name": "e_rate",
+        "type": ["null", "Cos__ExcessRate"],
+        "default": null
+      },
+      {
+        "name": "b_size",
+        "type": ["null", "Cos__BufferSize"],
+        "default": null
+      },
+      {
+        "name": "priority",
+        "type": ["null", "Cos__SchedulerPriority"],
+        "default": null
+      },
+      {
+        "name": "excess_priority",
+        "type": ["null", "Cos__SchedulerExcessPriority"],
+        "default": null
+      },
+      {
+        "name": "drop_profile_mappings",
+        "type": ["null", {"type": "array", "items": "Cos__DropProfileMap"}],
+        "default": null
+      },
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Cos__CosScheduler__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "ref_objects",
+        "type": ["null", {"type": "array", "items": "Cos__CosObjRefInfo"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__ForwardingClassToScheduler",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__ForwardingClassToScheduler__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "forwarding_class_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "scheduler_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosSchedulerMap",
+    "fields": [
+      {
+        "name": "scheduler_map_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "fc_to_scheduler_mapping",
+        "type": ["null", {"type": "array", "items": "Cos__ForwardingClassToScheduler"}],
+        "default": null
+      },
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Cos__CosSchedulerMap__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "ref_objects",
+        "type": ["null", {"type": "array", "items": "Cos__CosObjRefInfo"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__TcpAdjustRate",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__TcpAdjustRate__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "value_spec", "type": ["null", { "type": "enum", "name": "Cos__TcpAdjustRate__CosTcpRateSpec", "symbols": ["COS__TCP__RATE__SPEC__INVALID", "COS__TCP__RATE__SPEC__ABSOLUTE", "COS__TCP__RATE__SPEC__PERCENT"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__DelayBufferRate",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__DelayBufferRate__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "value_spec", "type": ["null", { "type": "enum", "name": "Cos__DelayBufferRate__CosDelayBufferRateSpec", "symbols": ["COS__DELAY__BUF__RATE__SPEC__INVALID", "COS__DELAY__BUF__RATE__SPEC__ABSOLUTE", "COS__DELAY__BUF__RATE__SPEC__CELL__PER__SECOND", "COS__DELAY__BUF__RATE__SPEC__PERCENT"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__TcpGuaranteedRate",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__TcpGuaranteedRate__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "value_spec", "type": ["null", { "type": "enum", "name": "Cos__TcpGuaranteedRate__CosTcpRateSpec", "symbols": ["COS__TCP__RATE__SPEC__INVALID", "COS__TCP__RATE__SPEC__ABSOLUTE", "COS__TCP__RATE__SPEC__PERCENT"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__TcpShapingRate",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__TcpShapingRate__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "value_spec", "type": ["null", { "type": "enum", "name": "Cos__TcpShapingRate__CosTcpRateSpec", "symbols": ["COS__TCP__RATE__SPEC__INVALID", "COS__TCP__RATE__SPEC__ABSOLUTE", "COS__TCP__RATE__SPEC__PERCENT"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__OverheadAccounting",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__OverheadAccounting__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "mode", "type": ["null", { "type": "enum", "name": "Cos__OverheadAccounting__CosOverheadAccountingMode", "symbols": ["COS__OH__ACCT__MODE__INVALID", "COS__OH__ACCT__MODE__FRAME", "COS__OH__ACCT__MODE__CELL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__TcpSchedulerMap",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__TcpSchedulerMap__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "scheduler_map_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__BurstSize",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__BurstSize__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosRate",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__CosRate__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosAtmService",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__CosAtmService__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      { "name": "category", "type": ["null", { "type": "enum", "name": "Cos__CosAtmService__AtmServiceCategory", "symbols": ["COS__ATM__SERVICE__INVALID", "COS__CBR", "COS__NRT__VBR", "COS__RT__VBR"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosTrafficControlProfile",
+    "fields": [
+      {
+        "name": "traffic_control_profile_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "scheduler_map",
+        "type": ["null", "Cos__TcpSchedulerMap"],
+        "default": null
+      },
+      {
+        "name": "a_rate",
+        "type": ["null", "Cos__TcpAdjustRate"],
+        "default": null
+      },
+      {
+        "name": "delay_buf_rate",
+        "type": ["null", "Cos__DelayBufferRate"],
+        "default": null
+      },
+      {
+        "name": "g_rate",
+        "type": ["null", "Cos__TcpGuaranteedRate"],
+        "default": null
+      },
+      {
+        "name": "guaranteed_burst_size",
+        "type": ["null", "Cos__BurstSize"],
+        "default": null
+      },
+      {
+        "name": "s_rate",
+        "type": ["null", "Cos__TcpShapingRate"],
+        "default": null
+      },
+      {
+        "name": "shaping_burst_size",
+        "type": ["null", "Cos__BurstSize"],
+        "default": null
+      },
+      {
+        "name": "s_rate_priority_high",
+        "type": ["null", "Cos__TcpShapingRate"],
+        "default": null
+      },
+      {
+        "name": "shaping_burst_size_priority_high",
+        "type": ["null", "Cos__BurstSize"],
+        "default": null
+      },
+      {
+        "name": "s_rate_priority_low",
+        "type": ["null", "Cos__TcpShapingRate"],
+        "default": null
+      },
+      {
+        "name": "shaping_burst_size_priority_low",
+        "type": ["null", "Cos__BurstSize"],
+        "default": null
+      },
+      {
+        "name": "s_rate_priority_medium",
+        "type": ["null", "Cos__TcpShapingRate"],
+        "default": null
+      },
+      {
+        "name": "shaping_burst_size_priority_medium",
+        "type": ["null", "Cos__BurstSize"],
+        "default": null
+      },
+      {
+        "name": "s_rate_excess_priority_high",
+        "type": ["null", "Cos__TcpShapingRate"],
+        "default": null
+      },
+      {
+        "name": "shaping_burst_size_excess_priority_high",
+        "type": ["null", "Cos__BurstSize"],
+        "default": null
+      },
+      {
+        "name": "s_rate_excess_priority_low",
+        "type": ["null", "Cos__TcpShapingRate"],
+        "default": null
+      },
+      {
+        "name": "shaping_burst_size_excess_priority_low",
+        "type": ["null", "Cos__BurstSize"],
+        "default": null
+      },
+      {
+        "name": "e_rate",
+        "type": ["null", "Cos__ExcessRate"],
+        "default": null
+      },
+      {
+        "name": "e_rate_low",
+        "type": ["null", "Cos__ExcessRate"],
+        "default": null
+      },
+      {
+        "name": "e_rate_high",
+        "type": ["null", "Cos__ExcessRate"],
+        "default": null
+      },
+      {
+        "name": "o_head_accounting",
+        "type": ["null", "Cos__OverheadAccounting"],
+        "default": null
+      },
+      {
+        "name": "s_rate_priority_medium_low",
+        "type": ["null", "Cos__TcpShapingRate"],
+        "default": null
+      },
+      {
+        "name": "shaping_burst_size_priority_medium_low",
+        "type": ["null", "Cos__BurstSize"],
+        "default": null
+      },
+      {
+        "name": "s_rate_priority_strict_high",
+        "type": ["null", "Cos__TcpShapingRate"],
+        "default": null
+      },
+      {
+        "name": "shaping_burst_size_priority_strict_high",
+        "type": ["null", "Cos__BurstSize"],
+        "default": null
+      },
+      {
+        "name": "s_rate_excess_priority_meidum_high",
+        "type": ["null", "Cos__TcpShapingRate"],
+        "default": null
+      },
+      {
+        "name": "shaping_burst_size_excess_priority_medium_high",
+        "type": ["null", "Cos__BurstSize"],
+        "default": null
+      },
+      {
+        "name": "s_rate_excess_priority_meidum_low",
+        "type": ["null", "Cos__TcpShapingRate"],
+        "default": null
+      },
+      {
+        "name": "shaping_burst_size_excess_priority_medium_low",
+        "type": ["null", "Cos__BurstSize"],
+        "default": null
+      },
+      {
+        "name": "atm_service",
+        "type": ["null", "Cos__CosAtmService"],
+        "default": null
+      },
+      {
+        "name": "peak_rate",
+        "type": ["null", "Cos__CosRate"],
+        "default": null
+      },
+      {
+        "name": "sustained_rate",
+        "type": ["null", "Cos__CosRate"],
+        "default": null
+      },
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Cos__CosTrafficControlProfile__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "ref_objects",
+        "type": ["null", {"type": "array", "items": "Cos__CosObjRefInfo"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosNodeFeatureVal",
+    "doc": "Only one of the following fields should be specified: value, object_name",
+    "fields": [
+      {
+        "name": "value",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "object_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosNodeFeatureOption",
+    "doc": "Only one of the following fields should be specified: classifier_family, rewrite_family",
+    "fields": [
+      { "name": "classifier_family", "type": ["null", { "type": "enum", "name": "Cos__CosNodeFeatureOption__CosNodeFeatureClassifierFamily", "symbols": ["COS__NODE__FEATURE__CLFR__PROTO__INVALID", "COS__NODE__FEATURE__CLFR__DSCP", "COS__NODE__FEATURE__CLFR__DSCP__MPLS", "COS__NODE__FEATURE__CLFR__DSCP__IPV6", "COS__NODE__FEATURE__CLFR__DSCP__IPV6__MPLS", "COS__NODE__FEATURE__CLFR__EXP", "COS__NODE__FEATURE__CLFR__INET__PRECEDENCE", "COS__NODE__FEATURE__CLFR__IEEE8021_P", "COS__NODE__FEATURE__CLFR__IEEE8021_P__TAG__MODE__INNER", "COS__NODE__FEATURE__CLFR__IEEE8021_P__TAG__MODE__TRANSPARENT", "COS__NODE__FEATURE__CLFR__IEEE8021_AD", "COS__NODE__FEATURE__CLFR__IEEE8021__AD__TAG__MODE__INNER", "COS__NODE__FEATURE__CLFR__NO__DEFAULT"] } ], "default": null }
+      ,
+      { "name": "rewrite_family", "type": ["null", { "type": "enum", "name": "Cos__CosNodeFeatureOption__CosNodeFeatureRewriteFamily", "symbols": ["COS__NODE__FEATURE__RW__PROTO__INVALID", "COS__NODE__FEATURE__RW__DSCP", "COS__NODE__FEATURE__RW__DSCP__MPLS", "COS__NODE__FEATURE__RW__DSCP__IPV6", "COS__NODE__FEATURE__RW__DSCP__IPV6__MPLS", "COS__NODE__FEATURE__RW__EXP", "COS__NODE__FEATURE__RW__EXP__MPLS__INET__BOTH", "COS__NODE__FEATURE__RW__EXP__MPLS__INET__BOTH__NON__VPN", "COS__NODE__FEATURE__RW__INET__PRECEDENCE", "COS__NODE__FEATURE__RW__INET__PREC__MPLS", "COS__NODE__FEATURE__RW__IEEE8021_P", "COS__NODE__FEATURE__RW__IEEE8021__TAG__MODE__OUTER__AND__INNER", "COS__NODE__FEATURE__RW__IEEE8021_AD", "COS__NODE__FEATURE__RW__IEEE8021_AD__TAG__MODE__OUTER__AND__INNER"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosNodeFamilyFeature",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__CosNodeFamilyFeature__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      { "name": "direction", "type": ["null", { "type": "enum", "name": "Cos__CosNodeFamilyFeature__CosDirection", "symbols": ["COS__DIRECTION__INVALID", "COS__INGRESS", "COS__EGRESS"] } ], "default": null }
+      ,
+      { "name": "feature_type", "type": ["null", { "type": "enum", "name": "Cos__CosNodeFamilyFeature__CosNodeFeatureFamilyType", "symbols": ["COS__NODE__FEATURE__FAMILY__INVALID", "COS__NODE__FEATURE__FAMILY__CLFR__RULE", "COS__NODE__FEATURE__FAMILY__RW__RULE"] } ], "default": null }
+      ,
+      {
+        "name": "feature_option",
+        "type": ["null", "Cos__CosNodeFeatureOption"],
+        "default": null
+      },
+      {
+        "name": "feature_object_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "object_shared",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosNodeFeature",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__CosNodeFeature__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      { "name": "direction", "type": ["null", { "type": "enum", "name": "Cos__CosNodeFeature__CosDirection", "symbols": ["COS__DIRECTION__INVALID", "COS__INGRESS", "COS__EGRESS"] } ], "default": null }
+      ,
+      { "name": "feature_type", "type": ["null", { "type": "enum", "name": "Cos__CosNodeFeature__CosNodeFeatureType", "symbols": ["COS__NODE__FEATURE__INVALID", "COS__NODE__FEATURE__SMAP", "COS__NODE__FEATURE__SRATE", "COS__NODE__FEATURE__TCP", "COS__NODE__FEATURE__TCP__REMAINING", "COS__NODE__FEATURE__FORWARDING__CLASS", "COS__NODE__FEATURE__MEMBER__LINK__SCHED", "COS__NODE__FEATURE__EXCESS__BW__SHARE"] } ], "default": null }
+      ,
+      {
+        "name": "feature_val",
+        "type": ["null", "Cos__CosNodeFeatureVal"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosNodeBindFeaturesDeleteRequest",
+    "fields": [
+      { "name": "node_type", "type": ["null", { "type": "enum", "name": "Cos__CosNodeBindFeaturesDeleteRequest__CosNodeType", "symbols": ["COS__NODE__TYPE__INVALID", "COS__NODE__TYPE__INTERFACE", "COS__NODE__TYPE__LOGICAL__INTERFACE", "COS__NODE__TYPE__INTERFACE__SET"] } ], "default": null }
+      ,
+      {
+        "name": "node_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "node_parent_type", "type": ["null", { "type": "enum", "name": "Cos__CosNodeBindFeaturesDeleteRequest__CosNodeType", "symbols": ["COS__NODE__TYPE__INVALID", "COS__NODE__TYPE__INTERFACE", "COS__NODE__TYPE__LOGICAL__INTERFACE", "COS__NODE__TYPE__INTERFACE__SET"] } ], "default": null }
+      ,
+      {
+        "name": "node_parent_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosNodeBindFeaturesQueryRequest",
+    "fields": [
+      { "name": "node_type", "type": ["null", { "type": "enum", "name": "Cos__CosNodeBindFeaturesQueryRequest__CosNodeType", "symbols": ["COS__NODE__TYPE__INVALID", "COS__NODE__TYPE__INTERFACE", "COS__NODE__TYPE__LOGICAL__INTERFACE", "COS__NODE__TYPE__INTERFACE__SET"] } ], "default": null }
+      ,
+      {
+        "name": "node_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "node_parent_type", "type": ["null", { "type": "enum", "name": "Cos__CosNodeBindFeaturesQueryRequest__CosNodeType", "symbols": ["COS__NODE__TYPE__INVALID", "COS__NODE__TYPE__INTERFACE", "COS__NODE__TYPE__LOGICAL__INTERFACE", "COS__NODE__TYPE__INTERFACE__SET"] } ], "default": null }
+      ,
+      {
+        "name": "node_parent_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "features_type", "type": ["null", { "type": "enum", "name": "Cos__CosNodeBindFeaturesQueryRequest__CosFeaturesType", "symbols": ["COS__FEATURES__MAPPED", "COS__FEATURES__CONFIGURED", "COS__FEATURES__ALL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosNodeBindFeaturesRequest",
+    "fields": [
+      { "name": "node_type", "type": ["null", { "type": "enum", "name": "Cos__CosNodeBindFeaturesRequest__CosNodeType", "symbols": ["COS__NODE__TYPE__INVALID", "COS__NODE__TYPE__INTERFACE", "COS__NODE__TYPE__LOGICAL__INTERFACE", "COS__NODE__TYPE__INTERFACE__SET"] } ], "default": null }
+      ,
+      {
+        "name": "node_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "node_parent_type", "type": ["null", { "type": "enum", "name": "Cos__CosNodeBindFeaturesRequest__CosNodeType", "symbols": ["COS__NODE__TYPE__INVALID", "COS__NODE__TYPE__INTERFACE", "COS__NODE__TYPE__LOGICAL__INTERFACE", "COS__NODE__TYPE__INTERFACE__SET"] } ], "default": null }
+      ,
+      {
+        "name": "node_parent_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "node_features",
+        "type": ["null", {"type": "array", "items": "Cos__CosNodeFeature"}],
+        "default": null
+      },
+      {
+        "name": "node_family_features",
+        "type": ["null", {"type": "array", "items": "Cos__CosNodeFamilyFeature"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosNodeBindFeaturesQueryResponse",
+    "fields": [
+      { "name": "code", "type": ["null", { "type": "enum", "name": "Cos__CosNodeBindFeaturesQueryResponse__StatusCode", "symbols": ["JNX_BASE__SUCCESS", "JNX_BASE__FAILURE"] } ], "default": null }
+      ,
+      { "name": "sub_code", "type": ["null", { "type": "enum", "name": "Cos__CosNodeBindFeaturesQueryResponse__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "node_type", "type": ["null", { "type": "enum", "name": "Cos__CosNodeBindFeaturesQueryResponse__CosNodeType", "symbols": ["COS__NODE__TYPE__INVALID", "COS__NODE__TYPE__INTERFACE", "COS__NODE__TYPE__LOGICAL__INTERFACE", "COS__NODE__TYPE__INTERFACE__SET"] } ], "default": null }
+      ,
+      {
+        "name": "node_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "node_parent_type", "type": ["null", { "type": "enum", "name": "Cos__CosNodeBindFeaturesQueryResponse__CosNodeType", "symbols": ["COS__NODE__TYPE__INVALID", "COS__NODE__TYPE__INTERFACE", "COS__NODE__TYPE__LOGICAL__INTERFACE", "COS__NODE__TYPE__INTERFACE__SET"] } ], "default": null }
+      ,
+      {
+        "name": "node_parent_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "features_type", "type": ["null", { "type": "enum", "name": "Cos__CosNodeBindFeaturesQueryResponse__CosFeaturesType", "symbols": ["COS__FEATURES__MAPPED", "COS__FEATURES__CONFIGURED", "COS__FEATURES__ALL"] } ], "default": null }
+      ,
+      {
+        "name": "node_features",
+        "type": ["null", {"type": "array", "items": "Cos__CosNodeFeature"}],
+        "default": null
+      },
+      {
+        "name": "node_family_features",
+        "type": ["null", {"type": "array", "items": "Cos__CosNodeFamilyFeature"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosRoutingInstanceClassifier",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__CosRoutingInstanceClassifier__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      { "name": "type", "type": ["null", { "type": "enum", "name": "Cos__CosRoutingInstanceClassifier__CosRoutingInstanceClassifierCodePointType", "symbols": ["COS__RI__CLFR__CP__TYPE__INVALID", "COS__RI__CLFR__CP__TYPE__DSCP", "COS__RI__CLFR__CP__TYPE__DSCP__IPV6", "COS__RI__CLFR__CP__TYPE__EXP", "COS__RI__CLFR__CP__TYPE__IEEE8021", "COS__RI__CLFR__CP__TYPE__NO__DEFAULT"] } ], "default": null }
+      ,
+      { "name": "feature_ieee8021_tag_mode", "type": ["null", { "type": "enum", "name": "Cos__CosRoutingInstanceClassifier__CosRoutingInstanceClassifierIeee8021TagMode", "symbols": ["COS__RI__CLFR__IEEE8021__TAG__MODE__INVALID", "COS__RI__CLFR__IEEE8021__TAG__MODE__ENCAP__VLAN__TAG__INNER", "COS__RI__CLFR__IEEE8021__TAG__MODE__ENCAP__VLAN__TAG__OUTER"] } ], "default": null }
+      ,
+      {
+        "name": "feature_object_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "object_shared",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosRoutingInstanceRewrite",
+    "fields": [
+      { "name": "operation", "type": ["null", { "type": "enum", "name": "Cos__CosRoutingInstanceRewrite__CosMessageAttribOperation", "symbols": ["COS__ATTRIB__NOOP", "COS__ATTRIB__ADD", "COS__ATTRIB__CHANGE", "COS__ATTRIB__DELETE"] } ], "default": null }
+      ,
+      { "name": "type", "type": ["null", { "type": "enum", "name": "Cos__CosRoutingInstanceRewrite__CosRoutingInstanceRewriteCodePointType", "symbols": ["COS__RI__RW__CP__TYPE__INVALID", "COS__RI__RW__CP__TYPE__IEEE8021", "COS__RI__RW__CP__TYPE__IEEE8021_AD"] } ], "default": null }
+      ,
+      { "name": "feature_ieee8021_tag_mode", "type": ["null", { "type": "enum", "name": "Cos__CosRoutingInstanceRewrite__CosRoutingInstanceRewriteIeee8021xTagMode", "symbols": ["COS__RI__RW__IEEE8021_X__TAG__MODE__INVALID", "COS__RI__RW__IEEE8021_X__TAG__MODE__ENCAP__VLAN__TAG__OUTER", "COS__RI__RW__IEEE8021_X__TAG__MODE__ENCAP__VLAN__TAG__OUTER__AND__INNER"] } ], "default": null }
+      ,
+      {
+        "name": "feature_object_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "object_shared",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosRoutingInstanceBindPointDeleteRequest",
+    "fields": [
+      {
+        "name": "routing_instance_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosRoutingInstanceBindPointQueryRequest",
+    "fields": [
+      {
+        "name": "routing_instance_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosRoutingInstanceBindPointRequest",
+    "fields": [
+      {
+        "name": "routing_instance_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "classifiers",
+        "type": ["null", {"type": "array", "items": "Cos__CosRoutingInstanceClassifier"}],
+        "default": null
+      },
+      {
+        "name": "rewrites",
+        "type": ["null", {"type": "array", "items": "Cos__CosRoutingInstanceRewrite"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosRoutingInstanceBindPointQueryResponse",
+    "fields": [
+      { "name": "code", "type": ["null", { "type": "enum", "name": "Cos__CosRoutingInstanceBindPointQueryResponse__StatusCode", "symbols": ["JNX_BASE__SUCCESS", "JNX_BASE__FAILURE"] } ], "default": null }
+      ,
+      { "name": "sub_code", "type": ["null", { "type": "enum", "name": "Cos__CosRoutingInstanceBindPointQueryResponse__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "routing_instance_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "classifiers",
+        "type": ["null", {"type": "array", "items": "Cos__CosRoutingInstanceClassifier"}],
+        "default": null
+      },
+      {
+        "name": "rewrites",
+        "type": ["null", {"type": "array", "items": "Cos__CosRoutingInstanceRewrite"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosResourceLimit",
+    "fields": [
+      { "name": "code", "type": ["null", { "type": "enum", "name": "Cos__CosResourceLimit__StatusCode", "symbols": ["JNX_BASE__SUCCESS", "JNX_BASE__FAILURE"] } ], "default": null }
+      ,
+      { "name": "sub_code", "type": ["null", { "type": "enum", "name": "Cos__CosResourceLimit__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "num_of_rate_limit_qs",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "buf_size_temporal_limit_value",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max_ucast_fc_sets_per_interface",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max_mcast_fc_sets_per_interface",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max_wred_profile_points",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "num_of_fcs_in_fc_set",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max_queue_to_pause_profiles",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max_ingress_shared_buffer",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max_egress_shared_buffer",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max_global_buffer",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max_qcn_queues",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max_queues_per_interface",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "default_fc_size",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosPurgeTimeRequest",
+    "fields": [
+      {
+        "name": "purge_time",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Cos__CosPurgeTimeResponse",
+    "fields": [
+      { "name": "code", "type": ["null", { "type": "enum", "name": "Cos__CosPurgeTimeResponse__StatusCode", "symbols": ["JNX_BASE__SUCCESS", "JNX_BASE__FAILURE"] } ], "default": null }
+      ,
+      { "name": "sub_code", "type": ["null", { "type": "enum", "name": "Cos__CosPurgeTimeResponse__CosReturnVal", "symbols": ["COS__EOK", "COS__INVALID", "COS__NULL__MESSAGE", "COS__EINVALID__MESSAGE", "COS__EINTERNAL", "COS__UNSUPPORTED__OP", "COS__NO__RESOURCE", "COS__NO__ENTRY", "COS__NO__MORE__ENTRIES", "COS__E__IN__USE", "COS__E__UNSUPP__FEATURE"] } ], "default": null }
+      ,
+      {
+        "name": "message",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "purge_time",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  }
+]

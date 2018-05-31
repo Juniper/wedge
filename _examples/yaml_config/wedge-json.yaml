@@ -1,0 +1,117 @@
+---
+implementations:
+    -
+        client-side:
+            name: "kafka"
+            client-post-read-cb: "kafka-json-post-read" # Custom callback to run after data is received from client
+            client-pre-write-cb: "kafka-json-pre-write" # Custom callback to run before data is sent to the client
+            server-post-read-cb: "" # Custom callback to run after data is received from server
+            server-pre-write-cb: "" # Custom callback to run before data is sent to the server
+            config:
+                # Details on kafka configuration options and default values can be found in:
+                # https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md
+                common-config:
+                    address-family: 0
+                    backoff-jitter: 0
+                    blacklist-topics: []
+                    bootstrap-servers: "1.1.1.1:9092" # MANDATORY, Initial list of brokers
+                    broker-address-ttl: 0
+                    broker-client-id: "wedge_json_broker" # MANDATORY, client-id used by broker to publish its messages
+                    disable-nagle: false
+                    disable-sparse-metadata-req: false
+                    enable-tcp-keepalives: false
+                    group-id: "wedge_json_kafka_grpc" # MANDATORY, All clients sharing the same group.id belong to the same group
+                    max-msg-bytes: 0
+                    max-copy-bytes: 0
+                    max-inflight-requests: 0
+                    metadata-req-timeout: 0
+                    metadata-refresh-interval: 0
+                    metadata-max-age: 0
+                    metadata-refresh-fast-interval: 0
+                    socket-timeout: 0
+                    socket-send-bufsize: 0
+                    socket-recv-bufsize: 0
+                    max-send-fails: 0
+                    recv-max-bytes: 0
+                    security-protocol: ""  # MANDATORY, Protocol used to communicate with brokers, default plaintext
+                    ssl-cipher-suites: ""
+                    ssl-keys-location: ""
+                    ssl-key-pass: ""
+                    ssl-cert-location: ""
+                    ssl-ca-location: ""
+                    ssl-crl-location: ""
+                    sasl-mechanisms: ""
+                    sasl-keberos-service: ""
+                    sasl-keberos-principal: ""
+                    sasl-keberos-kinit-cmd: ""
+                    sasl-keberos-keytab: ""
+                    sasl-keberos-login-interval: 0
+                    sasl-username: ""
+                    sasl-password: ""
+                producer-config:
+                    max-queue-buffer-messages: 0
+                    max-queue-buffer-kbytes: 0
+                    max-queue-buffer-time: 0
+                    max-send-retries: 0
+                    retry-backoff: 0
+                    compression-codec: ""
+                    max-num-batch-messages: 0
+                    enable-err-delivery-only: false
+                    enable-batch-producer: false
+                    disable-per-msg-delivery-report: false
+                    producer-channel-size: 0
+                    acks: 0
+                    message-timeout: 0
+                    produce-offset-report: false
+                    request-timeout: 0
+                consumer-config:
+                    disable-auto-commit: false
+                    auto-commit-interval: 0
+                    disable-auto-offset: false
+                    min-partition-msgs: 0
+                    max-kb-per-partition: 0
+                    max-fetch-wait: 0
+                    max-msg-fetch-bytes: 0
+                    min-fetch-bytes: 0
+                    fetch-error-backoff: 0
+                    disable-partition-eof: false
+                    check-crcs: false
+                    auto-offset-reset-type: ""
+                    offset-store-path: ""
+                    offset-store-sync-interval: 0
+                payload-type: "json" # MANDATORY, default is "json", other option(s): avro
+                avro-desc-table-loc: "" # MANDATORY for avro payload, Location of the avro descriptor table
+                                        # generated from proto using protoc-wedge compiler
+                avsc-file-dir: "" # MANDATORY for avro payload, Location of the avsc files that are generated from proto
+                                  # using protoc-wedge compiler
+                proto-desc-table-loc: "../reference_config/WedgeProtoDescTable.json" # MANDATORY for json payload, Location of the proto descriptor table
+                                        # generated from proto using protoc-wedge compiler
+        server-side:
+            name: "grpc"
+            client-post-read-cb: ""
+            client-pre-write-cb: ""
+            server-post-read-cb: ""
+            server-pre-write-cb: ""
+            config:
+                max-clients: 15 # Maximum number of client connections the broker should support, Default: 10
+                max-calls: 10 # Maximum number of calls per client # Default: 5
+                call-timeout: 0 # gRPC call timeout, Default: Blocking
+                options:
+                    init-window-size: 0 # Initial window size on a stream, the lower bound is 64K
+                    init-conn-window-size: 0 # Initial window size on a connection, the lower bound is 64K
+                    compressor: "" #  Compressor to use for message compression
+                    decompressor: "" # Decompressor to use for incoming message decompression
+                    max-backoff-delay: 0s # Maximum delay when backing off after failed connection attempts
+                    insecure: true  # MANDATORY,  Setting to true disables transport security for this Client Connection
+                    credentials: null # Connection level security credentials (e.g., TLS/SSL), Datatype: credentials.TransportCredentials
+                    per-call-credentials: null # Credentials for each outbound RPC, Datatype: credentials.PerRPCCredentials
+                    max-call-sendsize: 0  # Maximum message size the client can send
+                    max-call-recvsize: 0  # Maximum message size the client can receive
+                    block: false # Dial blocks until the underlying connection is up.
+                                 # Without this, Dial returns immediately and connecting the server
+                                 # happens in background
+                    timeout: 0s # configures a timeout for dialing a ClientConn initially.
+                                # This is valid if and only if block is true
+                proto-desc-table-loc: "../reference_config/WedgeProtoDescTable.json" # MANDATORY, Location of the proto descriptor table
+                                    # generated from proto using protoc-wedge compiler
+...

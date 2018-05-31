@@ -1,0 +1,13 @@
+[
+    {
+    "type": "record",
+    "name": "Payload",
+    "fields": [
+    {
+        "name": "Message",
+        "type": ["null", "string"],
+                "default": null
+        }
+    ]
+    }
+]

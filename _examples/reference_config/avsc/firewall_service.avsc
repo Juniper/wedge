@@ -1,0 +1,2427 @@
+[
+
+  {
+    "type": "record",
+    "name": "JnxBase__IpAddress",
+    "doc": "Only one of the following fields should be specified: addr_string, addr_bytes",
+    "fields": [
+      {
+        "name": "addr_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr_bytes",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "JnxBase__MacAddress",
+    "doc": "Only one of the following fields should be specified: addr_string, addr_bytes",
+    "fields": [
+      {
+        "name": "addr_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr_bytes",
+        "type": ["null", "bytes"],
+        "default": null
+      }
+    ]
+  }
+
+  ,
+  {
+    "type": "record",
+    "name": "Acl__AccessListVoid",
+    "fields": [
+      {
+        "name": "void",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclPolicerTwoColor",
+    "fields": [
+      { "name": "bw_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerTwoColor__AclPolicerRate", "symbols": ["ACL__ACL__POLICER__RATE__INVALID", "ACL__ACL__POLICER__RATE__BPS", "ACL__ACL__POLICER__RATE__KBPS", "ACL__ACL__POLICER__RATE__MBPS", "ACL__ACL__POLICER__RATE__GBPS"] } ], "default": null }
+      ,
+      {
+        "name": "bandwidth",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "burst_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerTwoColor__AclPolicerBurstSize", "symbols": ["ACL__ACL__POLICER__BURST__SIZE__INVALID", "ACL__ACL__POLICER__BURST__SIZE__BYTE", "ACL__ACL__POLICER__BURST__SIZE__KBYTE", "ACL__ACL__POLICER__BURST__SIZE__MBYTE", "ACL__ACL__POLICER__BURST__SIZE__GBYTE"] } ], "default": null }
+      ,
+      {
+        "name": "burst_size",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "lp", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerTwoColor__AclLossPriority", "symbols": ["ACL__ACL__LOSS__PRIORITY__INVALID", "ACL__ACL__LOSS__PRIORITY__HIGH", "ACL__ACL__LOSS__PRIORITY__MEDIUM__HIGH", "ACL__ACL__LOSS__PRIORITY__MEDIUM__LOW", "ACL__ACL__LOSS__PRIORITY__LOW"] } ], "default": null }
+      ,
+      {
+        "name": "fc_string",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "discard", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerTwoColor__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclPolicerSingleRateThreeColor",
+    "fields": [
+      { "name": "committed_rate_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerSingleRateThreeColor__AclPolicerRate", "symbols": ["ACL__ACL__POLICER__RATE__INVALID", "ACL__ACL__POLICER__RATE__BPS", "ACL__ACL__POLICER__RATE__KBPS", "ACL__ACL__POLICER__RATE__MBPS", "ACL__ACL__POLICER__RATE__GBPS"] } ], "default": null }
+      ,
+      {
+        "name": "committed_rate",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "committed_burst_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerSingleRateThreeColor__AclPolicerBurstSize", "symbols": ["ACL__ACL__POLICER__BURST__SIZE__INVALID", "ACL__ACL__POLICER__BURST__SIZE__BYTE", "ACL__ACL__POLICER__BURST__SIZE__KBYTE", "ACL__ACL__POLICER__BURST__SIZE__MBYTE", "ACL__ACL__POLICER__BURST__SIZE__GBYTE"] } ], "default": null }
+      ,
+      {
+        "name": "committed_burst_size",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "excess_burst_size",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "excess_burst_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerSingleRateThreeColor__AclPolicerBurstSize", "symbols": ["ACL__ACL__POLICER__BURST__SIZE__INVALID", "ACL__ACL__POLICER__BURST__SIZE__BYTE", "ACL__ACL__POLICER__BURST__SIZE__KBYTE", "ACL__ACL__POLICER__BURST__SIZE__MBYTE", "ACL__ACL__POLICER__BURST__SIZE__GBYTE"] } ], "default": null }
+      ,
+      { "name": "discard", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerSingleRateThreeColor__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "color_mode", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerSingleRateThreeColor__AclColorModeType", "symbols": ["ACL__ACL__COLOR__MODE__INVALID", "ACL__ACL__COLOR__MODE__COLOR__BLIND", "ACL__ACL__COLOR__MODE__COLOR__AWARE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclPolicerTwoRateThreeColor",
+    "fields": [
+      { "name": "committed_rate_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerTwoRateThreeColor__AclPolicerRate", "symbols": ["ACL__ACL__POLICER__RATE__INVALID", "ACL__ACL__POLICER__RATE__BPS", "ACL__ACL__POLICER__RATE__KBPS", "ACL__ACL__POLICER__RATE__MBPS", "ACL__ACL__POLICER__RATE__GBPS"] } ], "default": null }
+      ,
+      {
+        "name": "committed_rate",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "committed_burst_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerTwoRateThreeColor__AclPolicerBurstSize", "symbols": ["ACL__ACL__POLICER__BURST__SIZE__INVALID", "ACL__ACL__POLICER__BURST__SIZE__BYTE", "ACL__ACL__POLICER__BURST__SIZE__KBYTE", "ACL__ACL__POLICER__BURST__SIZE__MBYTE", "ACL__ACL__POLICER__BURST__SIZE__GBYTE"] } ], "default": null }
+      ,
+      {
+        "name": "committed_burst_size",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "excess_rate_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerTwoRateThreeColor__AclPolicerRate", "symbols": ["ACL__ACL__POLICER__RATE__INVALID", "ACL__ACL__POLICER__RATE__BPS", "ACL__ACL__POLICER__RATE__KBPS", "ACL__ACL__POLICER__RATE__MBPS", "ACL__ACL__POLICER__RATE__GBPS"] } ], "default": null }
+      ,
+      {
+        "name": "excess_rate",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "excess_burst_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerTwoRateThreeColor__AclPolicerBurstSize", "symbols": ["ACL__ACL__POLICER__BURST__SIZE__INVALID", "ACL__ACL__POLICER__BURST__SIZE__BYTE", "ACL__ACL__POLICER__BURST__SIZE__KBYTE", "ACL__ACL__POLICER__BURST__SIZE__MBYTE", "ACL__ACL__POLICER__BURST__SIZE__GBYTE"] } ], "default": null }
+      ,
+      {
+        "name": "excess_burst_size",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "discard", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerTwoRateThreeColor__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "color_mode", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerTwoRateThreeColor__AclColorModeType", "symbols": ["ACL__ACL__COLOR__MODE__INVALID", "ACL__ACL__COLOR__MODE__COLOR__BLIND", "ACL__ACL__COLOR__MODE__COLOR__AWARE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclPolicerHierarchical",
+    "fields": [
+      { "name": "aggregate_rate_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerHierarchical__AclPolicerRate", "symbols": ["ACL__ACL__POLICER__RATE__INVALID", "ACL__ACL__POLICER__RATE__BPS", "ACL__ACL__POLICER__RATE__KBPS", "ACL__ACL__POLICER__RATE__MBPS", "ACL__ACL__POLICER__RATE__GBPS"] } ], "default": null }
+      ,
+      {
+        "name": "aggregate_rate",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "aggregate_burst_size_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerHierarchical__AclPolicerBurstSize", "symbols": ["ACL__ACL__POLICER__BURST__SIZE__INVALID", "ACL__ACL__POLICER__BURST__SIZE__BYTE", "ACL__ACL__POLICER__BURST__SIZE__KBYTE", "ACL__ACL__POLICER__BURST__SIZE__MBYTE", "ACL__ACL__POLICER__BURST__SIZE__GBYTE"] } ], "default": null }
+      ,
+      {
+        "name": "aggregate_burst_size",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "premium_rate_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerHierarchical__AclPolicerRate", "symbols": ["ACL__ACL__POLICER__RATE__INVALID", "ACL__ACL__POLICER__RATE__BPS", "ACL__ACL__POLICER__RATE__KBPS", "ACL__ACL__POLICER__RATE__MBPS", "ACL__ACL__POLICER__RATE__GBPS"] } ], "default": null }
+      ,
+      {
+        "name": "premium_rate",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "premium_burst_size_unit", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerHierarchical__AclPolicerBurstSize", "symbols": ["ACL__ACL__POLICER__BURST__SIZE__INVALID", "ACL__ACL__POLICER__BURST__SIZE__BYTE", "ACL__ACL__POLICER__BURST__SIZE__KBYTE", "ACL__ACL__POLICER__BURST__SIZE__MBYTE", "ACL__ACL__POLICER__BURST__SIZE__GBYTE"] } ], "default": null }
+      ,
+      {
+        "name": "premium_burst_size",
+        "type": ["null", "long"],
+        "default": null
+      },
+      { "name": "discard", "type": ["null", { "type": "enum", "name": "Acl__AclPolicerHierarchical__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclPolicerParameter",
+    "doc": "Only one of the following fields should be specified: two_color_parameter, sr_three_color_parameter, tr_three_color_parameter, hierarchical_parameter",
+    "fields": [
+      {
+        "name": "two_color_parameter",
+        "type": ["null", "Acl__AclPolicerTwoColor"],
+        "default": null
+      },
+      {
+        "name": "sr_three_color_parameter",
+        "type": ["null", "Acl__AclPolicerSingleRateThreeColor"],
+        "default": null
+      },
+      {
+        "name": "tr_three_color_parameter",
+        "type": ["null", "Acl__AclPolicerTwoRateThreeColor"],
+        "default": null
+      },
+      {
+        "name": "hierarchical_parameter",
+        "type": ["null", "Acl__AclPolicerHierarchical"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AccessListPolicer",
+    "fields": [
+      {
+        "name": "policer_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "policer_type", "type": ["null", { "type": "enum", "name": "Acl__AccessListPolicer__AclPolicerType", "symbols": ["ACL__ACL__POLICER__INVALID", "ACL__ACL__TWO__COLOR__POLICER", "ACL__ACL__SINGLE__RATE__THREE__COLOR__POLICER", "ACL__ACL__TWO__RATE__THREE__COLOR__POLICER", "ACL__ACL__HIERARCHICAL__POLICER"] } ], "default": null }
+      ,
+      { "name": "policer_flag", "type": ["null", { "type": "enum", "name": "Acl__AccessListPolicer__AclPolicerFlags", "symbols": ["ACL__ACL__POLICER__FLAG__INVALID", "ACL__ACL__POLICER__FLAG__TERM__SPECIFIC", "ACL__ACL__POLICER__FLAG__FILTER__SPECIFIC"] } ], "default": null }
+      ,
+      {
+        "name": "policer_params",
+        "type": ["null", "Acl__AclPolicerParameter"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchIpAddress",
+    "fields": [
+      {
+        "name": "addr",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "prefix_len",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchIpAddress__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchPort",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchPort__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchIpPrecedence",
+    "fields": [
+      { "name": "min", "type": ["null", { "type": "enum", "name": "Acl__AclMatchIpPrecedence__Precedence", "symbols": ["ACL__ACL__PRECENCE__ROUTINE", "ACL__ACL__PRECENCE__PRIORITY", "ACL__ACL__PRECENCE__IMMEDIATE", "ACL__ACL__PRECENCE__FLASH", "ACL__ACL__PRECENCE__FLASH__OVERRIDE", "ACL__ACL__PRECENCE__CRITICAL__ECP", "ACL__ACL__PRECENCE__INTERNET__CONTROL", "ACL__ACL__PRECENCE__NET__CONTROL"] } ], "default": null }
+      ,
+      { "name": "max", "type": ["null", { "type": "enum", "name": "Acl__AclMatchIpPrecedence__Precedence", "symbols": ["ACL__ACL__PRECENCE__ROUTINE", "ACL__ACL__PRECENCE__PRIORITY", "ACL__ACL__PRECENCE__IMMEDIATE", "ACL__ACL__PRECENCE__FLASH", "ACL__ACL__PRECENCE__FLASH__OVERRIDE", "ACL__ACL__PRECENCE__CRITICAL__ECP", "ACL__ACL__PRECENCE__INTERNET__CONTROL", "ACL__ACL__PRECENCE__NET__CONTROL"] } ], "default": null }
+      ,
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchIpPrecedence__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchTrafficClass",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchTrafficClass__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchDscpCode",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchDscpCode__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchProtocol",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchProtocol__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchIcmpType",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchIcmpType__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchIcmpCode",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchIcmpCode__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchPktLen",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchPktLen__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchLossPriority",
+    "fields": [
+      { "name": "lp", "type": ["null", { "type": "enum", "name": "Acl__AclMatchLossPriority__AclLossPriority", "symbols": ["ACL__ACL__LOSS__PRIORITY__INVALID", "ACL__ACL__LOSS__PRIORITY__HIGH", "ACL__ACL__LOSS__PRIORITY__MEDIUM__HIGH", "ACL__ACL__LOSS__PRIORITY__MEDIUM__LOW", "ACL__ACL__LOSS__PRIORITY__LOW"] } ], "default": null }
+      ,
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchLossPriority__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchForwardingClass",
+    "fields": [
+      { "name": "fwd_class", "type": ["null", { "type": "enum", "name": "Acl__AclMatchForwardingClass__AclForwardingClass", "symbols": ["ACL__ACL__FORWARDING__CLASS__INVALID", "ACL__ACL__FORWARDING__CLASS__ASSURED", "ACL__ACL__FORWARDING__CLASS__BEST__EFFORT", "ACL__ACL__FORWARDING__CLASS__EXPEDITED", "ACL__ACL__FORWARDING__CLASS__NETWORK__CONTROL"] } ], "default": null }
+      ,
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchForwardingClass__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchNextHeader",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchNextHeader__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchMplsLabel",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchMplsLabel__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchVlanId",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchVlanId__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchMeshGroup",
+    "fields": [
+      {
+        "name": "mesh_group_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchMeshGroup__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchL2Token",
+    "fields": [
+      {
+        "name": "token",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchL2Token__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchCfmLevel",
+    "fields": [
+      {
+        "name": "cfm_level",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchCfmLevel__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchCfmOpcode",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchCfmOpcode__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchTtl",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchTtl__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchFragmentOffset",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchFragmentOffset__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionPolicer",
+    "fields": [
+      {
+        "name": "policer",
+        "type": ["null", "Acl__AccessListPolicer"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionCounter",
+    "fields": [
+      {
+        "name": "counter_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionSendToClient",
+    "fields": [
+      {
+        "name": "client_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionCopyToHost",
+    "fields": [
+      {
+        "name": "client_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionRoutingInstance",
+    "fields": [
+      {
+        "name": "rt_instance_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionPolicerInstance",
+    "fields": [
+      {
+        "name": "policer",
+        "type": ["null", "Acl__AccessListPolicer"],
+        "default": null
+      },
+      {
+        "name": "policer_instance",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionTopologyRedirect",
+    "fields": [
+      {
+        "name": "rt_instance_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "topology_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionSetNexthop",
+    "fields": [
+      {
+        "name": "nh_idx",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionLossPriority",
+    "fields": [
+      { "name": "lp", "type": ["null", { "type": "enum", "name": "Acl__AclActionLossPriority__AclLossPriority", "symbols": ["ACL__ACL__LOSS__PRIORITY__INVALID", "ACL__ACL__LOSS__PRIORITY__HIGH", "ACL__ACL__LOSS__PRIORITY__MEDIUM__HIGH", "ACL__ACL__LOSS__PRIORITY__MEDIUM__LOW", "ACL__ACL__LOSS__PRIORITY__LOW"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionForwardingPriority",
+    "fields": [
+      {
+        "name": "priority",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionForwardingClass",
+    "fields": [
+      { "name": "fc", "type": ["null", { "type": "enum", "name": "Acl__AclActionForwardingClass__AclForwardingClass", "symbols": ["ACL__ACL__FORWARDING__CLASS__INVALID", "ACL__ACL__FORWARDING__CLASS__ASSURED", "ACL__ACL__FORWARDING__CLASS__BEST__EFFORT", "ACL__ACL__FORWARDING__CLASS__EXPEDITED", "ACL__ACL__FORWARDING__CLASS__NETWORK__CONTROL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionSetIpDscp",
+    "fields": [
+      {
+        "name": "dscp",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionIflNameIndex",
+    "doc": "Only one of the following fields should be specified: ifl_name, ifl_index",
+    "fields": [
+      {
+        "name": "ifl_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "ifl_index",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionNextInterface",
+    "fields": [
+      {
+        "name": "rti_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "ifl",
+        "type": ["null", "Acl__AclActionIflNameIndex"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionNextIp",
+    "fields": [
+      {
+        "name": "rti_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "addr",
+        "type": ["null", "JnxBase__IpAddress"],
+        "default": null
+      },
+      {
+        "name": "prefix_len",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclAdjacency",
+    "fields": [
+      { "name": "type", "type": ["null", { "type": "enum", "name": "Acl__AclAdjacency__AclAdjacencyType", "symbols": ["ACL__ACL__ADJACENCY__NONE", "ACL__ACL__ADJACENCY__AFTER", "ACL__ACL__ADJACENCY__BEFORE"] } ], "default": null }
+      ,
+      {
+        "name": "ace_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchIflNameIndex",
+    "doc": "Only one of the following fields should be specified: ifl_name, ifl_index",
+    "fields": [
+      {
+        "name": "ifl_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "ifl_index",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchFlexOffset",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchFlexOffset__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchFlexibleRange",
+    "fields": [
+      { "name": "start_offset", "type": ["null", { "type": "enum", "name": "Acl__AclMatchFlexibleRange__AclEntryMatchFlexStartOffest", "symbols": ["ACL__ACL__FLEX__MATCH__OFFSET__INVALID", "ACL__ACL__FLEX__MATCH__OFFSET__LAYER__THREE", "ACL__ACL__FLEX__MATCH__OFFSET__LAYER__FOUR", "ACL__ACL__FLEX__MATCH__OFFSET__PAYLOAD"] } ], "default": null }
+      ,
+      {
+        "name": "bit_length",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "bit_offset",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "byte_offset",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "range",
+        "type": ["null", "Acl__AclMatchFlexOffset"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchFlexibleOffsetRange",
+    "doc": "Only one of the following fields should be specified: flex_range_match",
+    "fields": [
+      {
+        "name": "flex_range_match",
+        "type": ["null", "Acl__AclMatchFlexibleRange"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchFlexibleMask",
+    "fields": [
+      { "name": "start_offset", "type": ["null", { "type": "enum", "name": "Acl__AclMatchFlexibleMask__AclEntryMatchFlexStartOffest", "symbols": ["ACL__ACL__FLEX__MATCH__OFFSET__INVALID", "ACL__ACL__FLEX__MATCH__OFFSET__LAYER__THREE", "ACL__ACL__FLEX__MATCH__OFFSET__LAYER__FOUR", "ACL__ACL__FLEX__MATCH__OFFSET__PAYLOAD"] } ], "default": null }
+      ,
+      {
+        "name": "bit_length",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "bit_offset",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "byte_offset",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "mask",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "prefix_string",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchFlexibleOffsetMask",
+    "doc": "Only one of the following fields should be specified: flex_mask_match",
+    "fields": [
+      {
+        "name": "flex_mask_match",
+        "type": ["null", "Acl__AclMatchFlexibleMask"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchMacAddress",
+    "fields": [
+      {
+        "name": "addr",
+        "type": ["null", "JnxBase__MacAddress"],
+        "default": null
+      },
+      {
+        "name": "addr_len",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchMacAddress__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchEtherType",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchEtherType__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchLearnVlanId",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchLearnVlanId__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMatchLearnVlanPriority",
+    "fields": [
+      {
+        "name": "min",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "match_op", "type": ["null", { "type": "enum", "name": "Acl__AclMatchLearnVlanPriority__AclMatchOperation", "symbols": ["ACL__ACL__MATCH__OP__INVALID", "ACL__ACL__MATCH__OP__EQUAL", "ACL__ACL__MATCH__OP__NOT__EQUAL"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclActionNextHop",
+    "fields": [
+      {
+        "name": "nh_idx",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMatchInet",
+    "fields": [
+      {
+        "name": "match_dst_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_src_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_dst_ports",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPort"}],
+        "default": null
+      },
+      {
+        "name": "match_src_ports",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPort"}],
+        "default": null
+      },
+      {
+        "name": "match_dscp_code",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchDscpCode"}],
+        "default": null
+      },
+      {
+        "name": "match_protocols",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchProtocol"}],
+        "default": null
+      },
+      {
+        "name": "match_icmp_type",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIcmpType"}],
+        "default": null
+      },
+      {
+        "name": "match_icmp_code",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIcmpCode"}],
+        "default": null
+      },
+      {
+        "name": "match_pkt_len",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPktLen"}],
+        "default": null
+      },
+      {
+        "name": "match_ttl",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchTtl"}],
+        "default": null
+      },
+      { "name": "fragment_flags", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMatchInet__AclFragmentFlags", "symbols": ["ACL__ACL__FRAGMENT__NONE", "ACL__ACL__DONT__FRAGMENT", "ACL__ACL__IS__FRAGMENT", "ACL__ACL__FIRST__FRAGMENT", "ACL__ACL__LAST__FRAGMENT"] } ], "default": null }
+      ,
+      {
+        "name": "match_frag_offset",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchFragmentOffset"}],
+        "default": null
+      },
+      {
+        "name": "ifl_names",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIflNameIndex"}],
+        "default": null
+      },
+      {
+        "name": "match_ip_precedence",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpPrecedence"}],
+        "default": null
+      },
+      {
+        "name": "match_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_ports",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPort"}],
+        "default": null
+      },
+      {
+        "name": "match_flex_range",
+        "type": ["null", "Acl__AclMatchFlexibleOffsetRange"],
+        "default": null
+      },
+      {
+        "name": "match_flex_mask",
+        "type": ["null", "Acl__AclMatchFlexibleOffsetMask"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryInetTerminatingAction",
+    "doc": "Only one of the following fields should be specified: action_accept, action_discard, action_reject, action_rt_inst",
+    "fields": [
+      { "name": "action_accept", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInetTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_discard", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInetTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_reject", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInetTerminatingAction__AclEntryActionRejectReason", "symbols": ["ACL__ACL__ACTION__REJECT__ADMINISTRATIVELY__PROHIBITED", "ACL__ACL__ACTION__REJECT__BAD__HOST__TOS", "ACL__ACL__ACTION__REJECT__BAD__NETWORK__TOS", "ACL__ACL__ACTION__REJECT__FRAGMENTATION__NEEDED", "ACL__ACL__ACTION__REJECT__HOST__PROHIBITED", "ACL__ACL__ACTION__REJECT__HOST__UNKNOWN", "ACL__ACL__ACTION__REJECT__HOST__UNREACHABLE", "ACL__ACL__ACTION__REJECT__NETWORK__PROHIBITED", "ACL__ACL__ACTION__REJECT__NETWORK__UNKNOWN", "ACL__ACL__ACTION__REJECT__NETWORK__UNREACHABLE", "ACL__ACL__ACTION__REJECT__PORT__UNREACHABLE", "ACL__ACL__ACTION__REJECT__PRECEDENCE__CUTOFF", "ACL__ACL__ACTION__REJECT__PRECEDENCE__VIOLATION", "ACL__ACL__ACTION__REJECT__PROTOCOL__UNREACHABLE", "ACL__ACL__ACTION__REJECT__SOURCE__HOST__ISOLATED", "ACL__ACL__ACTION__REJECT__SOURCE__ROUTE__FAILED", "ACL__ACL__ACTION__REJECT__TCP__RESET"] } ], "default": null }
+      ,
+      {
+        "name": "action_rt_inst",
+        "type": ["null", "Acl__AclActionRoutingInstance"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryInetNonTerminatingAction",
+    "fields": [
+      {
+        "name": "action_count",
+        "type": ["null", "Acl__AclActionCounter"],
+        "default": null
+      },
+      { "name": "action_log", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInetNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_syslog", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInetNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_policer",
+        "type": ["null", "Acl__AclActionPolicer"],
+        "default": null
+      },
+      { "name": "action_sample", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInetNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_next_term", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInetNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryInetAction",
+    "fields": [
+      {
+        "name": "actions_nt",
+        "type": ["null", "Acl__AclEntryInetNonTerminatingAction"],
+        "default": null
+      },
+      {
+        "name": "action_t",
+        "type": ["null", "Acl__AclEntryInetTerminatingAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclInetEntry",
+    "fields": [
+      {
+        "name": "ace_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "ace_op", "type": ["null", { "type": "enum", "name": "Acl__AclInetEntry__AclEntryOperation", "symbols": ["ACL__ACL__ENTRY__OPERATION__INVALID", "ACL__ACL__ENTRY__OPERATION__ADD", "ACL__ACL__ENTRY__OPERATION__DELETE", "ACL__ACL__ENTRY__OPERATION__REPLACE"] } ], "default": null }
+      ,
+      {
+        "name": "adjacency",
+        "type": ["null", "Acl__AclAdjacency"],
+        "default": null
+      },
+      {
+        "name": "matches",
+        "type": ["null", "Acl__AclEntryMatchInet"],
+        "default": null
+      },
+      {
+        "name": "actions",
+        "type": ["null", "Acl__AclEntryInetAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMatchEs",
+    "fields": [
+      {
+        "name": "match_dst_mac_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMacAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_src_mac_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMacAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_dst_ports",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPort"}],
+        "default": null
+      },
+      {
+        "name": "match_src_ports",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPort"}],
+        "default": null
+      },
+      {
+        "name": "match_dscp_code",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchDscpCode"}],
+        "default": null
+      },
+      {
+        "name": "match_protocols",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchProtocol"}],
+        "default": null
+      },
+      {
+        "name": "match_icmp_type",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIcmpType"}],
+        "default": null
+      },
+      {
+        "name": "match_icmp_code",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIcmpCode"}],
+        "default": null
+      },
+      {
+        "name": "ifl_names",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIflNameIndex"}],
+        "default": null
+      },
+      {
+        "name": "match_ether_type",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchEtherType"}],
+        "default": null
+      },
+      {
+        "name": "match_learn_vlan_id",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchLearnVlanId"}],
+        "default": null
+      },
+      {
+        "name": "match_learn_vlan_priority",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchLearnVlanPriority"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryEsTerminatingAction",
+    "doc": "Only one of the following fields should be specified: action_accept, action_discard, action_nh, action_send_to_host",
+    "fields": [
+      { "name": "action_accept", "type": ["null", { "type": "enum", "name": "Acl__AclEntryEsTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_discard", "type": ["null", { "type": "enum", "name": "Acl__AclEntryEsTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_nh",
+        "type": ["null", "Acl__AclActionNextHop"],
+        "default": null
+      },
+      { "name": "action_send_to_host", "type": ["null", { "type": "enum", "name": "Acl__AclEntryEsTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryEsNonTerminatingAction",
+    "fields": [
+      {
+        "name": "action_count",
+        "type": ["null", "Acl__AclActionCounter"],
+        "default": null
+      },
+      { "name": "action_log", "type": ["null", { "type": "enum", "name": "Acl__AclEntryEsNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_syslog", "type": ["null", { "type": "enum", "name": "Acl__AclEntryEsNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_policer",
+        "type": ["null", "Acl__AclActionPolicer"],
+        "default": null
+      },
+      { "name": "action_next_term", "type": ["null", { "type": "enum", "name": "Acl__AclEntryEsNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_lp",
+        "type": ["null", "Acl__AclActionLossPriority"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryEsAction",
+    "fields": [
+      {
+        "name": "actions_nt",
+        "type": ["null", "Acl__AclEntryEsNonTerminatingAction"],
+        "default": null
+      },
+      {
+        "name": "action_t",
+        "type": ["null", "Acl__AclEntryEsTerminatingAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEsEntry",
+    "fields": [
+      {
+        "name": "ace_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "ace_op", "type": ["null", { "type": "enum", "name": "Acl__AclEsEntry__AclEntryOperation", "symbols": ["ACL__ACL__ENTRY__OPERATION__INVALID", "ACL__ACL__ENTRY__OPERATION__ADD", "ACL__ACL__ENTRY__OPERATION__DELETE", "ACL__ACL__ENTRY__OPERATION__REPLACE"] } ], "default": null }
+      ,
+      {
+        "name": "adjacency",
+        "type": ["null", "Acl__AclAdjacency"],
+        "default": null
+      },
+      {
+        "name": "matches",
+        "type": ["null", "Acl__AclEntryMatchEs"],
+        "default": null
+      },
+      {
+        "name": "actions",
+        "type": ["null", "Acl__AclEntryEsAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMatchInet6",
+    "fields": [
+      {
+        "name": "match_dst_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_src_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_dst_ports",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPort"}],
+        "default": null
+      },
+      {
+        "name": "match_src_ports",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPort"}],
+        "default": null
+      },
+      {
+        "name": "match_dscp_code",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchDscpCode"}],
+        "default": null
+      },
+      {
+        "name": "payload_protocols",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchProtocol"}],
+        "default": null
+      },
+      {
+        "name": "match_icmp_type",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIcmpType"}],
+        "default": null
+      },
+      {
+        "name": "match_icmp_code",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIcmpCode"}],
+        "default": null
+      },
+      {
+        "name": "match_pkt_len",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPktLen"}],
+        "default": null
+      },
+      { "name": "fragment_flags", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMatchInet6__AclFragmentFlags", "symbols": ["ACL__ACL__FRAGMENT__NONE", "ACL__ACL__DONT__FRAGMENT", "ACL__ACL__IS__FRAGMENT", "ACL__ACL__FIRST__FRAGMENT", "ACL__ACL__LAST__FRAGMENT"] } ], "default": null }
+      ,
+      {
+        "name": "ifl_names",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIflNameIndex"}],
+        "default": null
+      },
+      {
+        "name": "match_traffic_classes",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchTrafficClass"}],
+        "default": null
+      },
+      {
+        "name": "match_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_flex_range",
+        "type": ["null", "Acl__AclMatchFlexibleOffsetRange"],
+        "default": null
+      },
+      {
+        "name": "match_flex_mask",
+        "type": ["null", "Acl__AclMatchFlexibleOffsetMask"],
+        "default": null
+      },
+      {
+        "name": "ipv6_next_headers",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchNextHeader"}],
+        "default": null
+      },
+      {
+        "name": "match_loss_priority",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchLossPriority"}],
+        "default": null
+      },
+      {
+        "name": "match_fwd_class",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchForwardingClass"}],
+        "default": null
+      },
+      {
+        "name": "match_ports",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPort"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryInet6TerminatingAction",
+    "doc": "Only one of the following fields should be specified: action_accept, action_discard, action_reject, action_rt_inst, action_topo_redirect, action_send_to_client, action_send_to_host, action_nh",
+    "fields": [
+      { "name": "action_accept", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInet6TerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_discard", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInet6TerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_reject", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInet6TerminatingAction__AclEntryActionRejectReason", "symbols": ["ACL__ACL__ACTION__REJECT__ADMINISTRATIVELY__PROHIBITED", "ACL__ACL__ACTION__REJECT__BAD__HOST__TOS", "ACL__ACL__ACTION__REJECT__BAD__NETWORK__TOS", "ACL__ACL__ACTION__REJECT__FRAGMENTATION__NEEDED", "ACL__ACL__ACTION__REJECT__HOST__PROHIBITED", "ACL__ACL__ACTION__REJECT__HOST__UNKNOWN", "ACL__ACL__ACTION__REJECT__HOST__UNREACHABLE", "ACL__ACL__ACTION__REJECT__NETWORK__PROHIBITED", "ACL__ACL__ACTION__REJECT__NETWORK__UNKNOWN", "ACL__ACL__ACTION__REJECT__NETWORK__UNREACHABLE", "ACL__ACL__ACTION__REJECT__PORT__UNREACHABLE", "ACL__ACL__ACTION__REJECT__PRECEDENCE__CUTOFF", "ACL__ACL__ACTION__REJECT__PRECEDENCE__VIOLATION", "ACL__ACL__ACTION__REJECT__PROTOCOL__UNREACHABLE", "ACL__ACL__ACTION__REJECT__SOURCE__HOST__ISOLATED", "ACL__ACL__ACTION__REJECT__SOURCE__ROUTE__FAILED", "ACL__ACL__ACTION__REJECT__TCP__RESET"] } ], "default": null }
+      ,
+      {
+        "name": "action_rt_inst",
+        "type": ["null", "Acl__AclActionRoutingInstance"],
+        "default": null
+      },
+      {
+        "name": "action_topo_redirect",
+        "type": ["null", "Acl__AclActionTopologyRedirect"],
+        "default": null
+      },
+      {
+        "name": "action_send_to_client",
+        "type": ["null", "Acl__AclActionSendToClient"],
+        "default": null
+      },
+      { "name": "action_send_to_host", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInet6TerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_nh",
+        "type": ["null", "Acl__AclActionSetNexthop"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryInet6NonTerminatingAction",
+    "fields": [
+      {
+        "name": "action_count",
+        "type": ["null", "Acl__AclActionCounter"],
+        "default": null
+      },
+      { "name": "action_log", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInet6NonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_syslog", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInet6NonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_policer",
+        "type": ["null", "Acl__AclActionPolicer"],
+        "default": null
+      },
+      { "name": "action_sample", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInet6NonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_next_term", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInet6NonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_port_mirror", "type": ["null", { "type": "enum", "name": "Acl__AclEntryInet6NonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_lp",
+        "type": ["null", "Acl__AclActionLossPriority"],
+        "default": null
+      },
+      {
+        "name": "action_fwd_class",
+        "type": ["null", "Acl__AclActionForwardingClass"],
+        "default": null
+      },
+      {
+        "name": "action_fwd_priority",
+        "type": ["null", "Acl__AclActionForwardingPriority"],
+        "default": null
+      },
+      {
+        "name": "action_next_intf",
+        "type": ["null", "Acl__AclActionNextInterface"],
+        "default": null
+      },
+      {
+        "name": "action_next_ip",
+        "type": ["null", "Acl__AclActionNextIp"],
+        "default": null
+      },
+      {
+        "name": "action_ip_dscp",
+        "type": ["null", "Acl__AclActionSetIpDscp"],
+        "default": null
+      },
+      {
+        "name": "action_copy_to_host",
+        "type": ["null", "Acl__AclActionCopyToHost"],
+        "default": null
+      },
+      {
+        "name": "action_policer_inst",
+        "type": ["null", "Acl__AclActionPolicerInstance"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryInet6Action",
+    "fields": [
+      {
+        "name": "actions_nt",
+        "type": ["null", "Acl__AclEntryInet6NonTerminatingAction"],
+        "default": null
+      },
+      {
+        "name": "action_t",
+        "type": ["null", "Acl__AclEntryInet6TerminatingAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMatchVpls",
+    "fields": [
+      {
+        "name": "match_dst_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_src_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_dst_v6_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_src_v6_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_dst_ports",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPort"}],
+        "default": null
+      },
+      {
+        "name": "match_src_ports",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPort"}],
+        "default": null
+      },
+      {
+        "name": "match_dscp_code",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchDscpCode"}],
+        "default": null
+      },
+      {
+        "name": "match_ip_protocols",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchProtocol"}],
+        "default": null
+      },
+      {
+        "name": "payload_protocols",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchProtocol"}],
+        "default": null
+      },
+      {
+        "name": "match_icmp_type",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIcmpType"}],
+        "default": null
+      },
+      {
+        "name": "match_icmp_code",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIcmpCode"}],
+        "default": null
+      },
+      {
+        "name": "ifl_names",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIflNameIndex"}],
+        "default": null
+      },
+      {
+        "name": "match_traffic_classes",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchTrafficClass"}],
+        "default": null
+      },
+      {
+        "name": "ipv6_next_headers",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchNextHeader"}],
+        "default": null
+      },
+      {
+        "name": "ether_types",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchEtherType"}],
+        "default": null
+      },
+      {
+        "name": "match_src_macs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMacAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_dst_macs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMacAddress"}],
+        "default": null
+      },
+      {
+        "name": "vlan_ether_types",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchEtherType"}],
+        "default": null
+      },
+      {
+        "name": "learn_vlan_ids",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchVlanId"}],
+        "default": null
+      },
+      {
+        "name": "user_vlan_ids",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchVlanId"}],
+        "default": null
+      },
+      {
+        "name": "learn_vlan_priority",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchLearnVlanPriority"}],
+        "default": null
+      },
+      { "name": "stp_state", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMatchVpls__AclStpMatchFlags", "symbols": ["ACL__ACL__MATCH__STP__FLAG__INVALID", "ACL__ACL__MATCH__STP__FLAG__BLOCKING", "ACL__ACL__MATCH__STP__FLAG__FORWARDING"] } ], "default": null }
+      ,
+      {
+        "name": "mesh_group_ids",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMeshGroup"}],
+        "default": null
+      },
+      {
+        "name": "cfm_opcodes",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchCfmOpcode"}],
+        "default": null
+      },
+      {
+        "name": "cfm_levels",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchCfmLevel"}],
+        "default": null
+      },
+      {
+        "name": "l2_tokens",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchL2Token"}],
+        "default": null
+      },
+      {
+        "name": "match_v6_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_flex_range",
+        "type": ["null", "Acl__AclMatchFlexibleOffsetRange"],
+        "default": null
+      },
+      {
+        "name": "match_flex_mask",
+        "type": ["null", "Acl__AclMatchFlexibleOffsetMask"],
+        "default": null
+      },
+      {
+        "name": "match_pkt_len",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPktLen"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryVplsTerminatingAction",
+    "doc": "Only one of the following fields should be specified: action_accept, action_discard, action_send_to_client, action_send_to_host, action_nh",
+    "fields": [
+      { "name": "action_accept", "type": ["null", { "type": "enum", "name": "Acl__AclEntryVplsTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_discard", "type": ["null", { "type": "enum", "name": "Acl__AclEntryVplsTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_send_to_client",
+        "type": ["null", "Acl__AclActionSendToClient"],
+        "default": null
+      },
+      { "name": "action_send_to_host", "type": ["null", { "type": "enum", "name": "Acl__AclEntryVplsTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_nh",
+        "type": ["null", "Acl__AclActionSetNexthop"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryVplsNonTerminatingAction",
+    "fields": [
+      {
+        "name": "action_count",
+        "type": ["null", "Acl__AclActionCounter"],
+        "default": null
+      },
+      { "name": "action_log", "type": ["null", { "type": "enum", "name": "Acl__AclEntryVplsNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_syslog", "type": ["null", { "type": "enum", "name": "Acl__AclEntryVplsNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_policer",
+        "type": ["null", "Acl__AclActionPolicer"],
+        "default": null
+      },
+      { "name": "action_sample", "type": ["null", { "type": "enum", "name": "Acl__AclEntryVplsNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_next_term", "type": ["null", { "type": "enum", "name": "Acl__AclEntryVplsNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_no_mac_learn", "type": ["null", { "type": "enum", "name": "Acl__AclEntryVplsNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_copy_to_host",
+        "type": ["null", "Acl__AclActionCopyToHost"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryVplsAction",
+    "fields": [
+      {
+        "name": "actions_nt",
+        "type": ["null", "Acl__AclEntryVplsNonTerminatingAction"],
+        "default": null
+      },
+      {
+        "name": "action_t",
+        "type": ["null", "Acl__AclEntryVplsTerminatingAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMatchCcc",
+    "fields": [
+      {
+        "name": "match_pkt_len",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPktLen"}],
+        "default": null
+      },
+      {
+        "name": "ifl_names",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIflNameIndex"}],
+        "default": null
+      },
+      {
+        "name": "ether_types",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchEtherType"}],
+        "default": null
+      },
+      {
+        "name": "match_src_macs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMacAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_dst_macs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMacAddress"}],
+        "default": null
+      },
+      {
+        "name": "cfm_opcodes",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchCfmOpcode"}],
+        "default": null
+      },
+      {
+        "name": "cfm_levels",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchCfmLevel"}],
+        "default": null
+      },
+      {
+        "name": "match_flex_range",
+        "type": ["null", "Acl__AclMatchFlexibleOffsetRange"],
+        "default": null
+      },
+      {
+        "name": "match_flex_mask",
+        "type": ["null", "Acl__AclMatchFlexibleOffsetMask"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryCccTerminatingAction",
+    "doc": "Only one of the following fields should be specified: action_accept, action_discard, action_send_to_client, action_send_to_host",
+    "fields": [
+      { "name": "action_accept", "type": ["null", { "type": "enum", "name": "Acl__AclEntryCccTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_discard", "type": ["null", { "type": "enum", "name": "Acl__AclEntryCccTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_send_to_client",
+        "type": ["null", "Acl__AclActionSendToClient"],
+        "default": null
+      },
+      { "name": "action_send_to_host", "type": ["null", { "type": "enum", "name": "Acl__AclEntryCccTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryCccNonTerminatingAction",
+    "fields": [
+      {
+        "name": "action_count",
+        "type": ["null", "Acl__AclActionCounter"],
+        "default": null
+      },
+      { "name": "action_log", "type": ["null", { "type": "enum", "name": "Acl__AclEntryCccNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_syslog", "type": ["null", { "type": "enum", "name": "Acl__AclEntryCccNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_policer",
+        "type": ["null", "Acl__AclActionPolicer"],
+        "default": null
+      },
+      { "name": "action_sample", "type": ["null", { "type": "enum", "name": "Acl__AclEntryCccNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_copy_to_host",
+        "type": ["null", "Acl__AclActionCopyToHost"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryCccAction",
+    "fields": [
+      {
+        "name": "actions_nt",
+        "type": ["null", "Acl__AclEntryCccNonTerminatingAction"],
+        "default": null
+      },
+      {
+        "name": "action_t",
+        "type": ["null", "Acl__AclEntryCccTerminatingAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMatchMultiService",
+    "fields": [
+      {
+        "name": "match_dst_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_src_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_addrs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIpAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_dst_ports",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPort"}],
+        "default": null
+      },
+      {
+        "name": "match_src_ports",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPort"}],
+        "default": null
+      },
+      {
+        "name": "match_ip_protocols",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchProtocol"}],
+        "default": null
+      },
+      {
+        "name": "payload_protocols",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchProtocol"}],
+        "default": null
+      },
+      {
+        "name": "match_icmp_type",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIcmpType"}],
+        "default": null
+      },
+      {
+        "name": "match_icmp_code",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIcmpCode"}],
+        "default": null
+      },
+      {
+        "name": "ifl_names",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchIflNameIndex"}],
+        "default": null
+      },
+      {
+        "name": "ipv6_next_headers",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchNextHeader"}],
+        "default": null
+      },
+      {
+        "name": "ether_types",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchEtherType"}],
+        "default": null
+      },
+      {
+        "name": "match_src_macs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMacAddress"}],
+        "default": null
+      },
+      {
+        "name": "match_dst_macs",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMacAddress"}],
+        "default": null
+      },
+      {
+        "name": "vlan_ether_types",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchEtherType"}],
+        "default": null
+      },
+      { "name": "stp_state", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMatchMultiService__AclStpMatchFlags", "symbols": ["ACL__ACL__MATCH__STP__FLAG__INVALID", "ACL__ACL__MATCH__STP__FLAG__BLOCKING", "ACL__ACL__MATCH__STP__FLAG__FORWARDING"] } ], "default": null }
+      ,
+      {
+        "name": "mesh_group_ids",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMeshGroup"}],
+        "default": null
+      },
+      {
+        "name": "l2_tokens",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchL2Token"}],
+        "default": null
+      },
+      {
+        "name": "match_pkt_len",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchPktLen"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMultiServiceTerminatingAction",
+    "doc": "Only one of the following fields should be specified: action_accept, action_discard, action_send_to_client, action_send_to_host",
+    "fields": [
+      { "name": "action_accept", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMultiServiceTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_discard", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMultiServiceTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_send_to_client",
+        "type": ["null", "Acl__AclActionSendToClient"],
+        "default": null
+      },
+      { "name": "action_send_to_host", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMultiServiceTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMultiServiceNonTerminatingAction",
+    "fields": [
+      {
+        "name": "action_count",
+        "type": ["null", "Acl__AclActionCounter"],
+        "default": null
+      },
+      { "name": "action_log", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMultiServiceNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_syslog", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMultiServiceNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_policer",
+        "type": ["null", "Acl__AclActionPolicer"],
+        "default": null
+      },
+      { "name": "action_sample", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMultiServiceNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_next_term", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMultiServiceNonTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      {
+        "name": "action_copy_to_host",
+        "type": ["null", "Acl__AclActionCopyToHost"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMultiServiceAction",
+    "fields": [
+      {
+        "name": "actions_nt",
+        "type": ["null", "Acl__AclEntryMultiServiceNonTerminatingAction"],
+        "default": null
+      },
+      {
+        "name": "action_t",
+        "type": ["null", "Acl__AclEntryMultiServiceTerminatingAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMatchMpls",
+    "fields": [
+      {
+        "name": "match_label1",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMplsLabel"}],
+        "default": null
+      },
+      {
+        "name": "match_label2",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMplsLabel"}],
+        "default": null
+      },
+      {
+        "name": "match_label3",
+        "type": ["null", {"type": "array", "items": "Acl__AclMatchMplsLabel"}],
+        "default": null
+      },
+      {
+        "name": "match_flex_range",
+        "type": ["null", "Acl__AclMatchFlexibleOffsetRange"],
+        "default": null
+      },
+      {
+        "name": "match_flex_mask",
+        "type": ["null", "Acl__AclMatchFlexibleOffsetMask"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMplsTerminatingAction",
+    "doc": "Only one of the following fields should be specified: action_accept, action_discard",
+    "fields": [
+      { "name": "action_accept", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMplsTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+      ,
+      { "name": "action_discard", "type": ["null", { "type": "enum", "name": "Acl__AclEntryMplsTerminatingAction__AclBooleanType", "symbols": ["ACL__ACL__FALSE", "ACL__ACL__TRUE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMplsNonTerminatingAction",
+    "fields": [
+      {
+        "name": "action_count",
+        "type": ["null", "Acl__AclActionCounter"],
+        "default": null
+      },
+      {
+        "name": "action_policer",
+        "type": ["null", "Acl__AclActionPolicer"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntryMplsAction",
+    "fields": [
+      {
+        "name": "actions_nt",
+        "type": ["null", "Acl__AclEntryMplsNonTerminatingAction"],
+        "default": null
+      },
+      {
+        "name": "action_t",
+        "type": ["null", "Acl__AclEntryMplsTerminatingAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclInet6Entry",
+    "fields": [
+      {
+        "name": "ace_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "ace_op", "type": ["null", { "type": "enum", "name": "Acl__AclInet6Entry__AclEntryOperation", "symbols": ["ACL__ACL__ENTRY__OPERATION__INVALID", "ACL__ACL__ENTRY__OPERATION__ADD", "ACL__ACL__ENTRY__OPERATION__DELETE", "ACL__ACL__ENTRY__OPERATION__REPLACE"] } ], "default": null }
+      ,
+      {
+        "name": "adjacency",
+        "type": ["null", "Acl__AclAdjacency"],
+        "default": null
+      },
+      {
+        "name": "matches",
+        "type": ["null", "Acl__AclEntryMatchInet6"],
+        "default": null
+      },
+      {
+        "name": "actions",
+        "type": ["null", "Acl__AclEntryInet6Action"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclVplsEntry",
+    "fields": [
+      {
+        "name": "ace_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "ace_op", "type": ["null", { "type": "enum", "name": "Acl__AclVplsEntry__AclEntryOperation", "symbols": ["ACL__ACL__ENTRY__OPERATION__INVALID", "ACL__ACL__ENTRY__OPERATION__ADD", "ACL__ACL__ENTRY__OPERATION__DELETE", "ACL__ACL__ENTRY__OPERATION__REPLACE"] } ], "default": null }
+      ,
+      {
+        "name": "adjacency",
+        "type": ["null", "Acl__AclAdjacency"],
+        "default": null
+      },
+      {
+        "name": "matches",
+        "type": ["null", "Acl__AclEntryMatchVpls"],
+        "default": null
+      },
+      {
+        "name": "actions",
+        "type": ["null", "Acl__AclEntryVplsAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclCccEntry",
+    "fields": [
+      {
+        "name": "ace_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "ace_op", "type": ["null", { "type": "enum", "name": "Acl__AclCccEntry__AclEntryOperation", "symbols": ["ACL__ACL__ENTRY__OPERATION__INVALID", "ACL__ACL__ENTRY__OPERATION__ADD", "ACL__ACL__ENTRY__OPERATION__DELETE", "ACL__ACL__ENTRY__OPERATION__REPLACE"] } ], "default": null }
+      ,
+      {
+        "name": "adjacency",
+        "type": ["null", "Acl__AclAdjacency"],
+        "default": null
+      },
+      {
+        "name": "matches",
+        "type": ["null", "Acl__AclEntryMatchCcc"],
+        "default": null
+      },
+      {
+        "name": "actions",
+        "type": ["null", "Acl__AclEntryCccAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMultiServiceEntry",
+    "fields": [
+      {
+        "name": "ace_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "ace_op", "type": ["null", { "type": "enum", "name": "Acl__AclMultiServiceEntry__AclEntryOperation", "symbols": ["ACL__ACL__ENTRY__OPERATION__INVALID", "ACL__ACL__ENTRY__OPERATION__ADD", "ACL__ACL__ENTRY__OPERATION__DELETE", "ACL__ACL__ENTRY__OPERATION__REPLACE"] } ], "default": null }
+      ,
+      {
+        "name": "adjacency",
+        "type": ["null", "Acl__AclAdjacency"],
+        "default": null
+      },
+      {
+        "name": "matches",
+        "type": ["null", "Acl__AclEntryMatchMultiService"],
+        "default": null
+      },
+      {
+        "name": "actions",
+        "type": ["null", "Acl__AclEntryMultiServiceAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclMplsEntry",
+    "fields": [
+      {
+        "name": "ace_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "ace_op", "type": ["null", { "type": "enum", "name": "Acl__AclMplsEntry__AclEntryOperation", "symbols": ["ACL__ACL__ENTRY__OPERATION__INVALID", "ACL__ACL__ENTRY__OPERATION__ADD", "ACL__ACL__ENTRY__OPERATION__DELETE", "ACL__ACL__ENTRY__OPERATION__REPLACE"] } ], "default": null }
+      ,
+      {
+        "name": "adjacency",
+        "type": ["null", "Acl__AclAdjacency"],
+        "default": null
+      },
+      {
+        "name": "matches",
+        "type": ["null", "Acl__AclEntryMatchMpls"],
+        "default": null
+      },
+      {
+        "name": "actions",
+        "type": ["null", "Acl__AclEntryMplsAction"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclEntry",
+    "doc": "Only one of the following fields should be specified: inet_entry, es_entry, inet6_entry, vpls_entry, ccc_entry, mservice_entry, mpls_entry",
+    "fields": [
+      {
+        "name": "inet_entry",
+        "type": ["null", "Acl__AclInetEntry"],
+        "default": null
+      },
+      {
+        "name": "es_entry",
+        "type": ["null", "Acl__AclEsEntry"],
+        "default": null
+      },
+      {
+        "name": "inet6_entry",
+        "type": ["null", "Acl__AclInet6Entry"],
+        "default": null
+      },
+      {
+        "name": "vpls_entry",
+        "type": ["null", "Acl__AclVplsEntry"],
+        "default": null
+      },
+      {
+        "name": "ccc_entry",
+        "type": ["null", "Acl__AclCccEntry"],
+        "default": null
+      },
+      {
+        "name": "mservice_entry",
+        "type": ["null", "Acl__AclMultiServiceEntry"],
+        "default": null
+      },
+      {
+        "name": "mpls_entry",
+        "type": ["null", "Acl__AclMplsEntry"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AccessList",
+    "fields": [
+      {
+        "name": "acl_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "acl_type", "type": ["null", { "type": "enum", "name": "Acl__AccessList__AccessListTypes", "symbols": ["ACL__ACL__TYPE__INVALID", "ACL__ACL__TYPE__CLASSIC"] } ], "default": null }
+      ,
+      { "name": "acl_family", "type": ["null", { "type": "enum", "name": "Acl__AccessList__AccessListFamilies", "symbols": ["ACL__ACL__FAMILY__INVALID", "ACL__ACL__FAMILY__INET", "ACL__ACL__FAMILY__INET6", "ACL__ACL__FAMILY__ES", "ACL__ACL__FAMILY__VPLS", "ACL__ACL__FAMILY__MULTISERVICE", "ACL__ACL__FAMILY__CCC", "ACL__ACL__FAMILY__MPLS"] } ], "default": null }
+      ,
+      { "name": "acl_flag", "type": ["null", { "type": "enum", "name": "Acl__AccessList__AccessListFlags", "symbols": ["ACL__ACL__FLAGS__NONE"] } ], "default": null }
+      ,
+      {
+        "name": "ace_list",
+        "type": ["null", {"type": "array", "items": "Acl__AclEntry"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AccessListCounter",
+    "fields": [
+      {
+        "name": "acl",
+        "type": ["null", "Acl__AccessList"],
+        "default": null
+      },
+      {
+        "name": "counter_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AccessListCounterBulk",
+    "fields": [
+      {
+        "name": "acl",
+        "type": ["null", "Acl__AccessList"],
+        "default": null
+      },
+      {
+        "name": "starting_index",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AccessListReturnStatus",
+    "fields": [
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Acl__AccessListReturnStatus__AccessListReturnVal", "symbols": ["ACL__ACL__STATUS__EOK", "ACL__ACL__STATUS__NULL__MESSAGE", "ACL__ACL__STATUS__EINVALID__MESSAGE", "ACL__ACL__STATUS__EINTERNAL", "ACL__ACL__STATUS__EUNSUPPORTED__OP", "ACL__ACL__STATUS__NO__RESOURCE", "ACL__ACL__STATUS__BS__TIMEOUT"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AccessListCounterVal",
+    "fields": [
+      {
+        "name": "counter_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      { "name": "status", "type": ["null", { "type": "enum", "name": "Acl__AccessListCounterVal__AccessListReturnVal", "symbols": ["ACL__ACL__STATUS__EOK", "ACL__ACL__STATUS__NULL__MESSAGE", "ACL__ACL__STATUS__EINVALID__MESSAGE", "ACL__ACL__STATUS__EINTERNAL", "ACL__ACL__STATUS__EUNSUPPORTED__OP", "ACL__ACL__STATUS__NO__RESOURCE", "ACL__ACL__STATUS__BS__TIMEOUT"] } ], "default": null }
+      ,
+      {
+        "name": "bytes",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "packets",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclBindObjVlan",
+    "fields": [
+      {
+        "name": "vlan_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "rtb_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AclBindObjBridgeDomain",
+    "fields": [
+      {
+        "name": "bd_name",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "rtb_name",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AccessListBindObjPoint",
+    "doc": "Only one of the following fields should be specified: intf, fwd_table, vlan, bd",
+    "fields": [
+      {
+        "name": "intf",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "fwd_table",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "vlan",
+        "type": ["null", "Acl__AclBindObjVlan"],
+        "default": null
+      },
+      {
+        "name": "bd",
+        "type": ["null", "Acl__AclBindObjBridgeDomain"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Acl__AccessListObjBind",
+    "fields": [
+      {
+        "name": "acl",
+        "type": ["null", "Acl__AccessList"],
+        "default": null
+      },
+      { "name": "obj_type", "type": ["null", { "type": "enum", "name": "Acl__AccessListObjBind__AccessListBindObjType", "symbols": ["ACL__ACL__BIND__OBJ__TYPE__INVALID", "ACL__ACL__BIND__OBJ__TYPE__INTERFACE", "ACL__ACL__BIND__OBJ__TYPE__FWD__TABLE", "ACL__ACL__BIND__OBJ__TYPE__VLAN", "ACL__ACL__BIND__OBJ__TYPE__BRG__DOMAIN"] } ], "default": null }
+      ,
+      {
+        "name": "bind_object",
+        "type": ["null", "Acl__AccessListBindObjPoint"],
+        "default": null
+      },
+      { "name": "bind_direction", "type": ["null", { "type": "enum", "name": "Acl__AccessListObjBind__AclBindDirection", "symbols": ["ACL__ACL__BIND__DIRECTION__INVALID", "ACL__ACL__BIND__DIRECTION__INPUT", "ACL__ACL__BIND__DIRECTION__OUTPUT"] } ], "default": null }
+      ,
+      { "name": "bind_family", "type": ["null", { "type": "enum", "name": "Acl__AccessListObjBind__AccessListFamilies", "symbols": ["ACL__ACL__FAMILY__INVALID", "ACL__ACL__FAMILY__INET", "ACL__ACL__FAMILY__INET6", "ACL__ACL__FAMILY__ES", "ACL__ACL__FAMILY__VPLS", "ACL__ACL__FAMILY__MULTISERVICE", "ACL__ACL__FAMILY__CCC", "ACL__ACL__FAMILY__MPLS"] } ], "default": null }
+
+    ]
+  }
+]

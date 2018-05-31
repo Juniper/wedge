@@ -1,0 +1,249 @@
+[
+  {
+    "type": "record",
+    "name": "Licensing__LicenseCapacity",
+    "fields": [
+      {
+        "name": "lk_total",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "lk_remaining",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "requested",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "reported_usage",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__LicenseNotifySend",
+    "fields": [
+      {
+        "name": "feature_ids",
+        "type": ["null", {"type": "array", "items": "int"}],
+        "default": null
+      },
+      {
+        "name": "request_list",
+        "type": ["null", {"type": "array", "items": "long"}],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__LicenseEventDetail",
+    "doc": "Only one of the following fields should be specified: capacity",
+    "fields": [
+      {
+        "name": "capacity",
+        "type": ["null", "Licensing__LicenseCapacity"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__LicenseNotifyReply",
+    "fields": [
+      { "name": "ret_code", "type": ["null", { "type": "enum", "name": "Licensing__LicenseNotifyReply__ReturnCode", "symbols": ["LICENSING__SUCCESS", "LICENSING__OPERATION__FAILED", "LICENSING__REGISTER__MEMALLOC__FAILED", "LICENSING__REGISTER__REQUESTBULK__FAILED", "LICENSING__CLIENT__NOT__FOUND", "LICENSING__JAPI__GET__CLIENTID__FAILED", "LICENSING__CLIENT__INPUT__PARAM__INVALID", "LICENSING__LM__INVALID__ARGUMENT", "LICENSING__LM__INVALID__LICENSE", "LICENSING__LM__NO__MORE__LICENSE", "LICENSING__LM__INSUFFICIENT__LICENSE", "LICENSING__LM__LK__NOT__AVAILABLE"] } ], "default": null }
+      ,
+      {
+        "name": "feature_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "event_type", "type": ["null", { "type": "enum", "name": "Licensing__LicenseNotifyReply__LicenseEvent", "symbols": ["LICENSING__INVALID", "LICENSING__SERVER__CONNECTED", "LICENSING__SERVER__DISCONNECTED", "LICENSING__LK__INSTALL", "LICENSING__LK__DELETE", "LICENSING__LK__EXPIRY__NON__PRODUCTION", "LICENSING__LK__EXPIRY__PRODUCTION", "LICENSING__CAPACITY__CHANGE"] } ], "default": null }
+      ,
+      {
+        "name": "event_info",
+        "type": ["null", "Licensing__LicenseEventDetail"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__LicenseUnregisterSend",
+    "fields": [
+      {
+        "name": "WedgePlaceholder",
+        "type": "null"
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__LicenseUnregisterReply",
+    "fields": [
+      { "name": "ret_code", "type": ["null", { "type": "enum", "name": "Licensing__LicenseUnregisterReply__ReturnCode", "symbols": ["LICENSING__SUCCESS", "LICENSING__OPERATION__FAILED", "LICENSING__REGISTER__MEMALLOC__FAILED", "LICENSING__REGISTER__REQUESTBULK__FAILED", "LICENSING__CLIENT__NOT__FOUND", "LICENSING__JAPI__GET__CLIENTID__FAILED", "LICENSING__CLIENT__INPUT__PARAM__INVALID", "LICENSING__LM__INVALID__ARGUMENT", "LICENSING__LM__INVALID__LICENSE", "LICENSING__LM__NO__MORE__LICENSE", "LICENSING__LM__INSUFFICIENT__LICENSE", "LICENSING__LM__LK__NOT__AVAILABLE"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__LicenseQuerySend",
+    "fields": [
+      {
+        "name": "feature_id",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__LicenseCheckValidityReply",
+    "fields": [
+      { "name": "ret_code", "type": ["null", { "type": "enum", "name": "Licensing__LicenseCheckValidityReply__ReturnCode", "symbols": ["LICENSING__SUCCESS", "LICENSING__OPERATION__FAILED", "LICENSING__REGISTER__MEMALLOC__FAILED", "LICENSING__REGISTER__REQUESTBULK__FAILED", "LICENSING__CLIENT__NOT__FOUND", "LICENSING__JAPI__GET__CLIENTID__FAILED", "LICENSING__CLIENT__INPUT__PARAM__INVALID", "LICENSING__LM__INVALID__ARGUMENT", "LICENSING__LM__INVALID__LICENSE", "LICENSING__LM__NO__MORE__LICENSE", "LICENSING__LM__INSUFFICIENT__LICENSE", "LICENSING__LM__LK__NOT__AVAILABLE"] } ], "default": null }
+      ,
+      {
+        "name": "feature_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "validity", "type": ["null", { "type": "enum", "name": "Licensing__LicenseCheckValidityReply__ValidityState", "symbols": ["LICENSING__LICENSE__NO__NEED", "LICENSING__LICENSE__REQUIRED", "LICENSING__LICENSE__VALID", "LICENSING__LICENSE__INVALID"] } ], "default": null }
+
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__LicenseGetInfoReply",
+    "fields": [
+      { "name": "ret_code", "type": ["null", { "type": "enum", "name": "Licensing__LicenseGetInfoReply__ReturnCode", "symbols": ["LICENSING__SUCCESS", "LICENSING__OPERATION__FAILED", "LICENSING__REGISTER__MEMALLOC__FAILED", "LICENSING__REGISTER__REQUESTBULK__FAILED", "LICENSING__CLIENT__NOT__FOUND", "LICENSING__JAPI__GET__CLIENTID__FAILED", "LICENSING__CLIENT__INPUT__PARAM__INVALID", "LICENSING__LM__INVALID__ARGUMENT", "LICENSING__LM__INVALID__LICENSE", "LICENSING__LM__NO__MORE__LICENSE", "LICENSING__LM__INSUFFICIENT__LICENSE", "LICENSING__LM__LK__NOT__AVAILABLE"] } ], "default": null }
+      ,
+      {
+        "name": "feature_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "capacity",
+        "type": ["null", "Licensing__LicenseCapacity"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__LicenseRemainingTimeReply",
+    "fields": [
+      { "name": "ret_code", "type": ["null", { "type": "enum", "name": "Licensing__LicenseRemainingTimeReply__ReturnCode", "symbols": ["LICENSING__SUCCESS", "LICENSING__OPERATION__FAILED", "LICENSING__REGISTER__MEMALLOC__FAILED", "LICENSING__REGISTER__REQUESTBULK__FAILED", "LICENSING__CLIENT__NOT__FOUND", "LICENSING__JAPI__GET__CLIENTID__FAILED", "LICENSING__CLIENT__INPUT__PARAM__INVALID", "LICENSING__LM__INVALID__ARGUMENT", "LICENSING__LM__INVALID__LICENSE", "LICENSING__LM__NO__MORE__LICENSE", "LICENSING__LM__INSUFFICIENT__LICENSE", "LICENSING__LM__LK__NOT__AVAILABLE"] } ], "default": null }
+      ,
+      {
+        "name": "feature_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "remain_time",
+        "type": ["null", "int"],
+        "default": null
+      },
+      { "name": "lk_type", "type": ["null", { "type": "enum", "name": "Licensing__LicenseRemainingTimeReply__LicenseType", "symbols": ["LICENSING__LK__TYPE__INVALID", "LICENSING__LK__TYPE__COUNTDOWN", "LICENSING__LK__TYPE__DATEBASED", "LICENSING__LK__TYPE__PERMANENT"] } ], "default": null }
+      ,
+      {
+        "name": "is_production_lic",
+        "type": ["null", "boolean"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__LicenseCidAndSsnReply",
+    "fields": [
+      { "name": "ret_code", "type": ["null", { "type": "enum", "name": "Licensing__LicenseCidAndSsnReply__ReturnCode", "symbols": ["LICENSING__SUCCESS", "LICENSING__OPERATION__FAILED", "LICENSING__REGISTER__MEMALLOC__FAILED", "LICENSING__REGISTER__REQUESTBULK__FAILED", "LICENSING__CLIENT__NOT__FOUND", "LICENSING__JAPI__GET__CLIENTID__FAILED", "LICENSING__CLIENT__INPUT__PARAM__INVALID", "LICENSING__LM__INVALID__ARGUMENT", "LICENSING__LM__INVALID__LICENSE", "LICENSING__LM__NO__MORE__LICENSE", "LICENSING__LM__INSUFFICIENT__LICENSE", "LICENSING__LM__LK__NOT__AVAILABLE"] } ], "default": null }
+      ,
+      {
+        "name": "feature_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "customer_id",
+        "type": ["null", "string"],
+        "default": null
+      },
+      {
+        "name": "software_sn",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__LicenseOperSend",
+    "fields": [
+      {
+        "name": "feature_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "capacity_input",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__LicenseOperReply",
+    "fields": [
+      { "name": "ret_code", "type": ["null", { "type": "enum", "name": "Licensing__LicenseOperReply__ReturnCode", "symbols": ["LICENSING__SUCCESS", "LICENSING__OPERATION__FAILED", "LICENSING__REGISTER__MEMALLOC__FAILED", "LICENSING__REGISTER__REQUESTBULK__FAILED", "LICENSING__CLIENT__NOT__FOUND", "LICENSING__JAPI__GET__CLIENTID__FAILED", "LICENSING__CLIENT__INPUT__PARAM__INVALID", "LICENSING__LM__INVALID__ARGUMENT", "LICENSING__LM__INVALID__LICENSE", "LICENSING__LM__NO__MORE__LICENSE", "LICENSING__LM__INSUFFICIENT__LICENSE", "LICENSING__LM__LK__NOT__AVAILABLE"] } ], "default": null }
+      ,
+      {
+        "name": "feature_id",
+        "type": ["null", "int"],
+        "default": null
+      },
+      {
+        "name": "capacity_input",
+        "type": ["null", "long"],
+        "default": null
+      },
+      {
+        "name": "capacity_output",
+        "type": ["null", "long"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__TestLicenseKeySend",
+    "fields": [
+      {
+        "name": "license_key",
+        "type": ["null", "string"],
+        "default": null
+      }
+    ]
+  },
+  {
+    "type": "record",
+    "name": "Licensing__TestLicenseKeyReply",
+    "fields": [
+      { "name": "ret_code", "type": ["null", { "type": "enum", "name": "Licensing__TestLicenseKeyReply__ReturnCode", "symbols": ["LICENSING__SUCCESS", "LICENSING__OPERATION__FAILED", "LICENSING__REGISTER__MEMALLOC__FAILED", "LICENSING__REGISTER__REQUESTBULK__FAILED", "LICENSING__CLIENT__NOT__FOUND", "LICENSING__JAPI__GET__CLIENTID__FAILED", "LICENSING__CLIENT__INPUT__PARAM__INVALID", "LICENSING__LM__INVALID__ARGUMENT", "LICENSING__LM__INVALID__LICENSE", "LICENSING__LM__NO__MORE__LICENSE", "LICENSING__LM__INSUFFICIENT__LICENSE", "LICENSING__LM__LK__NOT__AVAILABLE"] } ], "default": null }
+      ,
+      {
+        "name": "feature_id",
+        "type": ["null", "int"],
+        "default": null
+      }
+    ]
+  }
+]
