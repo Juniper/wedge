@@ -6,8 +6,8 @@
 package codecs
 
 import (
-	wc "git.juniper.net/sksubra/wedge/codecs/json_grpc_codec"
-	wu "git.juniper.net/sksubra/wedge/util"
+	wc "github.com/Juniper/wedge/codecs/json_grpc_codec"
+	wu "github.com/Juniper/wedge/util"
 )
 
 /*
