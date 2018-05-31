@@ -11,7 +11,7 @@ import (
 	"strings"
 	"sync"
 
-	wu "git.juniper.net/sksubra/wedge/util"
+	wu "github.com/Juniper/wedge/util"
 )
 
 //"github.com/confluentinc/confluent-kafka-go/kafka"
