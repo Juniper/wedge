@@ -5,7 +5,7 @@
 
 package json_grpc_codec
 
-import wu "git.juniper.net/sksubra/wedge/util"
+import wu "github.com/Juniper/wedge/util"
 
 type JsonGrpcCodec struct{}
 
