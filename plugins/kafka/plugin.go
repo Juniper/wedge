@@ -12,7 +12,7 @@ import (
 	"os"
 	"strings"
 
-	wu "git.juniper.net/sksubra/wedge/util"
+	wu "github.com/Juniper/wedge/util"
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"github.com/srikanth2212/jsonez"
 	yaml "gopkg.in/yaml.v2"
