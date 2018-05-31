@@ -36,8 +36,8 @@ JSON. The code is organized into 3 levels:
 ### Prerequisites:
 1. [Go](https://golang.org/doc/install) 1.8+
 2. Configure [GOPATH](https://golang.org/doc/code.html#GOPATH)
-3. [librdkafka] (https://github.com/edenhill/librdkafka)
-4. [protoc-wedge] (https://github.com/Juniper/protoc-wedge) compiler
+3. [librdkafka](https://github.com/edenhill/librdkafka)
+4. [protoc-wedge](https://github.com/Juniper/protoc-wedge) compiler
    to generate descriptor files needed for wedge specific to your application. 
 
 ### Installation:
@@ -135,8 +135,3 @@ The examples cover the following:
 3. A pre-write callback function will take an object of struct MsgFormat as
    as input and returns an interface{} specific to the plugin/data format like
    JSONPostReadCB().
-
-### Status
-Under active development
-
-
