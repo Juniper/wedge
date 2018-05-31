@@ -38,7 +38,7 @@ JSON. The code is organized into 3 levels:
 1. [Go](https://golang.org/doc/install) 1.8+
 2. Configure [GOPATH](https://golang.org/doc/code.html#GOPATH)
 3. [librdkafka] (https://github.com/edenhill/librdkafka)
-4. [protoc-wedge] (https://git.juniper.net/sksubra/protoc-wedge.git) compiler
+4. [protoc-wedge] (https://github.com/Juniper/protoc-wedge) compiler
    to generate descriptor files needed for wedge specific to your application. 
 
 ### Installation:
@@ -46,11 +46,10 @@ Wedge Makefile requires GNU make.
 
 Dependencies are managed with gdm, which is installed by the Makefile if you
 don't have it already including gRPC Go and protobuf.
-1. Run `go get -d git.juniper.net/sksubra/wedge/...`
-2. Run `cd $GOPATH/src/git.juniper.net/sksubra/wedge`
+1. Run `go get -d github.com/Juniper/wedge/...`
+2. Run `cd $GOPATH/src/github.com/Juniper/wedge`
 3. Run `make`
 4. Run `make install` to copy the wedge binary to /usr/local/bin
-
 
 ### Usage:
 #### The usage can be determined through the command:
