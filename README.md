@@ -114,7 +114,7 @@ The examples cover the following:
    functions to convert the data and publish it to a kafka bus. The following
    format conversions are performed:<br/>
    a. Influx line protocol format and published to topic "telegraf" which can be
-      processed and added to InfluxDB using [telegraf] (https://github.com/influxdata/telegraf)<br/>
+      processed and added to InfluxDB using [telegraf](https://github.com/influxdata/telegraf)<br/>
    b. Fluentd compatible key-value pair data that can be consumed using
       [fluent-plugin-kafka](https://github.com/fluent/fluent-plugin-kafka)
    c. JSON data representation key-value pairs.    
