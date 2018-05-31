@@ -14,9 +14,9 @@ import (
 	"strings"
 	"sync"
 
-	wi "git.juniper.net/sksubra/wedge/implementations"
-	plugin "git.juniper.net/sksubra/wedge/plugins/all"
-	wu "git.juniper.net/sksubra/wedge/util"
+	wi "github.com/Juniper/wedge/implementations"
+	plugin "github.com/Juniper/wedge/plugins/all"
+	wu "github.com/Juniper/wedge/util"
 	yaml "gopkg.in/yaml.v2"
 )
 
