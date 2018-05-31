@@ -117,7 +117,7 @@ The examples cover the following:
       processed and added to InfluxDB using [telegraf](https://github.com/influxdata/telegraf)<br/>
    b. Fluentd compatible key-value pair data that can be consumed using
       [fluent-plugin-kafka](https://github.com/fluent/fluent-plugin-kafka)<br/>
-   c. JSON data representation key-value pairs.    
+   c. JSON data representation of OpenConfig telemetry key-value pairs.    
 
 #### Adding a new plugin:
 1. Add a new file for the plugin within "plugins" directory.
