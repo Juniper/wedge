@@ -687,27 +687,11 @@ func GetAvroSchema(protocol *AvroProtocolDesc) string {
 	 * Open the avsc file corresponding to the protocol descriptor
 	 */
 	fileLoc := aMan.avscDir + protocol.AvscFile
-	fmt.Println("AVSC file is", fileLoc)
+	log.Println("AVSC file is", fileLoc)
 	content, err := ioutil.ReadFile(fileLoc)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	return string(content)
-}
-
-func Atest() {
-	InitAvroParser("/Users/sksubra/Desktop/Wedge/WedgeAvsc.json",
-		"/Users/sksubra/Desktop/Wedge/")
-
-	val, err := GetProtocolDesc("/acl.AclService/AccessListCounterBulkGet")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println("********* Generating avro schemas *********")
-
-	fmt.Println("avro schema for request: \n", GetAvroSchema(val), "\n")
-
-	fmt.Println("avro schema for response: \n", GetAvroSchema(val), "\n")
 }
