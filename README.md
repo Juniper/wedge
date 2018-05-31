@@ -1,4 +1,3 @@
-## Wedge: API broker for Handling different data formats and transports
 ### Overview:
 Wedge is a broker written in Go to support execution of APIs over different
 formats and transports. The implementation follows a plugin based model where
