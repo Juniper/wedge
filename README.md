@@ -1,9 +1,9 @@
 ### Overview:
 Wedge is a broker written in Go to support execution of APIs over different
 formats and transports. The implementation follows a plugin based model where
-the client-side and server-side plugins can run with different data formats,
-transport and communicate using a common message format representing data in
-JSON. The code is organized into 3 levels:
+the client-side and server-side plugins can run with different data formats, 
+transport and communicate using a common message structure format. The code
+is organized into 3 levels:
 
 1. Codecs: Specify the codec to translate from a custom data to protobuf
    byte-buffer for gRPC. Currently, JSON to protobuf is implemented. The
